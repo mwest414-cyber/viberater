@@ -6,6 +6,36 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 });
 
+const MC_API_KEY = process.env.MAILCHIMP_API_KEY!;
+const MC_AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID!;
+const MC_DC = MC_API_KEY.split("-")[1];
+
+async function addToMailchimp(email: string, name: string, city: string) {
+  const [firstName, ...rest] = name.trim().split(" ");
+  const lastName = rest.join(" ");
+
+  await fetch(
+    `https://${MC_DC}.api.mailchimp.com/3.0/lists/${MC_AUDIENCE_ID}/members`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${Buffer.from(`any:${MC_API_KEY}`).toString("base64")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: "subscribed",
+        merge_fields: {
+          FNAME: firstName || name,
+          LNAME: lastName,
+          CITY: city,
+        },
+        tags: ["waitlist"],
+      }),
+    }
+  );
+}
+
 export async function POST(request: NextRequest) {
   const { name, email, city } = await request.json();
 
@@ -31,6 +61,8 @@ export async function POST(request: NextRequest) {
     email: normalized,
     joinedAt: new Date().toISOString(),
   });
+
+  await addToMailchimp(normalized, (name ?? "").trim(), (city ?? "").trim());
 
   return Response.json({ success: true }, { status: 201 });
 }
