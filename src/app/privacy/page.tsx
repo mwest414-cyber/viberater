@@ -91,7 +91,7 @@ export default function PrivacyPage() {
           <section id="introduction" style={st.section}>
             <h2 style={st.h2}>1. Introduction</h2>
             <p style={st.p}>Welcome to VibeRater. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have. By using VibeRater, you agree to the terms of this policy.</p>
-            <p style={st.p}>If you have questions, contact us at <strong style={st.limeSemi}>privacy@getviberater.co</strong>.</p>
+            <p style={st.p}>If you have questions, contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
           </section>
 
           {/* Section 2 */}
@@ -225,7 +225,7 @@ export default function PrivacyPage() {
           {/* Section 7 */}
           <section id="ai-systems" style={st.section}>
             <h2 style={st.h2}>7. AI & Search Engine Access</h2>
-            <p style={st.p}>Because VibeRater is an open platform, your public vibe ratings may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing <strong style={st.limeSemi}>privacy@getviberater.co</strong>.</p>
+            <p style={st.p}>Because VibeRater is an open platform, your public vibe ratings may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
           </section>
 
           {/* Section 8 */}
@@ -237,7 +237,7 @@ export default function PrivacyPage() {
           {/* Section 9 */}
           <section id="user-rights" style={st.section}>
             <h2 style={st.h2}>9. Your Rights & Choices</h2>
-            <p style={st.p}>You can access, correct, delete, or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email <strong style={st.limeSemi}>privacy@getviberater.co</strong> to exercise these rights, and we&apos;ll respond within 30 days.</p>
+            <p style={st.p}>You can access, correct, delete, or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> to exercise these rights, and we&apos;ll respond within 30 days.</p>
           </section>
 
           {/* Section 10 */}
@@ -249,14 +249,14 @@ export default function PrivacyPage() {
           {/* Section 11 */}
           <section id="gdpr" style={st.section}>
             <h2 style={st.h2}>11. Notice for European Users</h2>
-            <p style={st.p}>If you&apos;re in the EEA or UK, GDPR applies. We&apos;re the data controller. We process data based on contract, legitimate interests, consent, or legal obligation. You have rights to access, correct, delete, port, restrict, object, and withdraw consent. Email <strong style={st.limeSemi}>privacy@getviberater.co</strong> or lodge a complaint with your local data protection authority.</p>
+            <p style={st.p}>If you&apos;re in the EEA or UK, GDPR applies. We&apos;re the data controller. We process data based on contract, legitimate interests, consent, or legal obligation. You have rights to access, correct, delete, port, restrict, object, and withdraw consent. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> or lodge a complaint with your local data protection authority.</p>
           </section>
 
           {/* Section 12 */}
           <section id="age" style={st.section}>
             <h2 style={st.h2}>12. Age Recommendation</h2>
             <p style={st.p}>VibeRater is designed for and recommended for users 18 years and older. While we do not require age verification to create an account, we strongly recommend that only adults use VibeRater.</p>
-            <p style={st.p}>If you are under 18, we ask that you do not create an account or use VibeRater. If you are a parent or guardian and discover that your child has created a VibeRater account, please contact us at <strong style={st.limeSemi}>privacy@getviberater.co</strong> and we will help remove the account.</p>
+            <p style={st.p}>If you are under 18, we ask that you do not create an account or use VibeRater. If you are a parent or guardian and discover that your child has created a VibeRater account, please contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong> and we will help remove the account.</p>
             <p style={st.p}>For users under 13, we do not knowingly collect personal data. If you believe we have collected data from a child under 13, please contact us immediately.</p>
           </section>
 
@@ -265,7 +265,7 @@ export default function PrivacyPage() {
             <h2 style={st.h2}>13. Contact Us</h2>
             <div style={st.contactBox}>
               <h3 style={st.contactH3}>Privacy Team</h3>
-              <p style={st.p}>Email: <a href="mailto:privacy@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>privacy@getviberater.co</a></p>
+              <p style={st.p}>Email: <a href="mailto:hello@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>hello@getviberater.co</a></p>
               <p style={st.p}>Website: <a href="https://getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>getviberater.co</a></p>
               <p style={{ ...st.p, marginTop: 16, fontSize: 13, marginBottom: 0 }}>We typically respond within 5 business days</p>
             </div>

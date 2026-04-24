@@ -157,7 +157,7 @@ export default function TermsPage() {
           {/* Section 6 */}
           <section id="public-platform" style={st.section}>
             <h2 style={st.h2}><span style={st.lime}>6.</span> Public Platform & Data Use</h2>
-            <p style={st.p}>VibeRater is an open platform where vibe ratings are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing <strong style={st.limeSemi}>privacy@getviberater.co</strong>.</p>
+            <p style={st.p}>VibeRater is an open platform where vibe ratings are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
           </section>
 
           {/* Section 7 */}
@@ -190,7 +190,7 @@ export default function TermsPage() {
             <h2 style={st.h2}><span style={st.lime}>9.</span> Dispute Resolution</h2>
 
             <h3 style={st.h3}>Informal Resolution</h3>
-            <p style={st.p}>If you have a dispute, contact our support team first at <strong style={st.limeSemi}>support@getviberater.co</strong>.</p>
+            <p style={st.p}>If you have a dispute, contact our support team first at <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
 
             <h3 style={st.h3}>Governing Law</h3>
             <p style={st.p}>These Terms are governed by the laws of the State of New York, USA.</p>
@@ -210,8 +210,7 @@ export default function TermsPage() {
             <h2 style={st.h2}><span style={st.lime}>11.</span> Contact Us</h2>
             <div style={st.contactBox}>
               <h3 style={st.contactH3}>VibeRater Support</h3>
-              <p style={st.p}>Email: <a href="mailto:support@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>support@getviberater.co</a></p>
-              <p style={st.p}>Legal: <a href="mailto:legal@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>legal@getviberater.co</a></p>
+              <p style={st.p}>Email: <a href="mailto:hello@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>hello@getviberater.co</a></p>
               <p style={st.p}>Website: <a href="https://getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>getviberater.co</a></p>
               <p style={{ ...st.p, marginTop: 16, fontSize: 13, marginBottom: 0 }}>We typically respond within 5 business days</p>
             </div>
