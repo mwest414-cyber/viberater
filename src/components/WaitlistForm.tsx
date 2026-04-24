@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-type State = "idle" | "loading" | "success" | "error" | "duplicate";
+type State = "idle" | "loading" | "success" | "error";
 
-const MC_URL =
-  "https://getviberater.us15.list-manage.com/subscribe/post-json?u=afd516bac6774f4d9e3c7e383&id=2b1625bdda";
+const MC_POST_URL = "https://getviberater.us15.list-manage.com/subscribe/post";
+const MC_U = "afd516bac6774f4d9e3c7e383";
+const MC_ID = "2b1625bdda";
 
 const inputStyle = {
   width: "100%",
@@ -73,34 +74,6 @@ function Input({
   );
 }
 
-function submitViaJsonp(params: Record<string, string>): Promise<{ result: string; msg: string }> {
-  return new Promise((resolve, reject) => {
-    const cb = `mc_cb_${Date.now()}`;
-    const qs = new URLSearchParams({ ...params, c: cb }).toString();
-    const script = document.createElement("script");
-    script.src = `${MC_URL}&${qs}`;
-
-    const timer = setTimeout(() => {
-      cleanup();
-      reject(new Error("timeout"));
-    }, 10000);
-
-    function cleanup() {
-      clearTimeout(timer);
-      delete (window as unknown as Record<string, unknown>)[cb];
-      script.remove();
-    }
-
-    (window as unknown as Record<string, unknown>)[cb] = (data: { result: string; msg: string }) => {
-      cleanup();
-      resolve(data);
-    };
-
-    script.onerror = () => { cleanup(); reject(new Error("network")); };
-    document.head.appendChild(script);
-  });
-}
-
 export default function WaitlistForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -112,27 +85,32 @@ export default function WaitlistForm() {
     setState("loading");
 
     const normalized = email.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) {
+      setState("error");
+      return;
+    }
+
     const [firstName, ...rest] = (name ?? "").trim().split(" ");
     const lastName = rest.join(" ");
 
     try {
-      const data = await submitViaJsonp({
-        EMAIL: normalized,
-        FNAME: firstName || normalized,
-        LNAME: lastName,
-        CITY: city.trim(),
+      await fetch(MC_POST_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          u: MC_U,
+          id: MC_ID,
+          EMAIL: normalized,
+          FNAME: firstName || normalized,
+          LNAME: lastName,
+          CITY: city.trim(),
+        }).toString(),
       });
-
-      if (data.result === "success") {
-        setState("success");
-        setName("");
-        setEmail("");
-        setCity("");
-      } else if (data.msg?.toLowerCase().includes("already subscribed")) {
-        setState("duplicate");
-      } else {
-        setState("error");
-      }
+      setState("success");
+      setName("");
+      setEmail("");
+      setCity("");
     } catch {
       setState("error");
     }
@@ -194,7 +172,7 @@ export default function WaitlistForm() {
           placeholder="your email"
           value={email}
           onChange={(v) => { setEmail(v); setState("idle"); }}
-          hasError={state === "error" || state === "duplicate"}
+          hasError={state === "error"}
           ariaLabel="Your email address"
           ariaDescribedby="waitlist-status"
           autoComplete="email"
@@ -223,11 +201,6 @@ export default function WaitlistForm() {
       </form>
 
       <div id="waitlist-status" role="status" aria-live="polite" aria-atomic="true">
-        {state === "duplicate" && (
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "#FFB84D", letterSpacing: "0.02em" }}>
-            already on the list. we&apos;ll see you there.
-          </p>
-        )}
         {state === "error" && (
           <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--coral)", letterSpacing: "0.02em" }}>
             that didn&apos;t work. shake the phone, try again.
