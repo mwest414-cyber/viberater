@@ -120,7 +120,7 @@ export default function Home() {
               so you know what you&apos;re walking into. no reviews. no guessing.
             </p>
 
-            <div id="waitlist" className="animate-fade-up delay-300 w-full flex justify-center">
+            <div id="waitlist" className="animate-fade-up delay-300 w-full flex justify-center" style={{ scrollMarginTop: "80px" }}>
               <WaitlistForm />
             </div>
 

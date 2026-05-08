@@ -37,6 +37,7 @@ export default function Header() {
           {[
             { href: "/about", label: "about" },
             { href: "/faq", label: "faq" },
+            { href: "/blog", label: "blog" },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -102,6 +103,7 @@ export default function Header() {
         >
           <Link href="/about" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>about</Link>
           <Link href="/faq" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>faq</Link>
+          <Link href="/blog" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>blog</Link>
           <a
             href="#waitlist"
             style={{ color: "var(--lime)", fontWeight: 600, fontSize: 15 }}

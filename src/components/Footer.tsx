@@ -11,6 +11,7 @@ export default function Footer() {
         <nav className="flex gap-6">
           <Link href="/about" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">about</Link>
           <Link href="/faq" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">faq</Link>
+          <Link href="/blog" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">blog</Link>
           <a href="mailto:hello@getviberater.co" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">contact</a>
           <Link href="/privacy" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">privacy</Link>
           <Link href="/terms" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">terms</Link>
