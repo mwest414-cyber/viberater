@@ -42,11 +42,24 @@ export default function BlogPage() {
             the viberater dispatch.
           </h1>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {posts.map((post, i) => (
-              <PostCard key={post.slug} post={post} first={i === 0} />
-            ))}
-          </div>
+          {posts.length === 0 ? (
+            <p
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 13,
+                letterSpacing: "0.04em",
+                color: "var(--fg-3)",
+              }}
+            >
+              posts coming soon.
+            </p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {posts.map((post, i) => (
+                <PostCard key={post.slug} post={post} first={i === 0} />
+              ))}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

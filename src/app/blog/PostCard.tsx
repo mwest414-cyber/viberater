@@ -39,7 +39,7 @@ export default function PostCard({ post, first }: { post: Post; first: boolean }
               fontFamily: "var(--font-mono)",
               fontSize: 10,
               letterSpacing: "0.05em",
-              color: "var(--fg-4)",
+              color: "var(--fg-2)",
             }}
           >
             {new Date(post.date).toLocaleDateString("en-US", {
@@ -71,7 +71,7 @@ export default function PostCard({ post, first }: { post: Post; first: boolean }
             fontFamily: "var(--font-body)",
             fontSize: 15,
             lineHeight: 1.6,
-            color: "var(--fg-3)",
+            color: "var(--fg-2)",
           }}
         >
           {post.excerpt}

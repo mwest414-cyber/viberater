@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: Props) {
                 fontSize: 11,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "var(--fg-4)",
+                color: "var(--fg-3)",
                 textDecoration: "none",
               }}
             >
@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
               fontFamily: "var(--font-mono)",
               fontSize: 11,
               letterSpacing: "0.05em",
-              color: "var(--fg-4)",
+              color: "var(--fg-2)",
               marginBottom: 40,
             }}
           >
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           <div
             className="space-y-5"
-            style={{ fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.65, color: "var(--fg-3)" }}
+            style={{ fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.65, color: "var(--fg-2)" }}
           >
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
