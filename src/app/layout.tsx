@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.getviberater.co"),
   title: { default: "viberater", template: "%s · viberater" },
   description: "know the vibe before you come inside. viberater rates real venues so you always know what you're walking into.",
   keywords: ["vibe", "venues", "nightlife", "bars", "restaurants", "ratings", "third spaces"],
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     description: "know the vibe before you come inside.",
     type: "website",
     siteName: "viberater",
+    url: "https://www.getviberater.co",
   },
   twitter: {
     card: "summary_large_image",

@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { posts } from "@/lib/posts";
+import { getAllPosts } from "@/lib/posts";
 import PostCard from "./PostCard";
 
 export const metadata: Metadata = {
   title: "blog",
   description: "viberater — takes on vibe culture, bar theory, and the future of third spaces.",
+  alternates: { canonical: "https://www.getviberater.co/blog" },
+  openGraph: {
+    type: "website",
+    url: "https://www.getviberater.co/blog",
+    title: "blog · viberater",
+    description: "takes on vibe culture, bar theory, and the future of third spaces.",
+  },
 };
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <>
       <Header />
@@ -39,7 +48,7 @@ export default function BlogPage() {
               marginBottom: 48,
             }}
           >
-            the viberater dispatch.
+            the viberater read.
           </h1>
 
           {posts.length === 0 ? (
