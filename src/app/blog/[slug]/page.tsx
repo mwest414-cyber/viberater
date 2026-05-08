@@ -44,10 +44,7 @@ export default async function BlogPostPage({ params }: Props) {
                 textTransform: "uppercase",
                 color: "var(--fg-4)",
                 textDecoration: "none",
-                transition: "color var(--dur-micro) var(--ease-out)",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--fg-2)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--fg-4)")}
             >
               ← blog
             </Link>

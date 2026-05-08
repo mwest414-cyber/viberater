@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { posts } from "@/lib/posts";
+import PostCard from "./PostCard";
 
 export const metadata: Metadata = {
   title: "blog",
@@ -44,91 +44,7 @@ export default function BlogPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {posts.map((post, i) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                style={{ textDecoration: "none" }}
-              >
-                <article
-                  style={{
-                    paddingTop: i === 0 ? 0 : 32,
-                    paddingBottom: 32,
-                    borderBottom: "1px solid var(--fg-5)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget.querySelector(".post-title") as HTMLElement).style.color =
-                      "var(--fg-0)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget.querySelector(".post-title") as HTMLElement).style.color =
-                      "var(--fg-1)";
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                      marginBottom: 12,
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 10,
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        color: "var(--lime)",
-                      }}
-                    >
-                      {post.category}
-                    </span>
-                    <span style={{ color: "var(--fg-5)", fontSize: 10 }}>·</span>
-                    <time
-                      dateTime={post.date}
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 10,
-                        letterSpacing: "0.05em",
-                        color: "var(--fg-4)",
-                      }}
-                    >
-                      {new Date(post.date).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </time>
-                  </div>
-
-                  <h2
-                    className="post-title"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 700,
-                      fontSize: 22,
-                      letterSpacing: "-0.02em",
-                      lineHeight: 1.15,
-                      color: "var(--fg-1)",
-                      marginBottom: 10,
-                      transition: "color var(--dur-micro) var(--ease-out)",
-                    }}
-                  >
-                    {post.title}
-                  </h2>
-
-                  <p
-                    style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: 15,
-                      lineHeight: 1.6,
-                      color: "var(--fg-3)",
-                    }}
-                  >
-                    {post.excerpt}
-                  </p>
-                </article>
-              </Link>
+              <PostCard key={post.slug} post={post} first={i === 0} />
             ))}
           </div>
         </div>
