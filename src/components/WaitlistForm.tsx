@@ -298,14 +298,16 @@ export default function WaitlistForm() {
     <div className="w-full max-w-md flex flex-col gap-2">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2" noValidate>
         <div className="flex gap-2">
-          <Input
-            id="waitlist-name"
-            placeholder="your name"
-            value={name}
-            onChange={(v) => { setName(v); setState("idle"); }}
-            ariaLabel="Your name"
-            autoComplete="name"
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="waitlist-name"
+              placeholder="your name"
+              value={name}
+              onChange={(v) => { setName(v); setState("idle"); }}
+              ariaLabel="Your name"
+              autoComplete="name"
+            />
+          </div>
           <CityInput value={city} onChange={(v) => { setCity(v); setState("idle"); }} />
         </div>
         <Input
