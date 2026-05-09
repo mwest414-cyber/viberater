@@ -8,7 +8,7 @@ tags: ["nyc nightlife", "bar reviews", "vibe ratings", "real-time reviews", "bro
 canonicalUrl: "https://www.getviberater.co/blog/why-we-built-viberater"
 ---
 
-# why we built viberater
+## why we built viberater
 
 you've done this before.
 
