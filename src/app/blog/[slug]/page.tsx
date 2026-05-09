@@ -172,18 +172,19 @@ export default async function BlogPostPage({ params }: Props) {
           />
 
           {post.tags && post.tags.length > 0 && (
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 40 }}>
+            <div className="flex flex-wrap gap-2" style={{ marginTop: 40 }}>
               {post.tags.map((tag) => (
                 <span
                   key={tag}
                   style={{
+                    display: "inline-block",
                     fontFamily: "var(--font-mono)",
                     fontSize: 10,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    color: "var(--fg-3)",
+                    color: "var(--fg-2)",
                     background: "var(--bg-elev-2)",
-                    border: "1px solid var(--fg-5)",
+                    border: "1px solid var(--fg-4)",
                     padding: "4px 10px",
                     borderRadius: 4,
                   }}

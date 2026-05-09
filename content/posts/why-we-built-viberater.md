@@ -8,8 +8,6 @@ tags: ["nyc nightlife", "bar reviews", "vibe ratings", "real-time reviews", "bro
 canonicalUrl: "https://www.getviberater.co/blog/why-we-built-viberater"
 ---
 
-## why we built viberater
-
 you've done this before.
 
 it's 9pm on a friday. you're in the cab, or on the train, or already standing on the corner. you pull up a place on google. 4.6 stars. 1,200 reviews. somebody loved the burrata in 2023. somebody else had a bad waiter in 2022. somebody's mom's birthday went great in 2024.
