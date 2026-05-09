@@ -13,11 +13,13 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "viberater",
     url: "https://www.getviberater.co",
+    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "viberater" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "viberater",
     description: "know the vibe before you come inside.",
+    images: ["/images/og/default.png"],
   },
 };
 

@@ -50,18 +50,19 @@ export default function Home() {
 
       <main id="main-content" className="flex-1">
         {/* ── Hero ───────────────────────────────────────────────── */}
-        <section className="relative flex flex-col items-center justify-center text-center px-6 pt-40 pb-24 overflow-hidden">
-          {/* Ambient glow */}
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
-            style={{
-              width: 600,
-              height: 400,
-              background: "radial-gradient(ellipse at center, rgba(215,255,58,0.08) 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
+        <section className="relative flex flex-col items-center justify-center text-center px-6 pt-40 pb-24">
+          {/* Ambient glow — overflow-hidden scoped here so it doesn't clip dropdowns */}
+          <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2"
+              style={{
+                width: 600,
+                height: 400,
+                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.08) 0%, transparent 70%)",
+                filter: "blur(40px)",
+              }}
+            />
+          </div>
 
           <div className="relative z-10 flex flex-col items-center gap-6 max-w-2xl">
             {/* Eyebrow */}

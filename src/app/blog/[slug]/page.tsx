@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: Props) {
                 color: "var(--fg-2)",
               }}
             >
-              {new Date(post.date).toLocaleDateString("en-US", {
+              {new Date(post.date + "T00:00:00").toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",
                 year: "numeric",

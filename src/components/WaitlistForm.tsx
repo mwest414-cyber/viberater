@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 type State = "idle" | "loading" | "success" | "error";
 
@@ -71,6 +71,155 @@ function Input({
         }
       }}
     />
+  );
+}
+
+function CityInput({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  function handleChange(v: string) {
+    onChange(v);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (v.trim().length < 2) {
+      setSuggestions([]);
+      setOpen(false);
+      return;
+    }
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/cities?q=${encodeURIComponent(v.trim())}`);
+        const data = await res.json();
+        const s: string[] = data.suggestions ?? [];
+        setSuggestions(s);
+        setOpen(s.length > 0);
+        setActiveIndex(-1);
+      } catch {
+        setSuggestions([]);
+        setOpen(false);
+      }
+    }, 200);
+  }
+
+  function select(city: string) {
+    onChange(city);
+    setSuggestions([]);
+    setOpen(false);
+    setActiveIndex(-1);
+    inputRef.current?.blur();
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (!open) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActiveIndex((i) => Math.min(i + 1, suggestions.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActiveIndex((i) => Math.max(i - 1, 0));
+    } else if (e.key === "Enter" && activeIndex >= 0) {
+      e.preventDefault();
+      select(suggestions[activeIndex]);
+    } else if (e.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  const showDropdown = open && suggestions.length > 0;
+
+  return (
+    <div ref={wrapperRef} style={{ position: "relative", flex: 1 }}>
+      <input
+        ref={inputRef}
+        id="waitlist-city"
+        type="text"
+        required
+        placeholder="your city"
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
+        onKeyDown={onKeyDown}
+        aria-label="Your city"
+        autoComplete="off"
+        style={{
+          ...inputStyle,
+          width: "100%",
+          borderRadius: showDropdown ? "12px 12px 0 0" : 12,
+          borderBottomColor: showDropdown ? "transparent" : "var(--fg-4)",
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.borderColor = "var(--lime)";
+          e.currentTarget.style.boxShadow = "0 0 0 2px rgba(215,255,58,0.2)";
+          if (suggestions.length > 0) setOpen(true);
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.borderColor = "var(--fg-4)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      />
+      {showDropdown && (
+        <ul
+          role="listbox"
+          aria-label="City suggestions"
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            margin: 0,
+            padding: 0,
+            listStyle: "none",
+            background: "var(--bg-elev-1)",
+            border: "1px solid var(--lime)",
+            borderTop: "none",
+            borderRadius: "0 0 12px 12px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+            zIndex: 50,
+            overflow: "hidden",
+          }}
+        >
+          {suggestions.map((city, i) => (
+            <li
+              key={city}
+              role="option"
+              aria-selected={i === activeIndex}
+              onMouseDown={(e) => { e.preventDefault(); select(city); }}
+              onMouseEnter={() => setActiveIndex(i)}
+              style={{
+                padding: "10px 16px",
+                fontFamily: "var(--font-body)",
+                fontSize: 14,
+                color: i === activeIndex ? "#0A0A0A" : "var(--fg-1)",
+                background: i === activeIndex ? "var(--lime)" : "transparent",
+                cursor: "pointer",
+                transition: "background var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out)",
+              }}
+            >
+              {city}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
@@ -157,14 +306,7 @@ export default function WaitlistForm() {
             ariaLabel="Your name"
             autoComplete="name"
           />
-          <Input
-            id="waitlist-city"
-            placeholder="your city"
-            value={city}
-            onChange={(v) => { setCity(v); setState("idle"); }}
-            ariaLabel="Your city"
-            autoComplete="address-level2"
-          />
+          <CityInput value={city} onChange={(v) => { setCity(v); setState("idle"); }} />
         </div>
         <Input
           id="waitlist-email"
