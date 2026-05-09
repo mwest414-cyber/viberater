@@ -5,7 +5,6 @@ description: "the founding story behind viberater, the nyc nightlife app that te
 date: "2026-05-09"
 author: "viberater"
 tags: ["nyc nightlife", "bar reviews", "vibe ratings", "real-time reviews", "brooklyn bars", "nightlife app"]
-ogImage: "/images/og/why-we-built-viberater.png"
 canonicalUrl: "https://www.getviberater.co/blog/why-we-built-viberater"
 ---
 
