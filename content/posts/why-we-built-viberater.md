@@ -4,7 +4,7 @@ slug: "why-we-built-viberater"
 description: "the founding story behind viberater, the nyc nightlife app that tells you if a bar is buzzing right now, not what it was like in 2022."
 date: "2026-05-09"
 author: "viberater"
-tags: ["nyc nightlife", "bar reviews", "vibe ratings", "real-time reviews", "brooklyn bars", "nightlife app"]
+tags: ["nyc nightlife", "vibe ratings", "nightlife app", "founder story", "brooklyn bars", "group chat"]
 canonicalUrl: "https://www.getviberater.co/blog/why-we-built-viberater"
 ---
 

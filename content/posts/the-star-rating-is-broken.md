@@ -4,7 +4,7 @@ slug: "the-star-rating-is-broken"
 description: "stars measure the place. you came to find out about the room. here's what viberater actually tracks instead — and why we left some things out on purpose."
 date: "2026-05-23"
 author: "viberater"
-tags: ["nyc nightlife", "bar reviews", "vibe ratings", "real-time reviews", "rating system", "nightlife app"]
+tags: ["nyc nightlife", "vibe ratings", "nightlife app", "yelp alternative", "rating systems", "real-time reviews"]
 canonicalUrl: "https://www.getviberater.co/blog/the-star-rating-is-broken"
 ---
 
