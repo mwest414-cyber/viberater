@@ -5,8 +5,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.getviberater.co"),
   title: { default: "viberater", template: "%s · viberater" },
-  description: "know the vibe before you come inside. viberater rates real venues so you always know what you're walking into.",
-  keywords: ["vibe", "venues", "nightlife", "bars", "restaurants", "ratings", "third spaces"],
+  description: "know the vibe before you come inside. viberater shows you the vibe at real venues so you always know what you're walking into.",
+  keywords: ["vibe", "venues", "nightlife", "bars", "restaurants", "vibes", "third spaces"],
   openGraph: {
     title: "viberater",
     description: "know the vibe before you come inside.",

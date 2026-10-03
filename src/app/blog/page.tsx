@@ -6,7 +6,7 @@ import PostCard from "./PostCard";
 
 export const metadata: Metadata = {
   title: "blog",
-  description: "viberater — takes on vibe culture, bar theory, and the future of third spaces.",
+  description: "viberater: takes on vibe culture, bar theory, and the future of third spaces.",
   alternates: { canonical: "https://www.getviberater.co/blog" },
   openGraph: {
     type: "website",

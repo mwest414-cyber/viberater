@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "privacy policy — viberater",
+  title: "privacy policy | viberater",
   description: "know how we protect your vibe data.",
 };
 
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           {/* Version info */}
           <div style={st.versionInfo}>
             <strong style={st.limeSemi}>Version 1.0, April 24, 2026</strong><br />
-            Last updated: April 24, 2026 | First version released at launch
+            Last updated: October 3, 2026 | First version released at launch
           </div>
 
           {/* Warning */}
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                 ["#user-rights", "9. Your Rights & Choices"],
                 ["#retention", "10. Data Retention"],
                 ["#gdpr", "11. Notice for European Users"],
-                ["#age", "12. Age Recommendation"],
+                ["#age", "12. Age Requirement"],
                 ["#contact", "13. Contact Us"],
               ].map(([href, label]) => (
                 <li key={href} style={{ marginBottom: 8, breakInside: "avoid" } as React.CSSProperties}>
@@ -97,19 +97,19 @@ export default function PrivacyPage() {
           {/* Section 2 */}
           <section id="open-platform" style={st.section}>
             <h2 style={st.h2}>2. VibeRater is an Open Platform</h2>
-            <p style={st.p}><strong style={st.limeSemi}>Important: VibeRater is designed as an open platform.</strong> When you rate a venue&apos;s vibe, that rating and your profile become publicly visible to anyone who visits VibeRater, including search engines and AI systems.</p>
+            <p style={st.p}><strong style={st.limeSemi}>Important: VibeRater is designed as an open platform.</strong> When you drop a vibe at a venue, that vibe and your profile become publicly visible to anyone who visits VibeRater, including search engines and AI systems.</p>
 
             <div style={st.warningBox}>
               <h4 style={st.warningH4}>What This Means</h4>
               <ul style={st.ul}>
-                <li style={st.li}>Your vibe ratings are <strong style={st.limeSemi}>public by default</strong> and visible to everyone</li>
-                <li style={st.li}>Your ratings may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini</li>
-                <li style={st.li}>Third parties may incorporate your vibe ratings into their own products and services</li>
-                <li style={st.li}>Even if you delete your account, your ratings may remain visible on VibeRater</li>
+                <li style={st.li}>Your vibes are <strong style={st.limeSemi}>public by default</strong> and visible to everyone</li>
+                <li style={st.li}>Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini</li>
+                <li style={st.li}>Third parties may incorporate your vibes into their own products and services</li>
+                <li style={st.li}>If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those</li>
               </ul>
             </div>
 
-            <p style={st.p}>We believe transparency about venue vibes serves the public good. Your ratings help people discover spaces with atmospheres that match what they&apos;re looking for. This open approach is core to how VibeRater works.</p>
+            <p style={st.p}>We believe transparency about venue vibes serves the public good. Your vibes help people discover spaces with atmospheres that match what they&apos;re looking for. This open approach is core to how VibeRater works.</p>
           </section>
 
           {/* Section 3 */}
@@ -122,19 +122,18 @@ export default function PrivacyPage() {
               <div style={st.dataType}>
                 <h4 style={st.h4lime}>Your Profile</h4>
                 <ul style={st.ul}>
-                  <li style={st.li}>Username (required)</li>
+                  <li style={st.li}>Display name (required)</li>
                   <li style={st.li}>Profile photo (optional)</li>
-                  <li style={st.li}>Bio or description (optional)</li>
                 </ul>
               </div>
               <div style={st.dataType}>
-                <h4 style={st.h4lime}>Your Vibe Ratings</h4>
+                <h4 style={st.h4lime}>Your Vibes</h4>
                 <ul style={st.ul}>
-                  <li style={st.li}>Venue name and location you rated</li>
-                  <li style={st.li}>Vibe descriptors you selected (multi-select tags, e.g., &quot;energetic,&quot; &quot;chill,&quot; &quot;creative&quot;)</li>
+                  <li style={st.li}>Venue where you dropped a vibe</li>
+                  <li style={st.li}>Energy level you picked (chill, lively, buzzing, packed, or electric)</li>
+                  <li style={st.li}>Vibe tags you selected (e.g., &quot;cozy,&quot; &quot;dancy,&quot; &quot;date night&quot;)</li>
                   <li style={st.li}>Crowd level description (e.g., &quot;quiet,&quot; &quot;moderate,&quot; &quot;packed&quot;)</li>
-                  <li style={st.li}>Photos or videos (if you submit them)</li>
-                  <li style={st.li}>Date you submitted the rating</li>
+                  <li style={st.li}>Date and time you dropped the vibe</li>
                 </ul>
               </div>
             </div>
@@ -147,14 +146,16 @@ export default function PrivacyPage() {
                 <ul style={st.ul}>
                   <li style={st.li}>Email address (required for account recovery)</li>
                   <li style={st.li}>Password (encrypted)</li>
-                  <li style={st.li}>Phone number (optional, for account security)</li>
+                  <li style={st.li}>Phone number (optional)</li>
+                  <li style={st.li}>Date of birth (required, used only to confirm you are old enough to use VibeRater)</li>
+                  <li style={st.li}>Sign-in details from Apple or Google (if you sign in with them)</li>
                 </ul>
               </div>
               <div style={st.dataType}>
                 <h4 style={st.h4lime}>Location Data</h4>
                 <ul style={st.ul}>
                   <li style={st.li}>Your precise GPS location (when you grant permission)</li>
-                  <li style={st.li}>Venues you&apos;ve visited (even if you don&apos;t rate them)</li>
+                  <li style={st.li}>Venues you&apos;ve visited (even if you don&apos;t drop a vibe)</li>
                   <li style={st.li}>Your search history on the app</li>
                 </ul>
               </div>
@@ -180,7 +181,7 @@ export default function PrivacyPage() {
             </div>
 
             <h3 style={st.h3}>3.3 Data from Third Parties</h3>
-            <p style={st.p}>We may receive data about you from social media platforms (if you link your accounts), Google Maps (venue information and locations), and analytics providers (anonymized usage patterns).</p>
+            <p style={st.p}>We may receive data about you from Apple or Google (if you sign in with them), Google Maps (venue information and locations), and analytics providers (anonymized usage patterns).</p>
           </section>
 
           {/* Section 4 */}
@@ -199,7 +200,7 @@ export default function PrivacyPage() {
                   ["Visible on VibeRater to everyone", "Not shown on VibeRater publicly"],
                   ["Indexed by Google and other search engines", "Not indexed by search engines"],
                   ["May be accessed by AI systems", "Not shared with AI systems"],
-                  ["Example: Your vibe ratings", "Example: Your email, password, location"],
+                  ["Example: Your vibes", "Example: Your email, password, location"],
                 ].map(([pub, priv]) => (
                   <tr key={pub}>
                     <td style={st.td}>{pub}</td>
@@ -213,19 +214,19 @@ export default function PrivacyPage() {
           {/* Section 5 */}
           <section id="how-we-use" style={st.section}>
             <h2 style={st.h2}>5. How We Use Your Data</h2>
-            <p style={st.p}>We use your data to provide VibeRater, personalize your experience, communicate with you, improve our services, and comply with legal obligations. This includes showing you relevant venues, storing your vibe ratings, recommending new places based on your preferences, and analyzing how the app is used to fix bugs and add features.</p>
+            <p style={st.p}>We use your data to provide VibeRater, personalize your experience, communicate with you, improve our services, and comply with legal obligations. This includes showing you relevant venues, storing your vibes, recommending new places based on your preferences, and analyzing how the app is used to fix bugs and add features.</p>
           </section>
 
           {/* Section 6 */}
           <section id="data-sharing" style={st.section}>
             <h2 style={st.h2}>6. How We Share Your Data</h2>
-            <p style={st.p}>Your public vibe ratings are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</p>
+            <p style={st.p}>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</p>
           </section>
 
           {/* Section 7 */}
           <section id="ai-systems" style={st.section}>
             <h2 style={st.h2}>7. AI & Search Engine Access</h2>
-            <p style={st.p}>Because VibeRater is an open platform, your public vibe ratings may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
+            <p style={st.p}>Because VibeRater is an open platform, your public vibes may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
           </section>
 
           {/* Section 8 */}
@@ -243,7 +244,7 @@ export default function PrivacyPage() {
           {/* Section 10 */}
           <section id="retention" style={st.section}>
             <h2 style={st.h2}>10. Data Retention</h2>
-            <p style={st.p}>We retain account data while your account is active (deleted within 30 days), vibe ratings indefinitely (part of the open platform), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
+            <p style={st.p}>We retain account data while your account is active (deleted within 30 days), vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
           </section>
 
           {/* Section 11 */}
@@ -254,10 +255,10 @@ export default function PrivacyPage() {
 
           {/* Section 12 */}
           <section id="age" style={st.section}>
-            <h2 style={st.h2}>12. Age Recommendation</h2>
-            <p style={st.p}>VibeRater is designed for and recommended for users 18 years and older. While we do not require age verification to create an account, we strongly recommend that only adults use VibeRater.</p>
-            <p style={st.p}>If you are under 18, we ask that you do not create an account or use VibeRater. If you are a parent or guardian and discover that your child has created a VibeRater account, please contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong> and we will help remove the account.</p>
-            <p style={st.p}>For users under 13, we do not knowingly collect personal data. If you believe we have collected data from a child under 13, please contact us immediately.</p>
+            <h2 style={st.h2}>12. Age Requirement</h2>
+            <p style={st.p}>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and anyone under 17 cannot continue.</p>
+            <p style={st.p}>If you are a parent or guardian and discover that your child under 17 has created a VibeRater account, please contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong> and we will help remove the account.</p>
+            <p style={st.p}>We do not knowingly collect personal data from anyone under 17. If you believe we have collected data from someone under 17, please contact us immediately.</p>
           </section>
 
           {/* Section 13 */}

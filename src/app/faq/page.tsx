@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "what is viberater?",
-    a: "viberater tells you what a place feels like before you walk in. crowd level, vibe tags, energy — no reviews, no star ratings. just the read.",
+    a: "viberater tells you what a place feels like before you walk in. crowd level, vibe tags, energy. just the read.",
   },
   {
     q: "how does it work?",
-    a: "we surface crowd-sourced vibe signals from people already inside. two inputs: crowd size and a vibe tag (chill, packed, date-worthy, dead, etc.). that's it. no typing.",
+    a: "we surface crowd-sourced vibe signals from people already inside. two inputs: crowd size and a vibe tag (chill, packed, cozy, date night, etc.). that's it. no typing.",
   },
   {
     q: "what kinds of places?",
-    a: "third spaces. bars, cafés, dives, rooftops, record shops, hotel lobbies, parks, laundromats — anywhere people go that isn't home or work.",
+    a: "third spaces. bars, cafés, dives, rooftops, record shops, hotel lobbies, parks, laundromats: anywhere people go that isn't home or work.",
   },
   {
     q: "what cities will you be in at launch?",

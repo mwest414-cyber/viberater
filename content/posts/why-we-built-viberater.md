@@ -14,7 +14,7 @@ it's 9pm on a friday. you're in the cab, or on the train, or already standing on
 
 none of that tells you what you actually want to know.
 
-is it dead in there right now? is it packed and you'll wait 40 minutes for a drink? is it a date-night room or an after-work room? is anyone your age inside, or did you just walk into the wrong scene?
+is it buzzing in there right now? is it packed and you'll wait 40 minutes for a drink? is it a date-night room or an after-work room? is anyone your age inside, or did you just walk into the wrong scene?
 
 the star rating can't answer any of that. it was never built to.
 
@@ -22,9 +22,9 @@ the star rating can't answer any of that. it was never built to.
 
 reviews tell you about *the place*. they don't tell you about *the room*.
 
-a great bar can be dead on a tuesday. a mediocre bar can be electric on a saturday. the same restaurant can feel romantic at 7pm and rowdy at 11pm. the food doesn't change. the vibe does. and the vibe is what you're actually deciding on when you pick where to go.
+a great bar can be chill on a tuesday. a mediocre bar can be electric on a saturday. the same restaurant can feel romantic at 7pm and rowdy at 11pm. the food doesn't change. the vibe does. and the vibe is what you're actually deciding on when you pick where to go.
 
-we kept noticing this gap. we'd text three friends before going anywhere new. "you been? what's it like? is it dead?" the group chat became the review system because the actual review system wasn't answering the question.
+we kept noticing this gap. we'd text three friends before going anywhere new. "you been? what's it like? is it buzzing?" the group chat became the review system because the actual review system wasn't answering the question.
 
 so we built the app the group chat already wanted to be.
 
@@ -34,9 +34,9 @@ we spent a long time on this. a vibe isn't a number. it isn't five stars. it isn
 
 we landed on three layers.
 
-**energy** is the temperature of the room. dead, chill, buzzing, packed, electric. one word. the first thing you'd tell a friend who asked.
+**energy** is the temperature of the room. chill, lively, buzzing, packed, electric. one word. the first thing you'd tell a friend who asked.
 
-**the crowd** is who's there. locals, tourists, after work, date night, groups, solo friendly. you pick a few that fit.
+**the crowd** is who's there. locals, tourists, young, date night, groups, solo friendly. you pick a few that fit.
 
 **the mood and the scene** is everything else. cozy, dimly lit, dive, rooftop, dancy, gritty, main character. the texture of the place.
 

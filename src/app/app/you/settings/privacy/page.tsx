@@ -112,7 +112,7 @@ export default function SettingsPrivacyPage() {
         />
         <ToggleRow
           label="ghost mode"
-          sublabel="check in silently — waves disabled"
+          sublabel="check in silently: waves disabled"
           defaultOn={false}
         />
 
