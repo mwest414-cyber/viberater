@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "terms of service — viberater",
+  title: "terms of service | viberater",
   description: "the rules that govern your use of VibeRater.",
 };
 

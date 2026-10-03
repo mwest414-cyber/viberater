@@ -34,7 +34,7 @@ we spent a long time on this. a vibe isn't a number. it isn't five stars. it isn
 
 we landed on three layers.
 
-**energy** is the temperature of the room. dead, chill, buzzing, packed, electric. one word. the first thing you'd tell a friend who asked.
+**energy** is the temperature of the room. chill, lively, buzzing, packed, electric. one word. the first thing you'd tell a friend who asked.
 
 **the crowd** is who's there. locals, tourists, after work, date night, groups, solo friendly. you pick a few that fit.
 

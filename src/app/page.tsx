@@ -5,9 +5,9 @@ import WaitlistForm from "@/components/WaitlistForm";
 import LogoMark from "@/components/LogoMark";
 
 export const metadata: Metadata = {
-  title: "viberater — know the vibe before you come inside",
+  title: "viberater: know the vibe before you come inside",
   description:
-    "viberater rates real venues — bars, dives, cafés, rooftops — so you know what you're walking into before you get there.",
+    "viberater rates real venues (bars, dives, cafés, rooftops) so you know what you're walking into before you get there.",
 };
 
 const TEASER_FEATURES = [
@@ -117,7 +117,7 @@ export default function Home() {
                 maxWidth: 440,
               }}
             >
-              viberater rates real third spaces — bars, cafés, dives, rooftops —
+              viberater rates real third spaces (bars, cafés, dives, rooftops)
               so you know what you&apos;re walking into. no reviews. no guessing.
             </p>
 
@@ -247,9 +247,9 @@ export default function Home() {
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { n: "01", title: "pick your city.", body: "open the app anywhere. we surface third spaces around you — bars, cafés, dives, rooftops." },
+                { n: "01", title: "pick your city.", body: "open the app anywhere. we surface third spaces around you: bars, cafés, dives, rooftops." },
                 { n: "02", title: "read the room.", body: "see crowd level and vibe tags for every spot. no reviews. no stars. just the read." },
-                { n: "03", title: "walk in knowing.", body: "dead or buzzing, chill or packed — you know before you get there. that's it." },
+                { n: "03", title: "walk in knowing.", body: "chill or lively, buzzing or packed. you know before you get there. that's it." },
               ].map((step) => (
                 <div
                   key={step.n}
@@ -316,7 +316,7 @@ export default function Home() {
                 <button
                   key={store}
                   disabled
-                  aria-label={`${store} — coming soon`}
+                  aria-label={`${store}, coming soon`}
                   style={{
                     display: "flex",
                     alignItems: "center",

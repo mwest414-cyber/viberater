@@ -5,7 +5,7 @@ import WaitlistForm from "@/components/WaitlistForm";
 
 export const metadata: Metadata = {
   title: "about",
-  description: "viberater — the app that tells you what a place actually feels like before you walk in.",
+  description: "viberater: the app that tells you what a place actually feels like before you walk in.",
 };
 
 export default function AboutPage() {

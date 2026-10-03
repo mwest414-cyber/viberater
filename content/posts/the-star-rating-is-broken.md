@@ -1,7 +1,7 @@
 ---
 title: "the star rating is broken"
 slug: "the-star-rating-is-broken"
-description: "stars measure the place. you came to find out about the room. here's what viberater actually tracks instead — and why we left some things out on purpose."
+description: "stars measure the place. you came to find out about the room. here's what viberater actually tracks instead, and why we left some things out on purpose."
 date: "2026-05-23"
 author: "viberater"
 tags: ["nyc nightlife", "vibe ratings", "nightlife app", "yelp alternative", "rating systems", "real-time reviews"]
@@ -32,13 +32,13 @@ we made some early calls about things to *not* track. the most obvious one: we d
 
 it would be made up. nobody is counting heads at the door and feeding that number into the app. any percentage you've seen in any nightlife app, ever, is either an estimate from cell signal density or an outright guess. we'd rather tell you nothing than tell you something dressed up to look precise.
 
-we also don't track "good for date night" or "good for groups." those are facts about places — and the place isn't what you're asking about.
+we also don't track "good for date night" or "good for groups." those are facts about places, and the place isn't what you're asking about.
 
 ## what we measure instead
 
 three things, all measured *in the moment*:
 
-**energy.** a scale from dead to electric. how alive does this room feel right now. one number, dropped by people who are actually inside.
+**energy.** a scale from chill to electric. how alive does this room feel right now. one number, dropped by people who are actually inside.
 
 **the vibe.** a small set of tags people pick to describe what the room is. *intimate. loud. flirty. work-after-five. tourist-heavy. locals-only.* you get to know what kind of room you'd be walking into, not just whether it's busy.
 
