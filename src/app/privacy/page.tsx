@@ -105,7 +105,7 @@ export default function PrivacyPage() {
                 <li style={st.li}>Your vibes are <strong style={st.limeSemi}>public by default</strong> and visible to everyone</li>
                 <li style={st.li}>Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini</li>
                 <li style={st.li}>Third parties may incorporate your vibes into their own products and services</li>
-                <li style={st.li}>Even if you delete your account, your vibes may remain visible on VibeRater</li>
+                <li style={st.li}>If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those</li>
               </ul>
             </div>
 
@@ -244,7 +244,7 @@ export default function PrivacyPage() {
           {/* Section 10 */}
           <section id="retention" style={st.section}>
             <h2 style={st.h2}>10. Data Retention</h2>
-            <p style={st.p}>We retain account data while your account is active (deleted within 30 days), vibes indefinitely (part of the open platform), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
+            <p style={st.p}>We retain account data while your account is active (deleted within 30 days), vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
           </section>
 
           {/* Section 11 */}

@@ -144,8 +144,8 @@ export default function TermsPage() {
             <h3 style={st.h3}>You Own Your Vibes</h3>
             <p style={st.p}>You own all vibes and other content you submit. By submitting content, you grant VibeRater a worldwide license to use, reproduce, distribute, and display your content.</p>
 
-            <h3 style={st.h3}>Permanence of Public Content</h3>
-            <p style={st.p}><strong style={st.limeSemi}>Important:</strong> Because VibeRater is an open platform, vibes are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. Even after you delete your account, your vibes may remain visible.</p>
+            <h3 style={st.h3}>Public Content and Copies Outside VibeRater</h3>
+            <p style={st.p}><strong style={st.limeSemi}>Important:</strong> Because VibeRater is an open platform, vibes are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those.</p>
           </section>
 
           {/* Section 5 */}
@@ -168,7 +168,7 @@ export default function TermsPage() {
             <p style={st.p}>We may suspend or terminate your account if you violate these Terms, drop fake vibes, engage in abusive behavior, attempt to manipulate the system, or violate applicable laws.</p>
 
             <h3 style={st.h3}>Your Right to Delete Your Account</h3>
-            <p style={st.p}>You can delete your account at any time. Your profile information is deleted within 30 days, but your vibes may remain visible as part of the open platform.</p>
+            <p style={st.p}>You can delete your account at any time. Your profile information, vibes, waves, and saved places are permanently deleted within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain.</p>
           </section>
 
           {/* Section 8 */}
