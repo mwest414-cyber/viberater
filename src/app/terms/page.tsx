@@ -48,7 +48,7 @@ export default function TermsPage() {
           {/* Version info */}
           <div style={st.versionInfo}>
             <strong style={st.limeSemi}>Version 1.0, April 24, 2026</strong><br />
-            Last updated: April 24, 2026 | First version released at launch
+            Last updated: October 3, 2026 | First version released at launch
           </div>
 
           {/* Warning */}
@@ -67,7 +67,7 @@ export default function TermsPage() {
                 ["#introduction", "Introduction"],
                 ["#account", "Creating Your Account"],
                 ["#acceptable-use", "Acceptable Use Policy"],
-                ["#content", "Your Content (Vibe Ratings)"],
+                ["#content", "Your Content (Vibes)"],
                 ["#intellectual-property", "Our Intellectual Property"],
                 ["#public-platform", "Public Platform & Data Use"],
                 ["#termination", "Suspension & Termination"],
@@ -89,7 +89,7 @@ export default function TermsPage() {
             <p style={st.p}>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater Inc. By using VibeRater, you agree to be bound by these Terms.</p>
 
             <h3 style={st.h3}>What is VibeRater?</h3>
-            <p style={st.p}>VibeRater is a mobile app that allows you to rate and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You rate venues using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</p>
+            <p style={st.p}>VibeRater is a mobile app that allows you to share and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You drop a vibe at a venue using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</p>
 
             <h3 style={st.h3}>Related Documents</h3>
             <p style={st.p}>These Terms include and reference our Privacy Policy and Community Guidelines, which are incorporated by reference.</p>
@@ -120,10 +120,10 @@ export default function TermsPage() {
             <h3 style={st.h3}>Prohibited Behavior</h3>
             <ul style={st.ul}>
               {[
-                "Submit fake ratings that don't reflect your genuine experience",
-                "Manipulate the system or artificially inflate/deflate ratings",
+                "Drop fake vibes that don't reflect your genuine experience",
+                "Manipulate the system or artificially inflate/deflate a venue's vibe",
                 "Engage in harassment, bullying, or abuse",
-                "Use bots or automation for fake ratings",
+                "Use bots or automation to drop fake vibes",
                 "Attempt to hack or compromise VibeRater",
                 "Submit spam or marketing content",
                 "Copy or scrape VibeRater content",
@@ -134,18 +134,18 @@ export default function TermsPage() {
             </ul>
 
             <h3 style={st.h3}>Enforcement</h3>
-            <p style={st.p}>If we detect violations, we may remove your rating, suspend your account, or permanently terminate it.</p>
+            <p style={st.p}>If we detect violations, we may remove your vibes, suspend your account, or permanently terminate it.</p>
           </section>
 
           {/* Section 4 */}
           <section id="content" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>4.</span> Your Content (Vibe Ratings)</h2>
+            <h2 style={st.h2}><span style={st.lime}>4.</span> Your Content (Vibes)</h2>
 
-            <h3 style={st.h3}>You Own Your Ratings</h3>
-            <p style={st.p}>You own all vibe ratings and other content you submit. By submitting content, you grant VibeRater a worldwide license to use, reproduce, distribute, and display your content.</p>
+            <h3 style={st.h3}>You Own Your Vibes</h3>
+            <p style={st.p}>You own all vibes and other content you submit. By submitting content, you grant VibeRater a worldwide license to use, reproduce, distribute, and display your content.</p>
 
             <h3 style={st.h3}>Permanence of Public Content</h3>
-            <p style={st.p}><strong style={st.limeSemi}>Important:</strong> Because VibeRater is an open platform, vibe ratings are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. Even after you delete your account, your ratings may remain visible.</p>
+            <p style={st.p}><strong style={st.limeSemi}>Important:</strong> Because VibeRater is an open platform, vibes are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. Even after you delete your account, your vibes may remain visible.</p>
           </section>
 
           {/* Section 5 */}
@@ -157,7 +157,7 @@ export default function TermsPage() {
           {/* Section 6 */}
           <section id="public-platform" style={st.section}>
             <h2 style={st.h2}><span style={st.lime}>6.</span> Public Platform & Data Use</h2>
-            <p style={st.p}>VibeRater is an open platform where vibe ratings are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
+            <p style={st.p}>VibeRater is an open platform where vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
           </section>
 
           {/* Section 7 */}
@@ -165,10 +165,10 @@ export default function TermsPage() {
             <h2 style={st.h2}><span style={st.lime}>7.</span> Suspension & Termination</h2>
 
             <h3 style={st.h3}>VibeRater&apos;s Right to Terminate</h3>
-            <p style={st.p}>We may suspend or terminate your account if you violate these Terms, submit fake ratings, engage in abusive behavior, attempt to manipulate the system, or violate applicable laws.</p>
+            <p style={st.p}>We may suspend or terminate your account if you violate these Terms, drop fake vibes, engage in abusive behavior, attempt to manipulate the system, or violate applicable laws.</p>
 
             <h3 style={st.h3}>Your Right to Delete Your Account</h3>
-            <p style={st.p}>You can delete your account at any time. Your profile information is deleted within 30 days, but your vibe ratings may remain visible as part of the open platform.</p>
+            <p style={st.p}>You can delete your account at any time. Your profile information is deleted within 30 days, but your vibes may remain visible as part of the open platform.</p>
           </section>
 
           {/* Section 8 */}
