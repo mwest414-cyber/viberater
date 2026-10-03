@@ -100,13 +100,13 @@ export default function TermsPage() {
             <h2 style={st.h2}><span style={st.lime}>2.</span> Creating Your Account</h2>
 
             <h3 style={st.h3}>Age Requirement</h3>
-            <p style={st.p}>VibeRater is recommended for users 18 years and older. While we do not require age verification, we strongly recommend that only adults use VibeRater. By creating an account, you represent that you are 18 years or older, or that you have obtained parental consent to use VibeRater.</p>
+            <p style={st.p}>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and we do not allow anyone under 17 to use VibeRater. By creating an account, you represent that you are 17 years or older.</p>
 
             <h3 style={st.h3}>Account Creation</h3>
-            <p style={st.p}>You can sign up using Google, Apple, email, or Facebook. You may only create one account per person.</p>
+            <p style={st.p}>You can sign up using Apple, Google, or your email and a password. You may only create one account per person.</p>
 
-            <h3 style={st.h3}>Your Username</h3>
-            <p style={st.p}>Your username must not contain anything harmful, hateful, discriminatory, defamatory, or illegal, and must not impersonate another person.</p>
+            <h3 style={st.h3}>Your Display Name</h3>
+            <p style={st.p}>Your display name must not contain anything harmful, hateful, discriminatory, defamatory, or illegal, and must not impersonate another person.</p>
 
             <h3 style={st.h3}>Your Responsibilities</h3>
             <p style={st.p}>You are solely responsible for keeping your password confidential, notifying us of unauthorized access, maintaining accurate account information, and all activity on your account.</p>
