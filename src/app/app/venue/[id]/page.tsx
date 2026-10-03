@@ -3,11 +3,11 @@ import TabBar, { TAB_BAR_HEIGHT } from "@/components/TabBar";
 
 const mockVenues: Record<string, { name: string; category: string; neighborhood: string; vibe: string | null; vibeColor: string; dotColor: string }> = {
   devocion:  { name: "Devoción Coffee",  category: "cafe",     neighborhood: "williamsburg", vibe: "buzzing", vibeColor: "#D7FF3A", dotColor: "#D7FF3A" },
-  employees: { name: "Employees Only",   category: "bar",      neighborhood: "west village", vibe: "packed",  vibeColor: "#FF9A1F", dotColor: "#FF9A1F" },
-  mcnally:   { name: "McNally Jackson",  category: "bookshop", neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#B8B8B3", dotColor: "#8C8C86" },
-  winona:    { name: "Winona's",         category: "bar",      neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#B8B8B3", dotColor: "#8C8C86" },
+  employees: { name: "Employees Only",   category: "bar",      neighborhood: "west village", vibe: "packed",  vibeColor: "#FF5A3C", dotColor: "#FF5A3C" },
+  mcnally:   { name: "McNally Jackson",  category: "bookshop", neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#888888", dotColor: "#888888" },
+  winona:    { name: "Winona's",         category: "bar",      neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#888888", dotColor: "#888888" },
   mogador:   { name: "Café Mogador",     category: "cafe",     neighborhood: "east village", vibe: "electric", vibeColor: "#D7FF3A", dotColor: "#D7FF3A" },
-  strand:    { name: "The Strand",       category: "bookshop", neighborhood: "union square", vibe: null,      vibeColor: "#7A7A75", dotColor: "#2E2E2C" },
+  strand:    { name: "The Strand",       category: "bookshop", neighborhood: "union square", vibe: null,      vibeColor: "#888888", dotColor: "#555555" },
 };
 
 export default async function VenueDetailPage({
