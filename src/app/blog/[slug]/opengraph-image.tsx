@@ -44,14 +44,14 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           >
             viberater
           </span>
-          <span style={{ color: "#2E2E2C", fontSize: 16, fontFamily: "SpaceGrotesk" }}>·</span>
+          <span style={{ color: "#555555", fontSize: 16, fontFamily: "SpaceGrotesk" }}>·</span>
           <span
             style={{
               fontFamily: "SpaceGrotesk",
               fontWeight: 500,
               fontSize: 13,
               letterSpacing: "0.12em",
-              color: "#7A7A75",
+              color: "#888888",
               textTransform: "uppercase",
             }}
           >
@@ -65,7 +65,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             fontFamily: "SpaceGrotesk",
             fontWeight: 700,
             fontSize: title.length > 50 ? 52 : title.length > 35 ? 60 : 72,
-            color: "#FAFAF7",
+            color: "#E8E8E8",
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
             maxWidth: 960,
@@ -80,7 +80,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             fontFamily: "SpaceGrotesk",
             fontWeight: 500,
             fontSize: 16,
-            color: "#7A7A75",
+            color: "#888888",
             letterSpacing: "0.02em",
           }}
         >

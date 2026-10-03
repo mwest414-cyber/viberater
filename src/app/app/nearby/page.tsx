@@ -20,8 +20,8 @@ interface Venue {
 
 const venues: Venue[] = [
   { id: "devocion",  name: "Devoción Coffee",  category: "cafe", neighborhood: "williamsburg", vibe: "buzzing", vibeColor: "#D7FF3A", dotColor: "#D7FF3A" },
-  { id: "employees", name: "Employees Only",   category: "bar",  neighborhood: "west village", vibe: "packed",  vibeColor: "#FF9A1F", dotColor: "#FF9A1F" },
-  { id: "mcnally",   name: "McNally Jackson",  category: "cafe", neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#B8B8B3", dotColor: "#8C8C86" },
+  { id: "employees", name: "Employees Only",   category: "bar",  neighborhood: "west village", vibe: "packed",  vibeColor: "#FF5A3C", dotColor: "#FF5A3C" },
+  { id: "mcnally",   name: "McNally Jackson",  category: "cafe", neighborhood: "williamsburg", vibe: "chill",   vibeColor: "#888888", dotColor: "#888888" },
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────

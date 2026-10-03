@@ -3,8 +3,8 @@ import TabBar, { TAB_BAR_HEIGHT } from "@/components/TabBar";
 
 const recentVibes = [
   { venue: "Devoción Coffee", vibe: "buzzing", dotColor: "#D7FF3A", time: "2h ago"    },
-  { venue: "McNally Jackson",  vibe: "chill",   dotColor: "#8C8C86", time: "yesterday" },
-  { venue: "Employees Only",   vibe: "packed",  dotColor: "#FF9A1F", time: "3 days ago" },
+  { venue: "McNally Jackson",  vibe: "chill",   dotColor: "#888888", time: "yesterday" },
+  { venue: "Employees Only",   vibe: "packed",  dotColor: "#FF5A3C", time: "3 days ago" },
 ];
 
 export default function YouPage() {

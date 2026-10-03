@@ -3,8 +3,8 @@ import TabBar, { TAB_BAR_HEIGHT } from "@/components/TabBar";
 
 const mockVibes = [
   { venue: "Devoción Coffee",  vibe: "buzzing", vibeColor: "#D7FF3A", time: "2h ago"  },
-  { venue: "McNally Jackson",  vibe: "chill",   vibeColor: "#B8B8B3", time: "yesterday" },
-  { venue: "Employees Only",   vibe: "packed",  vibeColor: "#FF9A1F", time: "3d ago"  },
+  { venue: "McNally Jackson",  vibe: "chill",   vibeColor: "#888888", time: "yesterday" },
+  { venue: "Employees Only",   vibe: "packed",  vibeColor: "#FF5A3C", time: "3d ago"  },
 ];
 
 export default async function OtherUserProfilePage({
