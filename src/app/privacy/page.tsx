@@ -146,6 +146,7 @@ export default function PrivacyPage() {
                 <ul style={st.ul}>
                   <li style={st.li}>Email address (required for account recovery)</li>
                   <li style={st.li}>Password (encrypted)</li>
+                  <li style={st.li}>Phone number (optional)</li>
                   <li style={st.li}>Date of birth (required, used only to confirm you are old enough to use VibeRater)</li>
                   <li style={st.li}>Sign-in details from Apple or Google (if you sign in with them)</li>
                 </ul>

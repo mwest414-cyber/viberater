@@ -47,15 +47,15 @@ export default function AboutPage() {
           >
             <p>
               you pick a bar. make the trip. wait in line.
-              push open the door. dead inside. you turn around.
+              push open the door. wrong room. you turn around.
             </p>
             <p>
               viberater fixes that.
             </p>
             <p>
-              we rate real third spaces: bars, cafés, dives, rooftops, record shops,
+              we read real third spaces: bars, cafés, dives, rooftops, record shops,
               hotel lobbies. based on what they actually feel like right now.
-              crowd size. energy. vibe tags. that&apos;s it. no stars. no paragraphs.
+              crowd size. energy. vibe tags. that&apos;s it.
             </p>
             <p>
               we&apos;re building for people who care about atmosphere.

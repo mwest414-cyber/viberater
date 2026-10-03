@@ -47,7 +47,7 @@ function SearchAndFilters() {
         <span style={{ fontFamily: "var(--font-display)", fontSize: 14, color: "var(--fg-3)" }}>search venues...</span>
       </div>
       <div style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 12 }}>
-        {["all vibes", "buzzing", "chill", "packed", "quiet", "steady", "social", "dancy"].map((f, i) => (
+        {["all vibes", "cafe", "bar", "chill", "buzzing"].map((f, i) => (
           <span
             key={f}
             style={{
