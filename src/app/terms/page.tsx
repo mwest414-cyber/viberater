@@ -86,7 +86,7 @@ export default function TermsPage() {
           {/* Section 1 */}
           <section id="introduction" style={st.section}>
             <h2 style={st.h2}><span style={st.lime}>1.</span> Introduction</h2>
-            <p style={st.p}>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater Inc. By using VibeRater, you agree to be bound by these Terms.</p>
+            <p style={st.p}>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater. By using VibeRater, you agree to be bound by these Terms.</p>
 
             <h3 style={st.h3}>What is VibeRater?</h3>
             <p style={st.p}>VibeRater is a mobile app that allows you to share and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You drop a vibe at a venue using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</p>
@@ -151,7 +151,7 @@ export default function TermsPage() {
           {/* Section 5 */}
           <section id="intellectual-property" style={st.section}>
             <h2 style={st.h2}><span style={st.lime}>5.</span> Our Intellectual Property</h2>
-            <p style={st.p}>VibeRater and all content on our platform (except Your Content) are owned by VibeRater Inc. You agree not to copy, reverse engineer, or use our intellectual property without permission.</p>
+            <p style={st.p}>VibeRater and all content on our platform (except Your Content) are owned by VibeRater. You agree not to copy, reverse engineer, or use our intellectual property without permission.</p>
           </section>
 
           {/* Section 6 */}
