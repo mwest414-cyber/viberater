@@ -42,7 +42,7 @@ export default function EmailConfirmedPage() {
           <div className="when-ok">
             <h1 style={{ ...st.h1, color: "var(--lime)" }}>you&apos;re in.</h1>
             <p style={st.p}>your email is confirmed.</p>
-            <p style={st.p}>open viberater on your phone and sign in.</p>
+            <p style={st.p}>head back to the viberater app and it will sign you in. if it doesn&apos;t, log in with your email and password.</p>
           </div>
 
           <div className="when-problem">
