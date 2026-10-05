@@ -49,8 +49,8 @@ export default function PrivacyPage() {
         <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px" }}>
           {/* Version info */}
           <div style={st.versionInfo}>
-            <strong style={st.limeSemi}>Version 1.0, April 24, 2026</strong><br />
-            Last updated: October 3, 2026 | First version released at launch
+            <strong style={st.limeSemi}>Version 1.1, October 4, 2026</strong><br />
+            Last updated: October 4, 2026 | First version released April 24, 2026
           </div>
 
           {/* Warning */}
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
                 <h4 style={st.h4lime}>Your Profile</h4>
                 <ul style={st.ul}>
                   <li style={st.li}>Display name (required)</li>
-                  <li style={st.li}>Profile photo (optional)</li>
+                  <li style={st.li}>Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it</li>
                 </ul>
               </div>
               <div style={st.dataType}>
@@ -149,6 +149,7 @@ export default function PrivacyPage() {
                   <li style={st.li}>Phone number (optional)</li>
                   <li style={st.li}>Date of birth (required, used only to confirm you are old enough to use VibeRater)</li>
                   <li style={st.li}>Sign-in details from Apple or Google (if you sign in with them)</li>
+                  <li style={st.li}>Places you save (visible only to you)</li>
                 </ul>
               </div>
               <div style={st.dataType}>
@@ -181,7 +182,7 @@ export default function PrivacyPage() {
             </div>
 
             <h3 style={st.h3}>3.3 Data from Third Parties</h3>
-            <p style={st.p}>We may receive data about you from Apple or Google (if you sign in with them), Google Maps (venue information and locations), and analytics providers (anonymized usage patterns).</p>
+            <p style={st.p}>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from the Overture Maps Foundation and OpenStreetMap, and the map you see is provided by Mapbox.</p>
           </section>
 
           {/* Section 4 */}
@@ -220,7 +221,7 @@ export default function PrivacyPage() {
           {/* Section 6 */}
           <section id="data-sharing" style={st.section}>
             <h2 style={st.h2}>6. How We Share Your Data</h2>
-            <p style={st.p}>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</p>
+            <p style={st.p}>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We use Supabase to store accounts, profiles, vibes and profile photos and to handle sign-in, Resend to send account emails such as the message that confirms your email address, Mapbox to display maps, and Vercel to host our website. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</p>
           </section>
 
           {/* Section 7 */}
@@ -238,13 +239,13 @@ export default function PrivacyPage() {
           {/* Section 9 */}
           <section id="user-rights" style={st.section}>
             <h2 style={st.h2}>9. Your Rights & Choices</h2>
-            <p style={st.p}>You can access, correct, delete, or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> to exercise these rights, and we&apos;ll respond within 30 days.</p>
+            <p style={st.p}>You can change your display name and profile photo in the app (Settings), and you can delete your account in the app (Settings, then delete account). When you delete your account, we erase your profile, profile photo, vibes, waves, saved places and blocks, and we complete full deletion within 30 days. You can also access or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> to exercise these rights, and we&apos;ll respond within 30 days.</p>
           </section>
 
           {/* Section 10 */}
           <section id="retention" style={st.section}>
             <h2 style={st.h2}>10. Data Retention</h2>
-            <p style={st.p}>We retain account data while your account is active (deleted within 30 days), vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
+            <p style={st.p}>We retain account data while your account is active (deleted within 30 days of you deleting your account), profile photos until you replace them or delete your account, saved places until you remove them or delete your account, vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
           </section>
 
           {/* Section 11 */}
@@ -275,7 +276,7 @@ export default function PrivacyPage() {
           {/* Version history */}
           <section style={st.section}>
             <h2 style={st.h2}>Version History</h2>
-            <p style={st.p}>This is the first version of VibeRater&apos;s Privacy Policy, released upon initial platform launch.</p>
+            <p style={st.p}>Changes to this Privacy Policy are listed below.</p>
             <table style={st.table}>
               <thead>
                 <tr>
@@ -285,6 +286,11 @@ export default function PrivacyPage() {
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td style={st.td}><strong style={st.limeSemi}>1.1</strong></td>
+                  <td style={st.td}>October 4, 2026</td>
+                  <td style={st.td}>Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)</td>
+                </tr>
                 <tr>
                   <td style={st.td}><strong style={st.limeSemi}>1.0</strong></td>
                   <td style={st.td}>April 24, 2026</td>
