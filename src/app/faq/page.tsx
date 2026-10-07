@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "what cities will you be in at launch?",
-    a: "starting with a handful of major US cities. join the waitlist and we'll tell you when your city goes live.",
+    a: "starting with nyc and branching out based on local demand. join the waitlist and we'll tell you when your city goes live.",
   },
   {
     q: "is it free?",
