@@ -4,7 +4,9 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "privacy policy",
-  description: "know how we protect your vibe data.",
+  description:
+    "what viberater collects, what is public and private, how your data is used and shared, and your choices, including deleting your account.",
+  alternates: { canonical: "/privacy" },
 };
 
 const st = {

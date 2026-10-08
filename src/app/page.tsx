@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "viberater: know the vibe before you come inside",
+  alternates: { canonical: "/" },
   description:
     "viberater shows you the vibe at real venues (bars, dives, cafés, rooftops) so you know what you're walking into before you get there.",
 };

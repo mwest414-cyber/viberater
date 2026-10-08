@@ -6,7 +6,9 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: { absolute: "viberater faq: how it works, which places, when it launches" },
-  description: "questions about viberater, answered.",
+  description:
+    "answers to common questions about viberater: what it is, which places it covers, where it starts, whether it's free, and how to get early access.",
+  alternates: { canonical: "/faq" },
 };
 
 const FAQS = [

@@ -4,7 +4,9 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "terms of service",
-  description: "the rules that govern your use of VibeRater.",
+  description:
+    "the terms for using viberater: your account, acceptable use, the vibes you post, and how disputes are handled.",
+  alternates: { canonical: "/terms" },
 };
 
 const st = {
