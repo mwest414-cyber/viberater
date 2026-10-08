@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "privacy policy | viberater",
+  title: "privacy policy",
   description: "know how we protect your vibe data.",
 };
 
