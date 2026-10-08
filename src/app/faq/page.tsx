@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "faq",
+  title: { absolute: "viberater faq: how it works, which places, when it launches" },
   description: "questions about viberater, answered.",
 };
 
@@ -43,9 +44,20 @@ const FAQS = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       <Header />
       <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
         <div className="mx-auto max-w-xl">

@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import LogoMark from "@/components/LogoMark";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "viberater: know the vibe before you come inside",
@@ -43,9 +44,29 @@ const PLAY_STORE_ICON = (
   </svg>
 );
 
+const SITE = "https://www.getviberater.co";
+
+const homeJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "viberater",
+    url: SITE,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "viberater",
+    url: SITE,
+  },
+];
+
 export default function Home() {
   return (
     <>
+      {homeJsonLd.map((d) => (
+        <JsonLd key={d["@type"]} data={d} />
+      ))}
       <Header />
 
       <main id="main-content" className="flex-1">

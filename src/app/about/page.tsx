@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 
 export const metadata: Metadata = {
-  title: "about",
+  title: { absolute: "about viberater: the vibe app for real venues" },
   description: "viberater: the app that tells you what a place actually feels like before you walk in.",
 };
 
