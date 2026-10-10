@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.getviberater.co"),
   title: { default: "viberater", template: "%s · viberater" },
   description: "know the vibe before you come inside. viberater shows you the vibe at real venues so you always know what you're walking into.",
-  keywords: ["vibe", "venues", "nightlife", "bars", "restaurants", "vibes", "third spaces"],
   openGraph: {
     title: "viberater",
     description: "know the vibe before you come inside.",
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "viberater",
     description: "know the vibe before you come inside.",
-    images: ["/images/og/default.png"],
+    images: ["/opengraph-image"],
   },
 };
 
