@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
 import EnergySlider from "./EnergySlider";
+import SonarRings from "./SonarRings";
 
 // Homepage sections from Figma "🧪 Homepage additions" (approved 2026-10-10):
 // real product screens, the energy slider and the feature tiles.
@@ -264,12 +265,9 @@ export function FeatureTiles() {
                 your phone confirms you&apos;re there first, so the read stays honest.
               </p>
             </div>
-            <svg className="hidden sm:block shrink-0" width="132" height="132" viewBox="0 0 132 132" aria-hidden="true">
-              <circle cx="66" cy="66" r="64" fill="none" stroke="#D7FF3A" strokeOpacity="0.12" strokeWidth="1.5" />
-              <circle cx="66" cy="66" r="44" fill="none" stroke="#D7FF3A" strokeOpacity="0.25" strokeWidth="1.5" />
-              <circle cx="66" cy="66" r="24" fill="none" stroke="#D7FF3A" strokeOpacity="0.6" strokeWidth="1.5" />
-              <circle cx="66" cy="66" r="6" fill="#D7FF3A" />
-            </svg>
+            <div className="hidden sm:block shrink-0">
+              <SonarRings />
+            </div>
           </div>
         </div>
       </div>
