@@ -12,7 +12,7 @@ const inputStyle = {
   width: "100%",
   padding: "12px 16px",
   borderRadius: 12,
-  background: "var(--bg-elev-1)",
+  background: "rgba(255, 255, 255, 0.05)",
   border: "1px solid var(--fg-4)",
   color: "var(--fg-0)",
   fontFamily: "var(--font-body)",

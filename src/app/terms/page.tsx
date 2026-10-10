@@ -35,9 +35,9 @@ export default function TermsPage() {
   return (
     <>
       <Header />
-      <main id="main-content" style={{ paddingTop: 56, background: "var(--bg)", minHeight: "100vh" }}>
+      <main id="main-content" style={{ background: "var(--bg)", minHeight: "100vh" }}>
         {/* Page hero */}
-        <div style={{ background: "var(--bg-elev-1)", borderBottom: "1px solid var(--fg-4)", padding: "48px 24px", textAlign: "center" }}>
+        <div style={{ background: "var(--bg-elev-1)", borderBottom: "1px solid var(--fg-4)", padding: "124px 24px 48px", textAlign: "center" }}>
           <h1 style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.01em", color: "var(--lime)", marginBottom: 8, fontFamily: "var(--font-display)" }}>
             terms of service
           </h1>

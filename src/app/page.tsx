@@ -78,10 +78,10 @@ export default function Home() {
             <div
               className="absolute top-0 left-1/2 -translate-x-1/2"
               style={{
-                width: 600,
-                height: 400,
-                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.08) 0%, transparent 70%)",
-                filter: "blur(40px)",
+                width: 960,
+                height: 640,
+                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.22) 0%, transparent 70%)",
+                filter: "blur(60px)",
               }}
             />
           </div>
@@ -143,8 +143,10 @@ export default function Home() {
               so you know what you&apos;re walking into. no guessing.
             </p>
 
-            <div id="waitlist" className="animate-fade-up delay-300 w-full flex justify-center" style={{ scrollMarginTop: "80px" }}>
-              <WaitlistForm />
+            <div id="waitlist" className="animate-fade-up delay-300 w-full flex justify-center" style={{ scrollMarginTop: "96px" }}>
+              <div className="glass w-full max-w-[488px] rounded-3xl p-5 flex justify-center">
+                <WaitlistForm />
+              </div>
             </div>
 
             <p
@@ -157,8 +159,20 @@ export default function Home() {
         </section>
 
         {/* ── Teaser / locked preview ────────────────────────────── */}
-        <section aria-labelledby="teaser-heading" className="px-6 pb-24">
-          <div className="mx-auto max-w-5xl">
+        <section aria-labelledby="teaser-heading" className="relative px-6 pb-24">
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
+            <div
+              className="absolute left-1/2 -translate-x-1/2"
+              style={{
+                top: 40,
+                width: 840,
+                height: 380,
+                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.12) 0%, transparent 70%)",
+                filter: "blur(60px)",
+              }}
+            />
+          </div>
+          <div className="relative mx-auto max-w-5xl">
             <div className="text-center mb-10">
               <h2
                 id="teaser-heading"
@@ -182,14 +196,13 @@ export default function Home() {
                 style={{ backdropFilter: "blur(3px)" }}
               >
                 <span
+                  className="glass"
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 12,
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: "var(--fg-2)",
-                    background: "var(--bg-elev-2)",
-                    border: "1px solid var(--fg-4)",
                     padding: "10px 20px",
                     borderRadius: 999,
                   }}
@@ -202,10 +215,9 @@ export default function Home() {
                 {TEASER_FEATURES.map((f) => (
                   <div
                     key={f.label}
+                    className="glass"
                     style={{
-                      background: "var(--bg-elev-1)",
-                      border: "1px solid var(--fg-4)",
-                      borderRadius: 12,
+                      borderRadius: 16,
                       padding: "20px 24px",
                     }}
                   >
@@ -368,9 +380,21 @@ export default function Home() {
         </section>
 
         {/* ── Bottom CTA ─────────────────────────────────────────── */}
-        <section className="px-6 pb-28">
+        <section className="relative px-6 pb-28">
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
+            <div
+              className="absolute left-1/2 -translate-x-1/2"
+              style={{
+                bottom: 40,
+                width: 760,
+                height: 360,
+                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.12) 0%, transparent 70%)",
+                filter: "blur(60px)",
+              }}
+            />
+          </div>
           <div
-            className="mx-auto max-w-2xl flex flex-col items-center gap-6 text-center"
+            className="relative mx-auto max-w-2xl flex flex-col items-center gap-6 text-center"
             style={{
               borderTop: "1px solid var(--fg-5)",
               paddingTop: 64,
@@ -389,7 +413,9 @@ export default function Home() {
             >
               be first in the door.
             </h2>
-            <WaitlistForm />
+            <div className="glass w-full max-w-[488px] rounded-3xl p-5 flex justify-center">
+              <WaitlistForm />
+            </div>
           </div>
         </section>
       </main>
