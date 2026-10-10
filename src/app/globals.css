@@ -187,6 +187,36 @@ input:-webkit-autofill:active {
   100% { transform: scale(1); opacity: 0; }
 }
 
+/* ── FAQ accordion (app/faq/page.tsx) ───────────────────── */
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover h3 { color: #FFFFFF; }
+.faq-item summary:focus-visible { outline: 2px solid var(--lime); outline-offset: -4px; border-radius: 16px; }
+.faq-sign { position: relative; width: 14px; height: 14px; flex-shrink: 0; }
+.faq-sign::before, .faq-sign::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--fg-3);
+  transition: transform var(--dur-element) var(--ease-out), background var(--dur-element) var(--ease-out);
+}
+.faq-sign::after { transform: rotate(90deg); }
+.faq-item[open] .faq-sign::before, .faq-item[open] .faq-sign::after { background: var(--lime); }
+.faq-item[open] .faq-sign::after { transform: rotate(0deg); }
+.faq-chip:hover { border-color: rgba(255,255,255,0.3) !important; }
+
 /* ── Energy slider ───────────────────────────────────────── */
 .energy-range {
   -webkit-appearance: none;
