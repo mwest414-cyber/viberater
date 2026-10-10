@@ -6,7 +6,7 @@ import WaitlistForm from "@/components/WaitlistForm";
 export const metadata: Metadata = {
   title: { absolute: "about viberater: the vibe app for real venues" },
   description:
-    "viberater reads real third spaces (bars, cafés, dives, rooftops, record shops) by crowd size, energy and vibe tags, so you know before you go.",
+    "viberater reads real third spaces (bars, cafés, dives, rooftops, record shops) by energy and vibe tags, so you know before you go.",
   alternates: { canonical: "/about" },
 };
 
@@ -57,7 +57,7 @@ export default function AboutPage() {
             <p>
               we read real third spaces: bars, cafés, dives, rooftops, record shops,
               hotel lobbies. based on what they actually feel like right now.
-              crowd size. energy. vibe tags. that&apos;s it.
+              energy. vibe tags. that&apos;s it.
             </p>
             <p>
               we&apos;re building for people who care about atmosphere.
@@ -65,7 +65,7 @@ export default function AboutPage() {
               the ones who want something chill on a tuesday and something packed on a friday.
             </p>
             <p>
-              pre-launch right now. cities everywhere, soon.
+              pre-launch right now. starting in nyc.
             </p>
           </div>
 

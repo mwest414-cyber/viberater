@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 
 const TEASER_FEATURES = [
   {
-    label: "crowd",
-    value: "pretty packed",
-    sub: "updated 3m ago",
+    label: "last 4 hours",
+    value: "picking up",
+    sub: "energy over time",
     lime: true,
   },
   {
     label: "vibe",
-    value: "dim · loud · queer",
+    value: "dimly lit · loud · lgbtq",
     sub: "the long goodbye · 0.3 mi",
     lime: false,
   },
@@ -269,8 +269,8 @@ export default function Home() {
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { n: "01", title: "pick your city.", body: "open the app anywhere. we surface third spaces around you: bars, cafés, dives, rooftops." },
-                { n: "02", title: "read the room.", body: "see crowd level and vibe tags for every spot. just the read." },
+                { n: "01", title: "start in nyc.", body: "we're live in nyc first. open the app and we surface third spaces around you: bars, cafés, dives, rooftops." },
+                { n: "02", title: "read the room.", body: "see the energy and vibe tags for every spot. just the read." },
                 { n: "03", title: "walk in knowing.", body: "chill or lively, buzzing or packed. you know before you get there. that's it." },
               ].map((step) => (
                 <div
