@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { ViewTransition } from "react";
+import Header from "@/components/Header";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -33,7 +35,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`h-full ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-full flex flex-col" style={{ background: "var(--bg)", color: "var(--fg-1)" }}>
         <a href="#main-content" className="skip-link">skip to main content</a>
-        {children}
+        {/* One header for every page, outside the transition so it stays still while pages fade */}
+        <Header />
+        {/* Route changes cross fade (styles in globals.css); browsers without view transitions just swap pages */}
+        <ViewTransition default="page-fade">{children}</ViewTransition>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HKT1KPSDR" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];

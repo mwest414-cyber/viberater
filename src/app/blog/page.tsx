@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "./PostCard";
@@ -28,7 +27,6 @@ export default function BlogPage() {
 
   return (
     <>
-      <Header />
       <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
         <div className="mx-auto max-w-xl">
           <p

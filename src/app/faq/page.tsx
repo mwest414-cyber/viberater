@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import JsonLd from "@/components/JsonLd";
@@ -60,7 +59,6 @@ export default function FAQPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
-      <Header />
       <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
         <div className="mx-auto max-w-xl">
           <p
