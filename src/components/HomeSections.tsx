@@ -7,7 +7,7 @@ import SonarRings from "./SonarRings";
 // Homepage sections from Figma "🧪 Homepage additions" (approved 2026-10-10):
 // real product screens, the energy slider and the feature tiles.
 
-const eyebrow: CSSProperties = {
+export const eyebrow: CSSProperties = {
   fontFamily: "var(--font-mono)",
   fontSize: 11,
   letterSpacing: "0.1em",
@@ -15,7 +15,7 @@ const eyebrow: CSSProperties = {
   color: "var(--lime)",
 };
 
-const sectionTitle: CSSProperties = {
+export const sectionTitle: CSSProperties = {
   fontFamily: "var(--font-display)",
   fontWeight: 700,
   fontSize: "clamp(32px, 5vw, 48px)",
@@ -25,7 +25,7 @@ const sectionTitle: CSSProperties = {
   textWrap: "balance",
 };
 
-function Glow({ style }: { style: CSSProperties }) {
+export function Glow({ style }: { style: CSSProperties }) {
   return (
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
       <div className="absolute left-1/2 -translate-x-1/2" style={{ filter: "blur(70px)", ...style }} />
