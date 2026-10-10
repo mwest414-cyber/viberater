@@ -8,15 +8,13 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className="fixed top-0 inset-x-0 z-50"
-      style={{
-        background: "rgba(10,10,10,0.75)",
-        backdropFilter: "blur(20px) saturate(140%)",
-        borderBottom: "1px solid var(--fg-4)",
-      }}
-    >
-      <div className="mx-auto max-w-5xl px-6 flex items-center justify-between h-14">
+    <header className="fixed top-3 inset-x-0 z-50 px-3 md:px-6">
+      <div
+        className={`glass mx-auto max-w-[860px] ${open ? "rounded-3xl" : "rounded-[28px]"}`}
+        // the open menu sits over the headline, so it needs a near-solid backing to stay readable
+        style={open ? { background: "rgba(10, 10, 10, 0.97)" } : undefined}
+      >
+      <div className="pl-5 pr-3 flex items-center justify-between h-14">
         <Link href="/" className="flex items-center gap-2.5">
           <LogoMark size={28} />
           <span
@@ -77,7 +75,7 @@ export default function Header() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden"
+          className="md:hidden w-10 h-10 flex items-center justify-center"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -98,7 +96,7 @@ export default function Header() {
         <div
           id="mobile-nav"
           aria-label="Mobile navigation"
-          style={{ borderTop: "1px solid var(--fg-5)", background: "var(--bg-elev-1)" }}
+          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           className="md:hidden px-6 py-5 flex flex-col gap-5"
         >
           <Link href="/about" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>about</Link>
@@ -113,6 +111,7 @@ export default function Header() {
           </a>
         </div>
       )}
+      </div>
     </header>
   );
 }

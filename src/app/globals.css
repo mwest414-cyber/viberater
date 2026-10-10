@@ -1,17 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* ── Space Grotesk (local) ───────────────────────────────── */
-@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300; font-display: swap; src: url('/fonts/SpaceGrotesk-Light.ttf') format('truetype'); }
-@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/SpaceGrotesk-Medium.ttf') format('truetype'); }
-@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/SpaceGrotesk-SemiBold.ttf') format('truetype'); }
-@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/SpaceGrotesk-Bold.ttf') format('truetype'); }
-
-/* ── JetBrains Mono (local) ──────────────────────────────── */
-@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/JetBrainsMono-Medium.ttf') format('truetype'); }
-@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/JetBrainsMono-Bold.ttf') format('truetype'); }
+/* Fonts are self-hosted by next/font in src/app/layout.tsx */
 
 /* ── Tailwind theme tokens ───────────────────────────────── */
 @theme inline {
@@ -55,9 +44,9 @@
   --fg-4:          #555555;
   --fg-5:          #1F1F1F;
 
-  --font-display:  'Space Grotesk', system-ui, sans-serif;
-  --font-body:     'Inter', system-ui, sans-serif;
-  --font-mono:     'JetBrains Mono', ui-monospace, monospace;
+  --font-display:  var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  --font-body:     var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-mono:     var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
 
   --ease-out:      cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-in:       cubic-bezier(0.4, 0, 0.6, 1);
@@ -121,6 +110,47 @@ input:-webkit-autofill:active {
 .delay-300             { animation-delay: 300ms; }
 .delay-400             { animation-delay: 400ms; }
 
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Glass ───────────────────────────────────────────────────
+   Frosted glass for floating chrome (header, waitlist card, teaser cards).
+   Solid fallback first; glass only where backdrop-filter is supported.
+   The -webkit- values are hardcoded because Safari does not resolve
+   custom properties inside -webkit-backdrop-filter. */
+.glass {
+  background: rgba(20, 20, 20, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.40);
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgba(10, 10, 10, 0.45);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: #141414;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .glass {
+    background: rgba(10, 10, 10, 0.88);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+}
 /* ── Skip-to-content link ────────────────────────────── */
 .skip-link {
   position: absolute;
