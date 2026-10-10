@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -31,7 +30,6 @@ const st = {
 export default function EmailConfirmedPage() {
   return (
     <>
-      <Header />
       <main id="main-content" style={{ paddingTop: 56, background: "var(--bg)", minHeight: "100vh" }}>
         <div id="confirm-root" data-state="ok" style={st.card}>
           <style>{`

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import { getPost, getAllPosts } from "@/lib/posts";
@@ -83,7 +82,6 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
         <div className="mx-auto max-w-xl">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>

@@ -31,6 +31,13 @@
   --lime-glow:     rgba(215, 255, 58, 0.25);
   --coral:         #FF5A3C;
 
+  /* Energy ramp: same orange scale as the app's map pins (chill darkest, electric brightest) */
+  --energy-chill:    #7A3A0E;
+  --energy-lively:   #A84D12;
+  --energy-buzzing:  #D96A14;
+  --energy-packed:   #FF9A1F;
+  --energy-electric: #FFC870;
+
   --bg:            #0A0A0A;
   --bg-elev-1:     #1A1A1A;
   --bg-elev-2:     #2A2A2A;
@@ -151,6 +158,117 @@ input:-webkit-autofill:active {
     border-color: rgba(255, 255, 255, 0.35);
   }
 }
+/* ── Scroll reveals (see components/ScrollReveals.tsx) ──── */
+[data-reveal] {
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+.reveal-waiting {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* ── Sonar rings (components/SonarRings.tsx) ─────────────────
+   Same ripple as the logo mark: three rings grow out from the dot and fade, a third of a cycle apart. */
+.sonar-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(var(--still-scale, 1));
+  opacity: var(--still-alpha, 0.3);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sonar-ring {
+    animation: sonar-ripple 5s cubic-bezier(0.25, 0.6, 0.3, 1) infinite;
+  }
+}
+@keyframes sonar-ripple {
+  0%   { transform: scale(0.15); opacity: 0; }
+  10%  { opacity: 0.85; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* ── Energy slider ───────────────────────────────────────── */
+.energy-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+}
+.energy-range::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7A3A0E, #A84D12, #D96A14, #FF9A1F, #FFC870);
+}
+.energy-range::-moz-range-track {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7A3A0E, #A84D12, #D96A14, #FF9A1F, #FFC870);
+}
+.energy-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 5px solid var(--thumb-color, #D96A14);
+  box-shadow: 0 0 18px var(--thumb-color, #D96A14);
+}
+.energy-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 5px solid var(--thumb-color, #D96A14);
+  box-shadow: 0 0 18px var(--thumb-color, #D96A14);
+}
+.energy-range:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+/* ── Page transitions (React ViewTransition, see app/layout.tsx) ──
+   Old page fades out, new page fades in and lifts slightly. The floating header stays still. */
+::view-transition-old(.page-fade) {
+  animation: 180ms ease-out both vt-fade-out;
+}
+::view-transition-new(.page-fade) {
+  animation: 380ms cubic-bezier(0.2, 0.8, 0.2, 1) 80ms both vt-fade-in;
+}
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; transform: translateY(14px); } }
+/* The header lives outside the fading content (app/layout.tsx). It is named only while a transition runs,
+   because a view-transition-name on it at rest would stop its glass from blurring the page behind it. */
+:root:active-view-transition .site-header {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+  .reveal-waiting {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ── Skip-to-content link ────────────────────────────── */
 .skip-link {
   position: absolute;

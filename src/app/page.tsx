@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import LogoMark from "@/components/LogoMark";
 import JsonLd from "@/components/JsonLd";
+import ScrollReveals from "@/components/ScrollReveals";
+import { EnergySection, FeatureTiles, ProductScreens } from "@/components/HomeSections";
 
 export const metadata: Metadata = {
   title: "viberater: know the vibe before you come inside",
@@ -11,27 +12,6 @@ export const metadata: Metadata = {
   description:
     "viberater shows you the vibe at real venues (bars, dives, cafés, rooftops) so you know what you're walking into before you get there.",
 };
-
-const TEASER_FEATURES = [
-  {
-    label: "last 4 hours",
-    value: "picking up",
-    sub: "energy over time",
-    lime: true,
-  },
-  {
-    label: "vibe",
-    value: "dimly lit · loud · lgbtq",
-    sub: "the long goodbye · 0.3 mi",
-    lime: false,
-  },
-  {
-    label: "energy",
-    value: "buzzing",
-    sub: "live right now",
-    lime: true,
-  },
-];
 
 const APP_STORE_ICON = (
   <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
@@ -68,7 +48,6 @@ export default function Home() {
       {homeJsonLd.map((d) => (
         <JsonLd key={d["@type"]} data={d} />
       ))}
-      <Header />
 
       <main id="main-content" className="flex-1">
         {/* ── Hero ───────────────────────────────────────────────── */}
@@ -158,112 +137,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Teaser / locked preview ────────────────────────────── */}
-        <section aria-labelledby="teaser-heading" className="relative px-6 pb-24">
-          <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
-            <div
-              className="absolute left-1/2 -translate-x-1/2"
-              style={{
-                top: 40,
-                width: 840,
-                height: 380,
-                background: "radial-gradient(ellipse at center, rgba(215,255,58,0.12) 0%, transparent 70%)",
-                filter: "blur(60px)",
-              }}
-            />
-          </div>
-          <div className="relative mx-auto max-w-5xl">
-            <div className="text-center mb-10">
-              <h2
-                id="teaser-heading"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--fg-3)",
-                  fontWeight: 400,
-                }}
-              >
-                what&apos;s waiting for you
-              </h2>
-            </div>
-
-            {/* Cards + lock overlay */}
-            <div className="relative">
-              <div
-                className="absolute inset-0 z-10 flex items-center justify-center"
-                style={{ backdropFilter: "blur(3px)" }}
-              >
-                <span
-                  className="glass"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 12,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "var(--fg-2)",
-                    padding: "10px 20px",
-                    borderRadius: 999,
-                  }}
-                >
-                  unlocks at launch
-                </span>
-              </div>
-
-              <div aria-hidden="true" className="grid md:grid-cols-3 gap-4">
-                {TEASER_FEATURES.map((f) => (
-                  <div
-                    key={f.label}
-                    className="glass"
-                    style={{
-                      borderRadius: 16,
-                      padding: "20px 24px",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 10,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: "var(--fg-3)",
-                        marginBottom: 10,
-                      }}
-                    >
-                      {f.label}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 700,
-                        fontSize: 22,
-                        letterSpacing: "-0.02em",
-                        color: f.lime ? "var(--lime)" : "var(--fg-0)",
-                      }}
-                    >
-                      {f.value}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 11,
-                        color: "var(--fg-4)",
-                        marginTop: 6,
-                        letterSpacing: "0.02em",
-                      }}
-                    >
-                      {f.sub}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* ── Real product screens, energy slider, feature tiles (Figma "Homepage additions") ── */}
+        <ProductScreens />
+        <EnergySection />
+        <FeatureTiles />
 
         {/* ── How it works ───────────────────────────────────────── */}
-        <section aria-labelledby="how-it-works-heading" className="px-6 pb-24">
+        <section aria-labelledby="how-it-works-heading" className="px-6 pb-24" data-reveal>
           <div className="mx-auto max-w-5xl">
             <h2
               id="how-it-works-heading"
@@ -327,7 +207,7 @@ export default function Home() {
         </section>
 
         {/* ── App download — coming soon ─────────────────────────── */}
-        <section aria-labelledby="app-download-heading" className="px-6 pb-24">
+        <section aria-labelledby="app-download-heading" className="px-6 pb-24" data-reveal>
           <div className="mx-auto max-w-xl text-center flex flex-col items-center gap-6">
             <h2
               id="app-download-heading"
@@ -419,6 +299,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <ScrollReveals />
 
       <Footer />
     </>
