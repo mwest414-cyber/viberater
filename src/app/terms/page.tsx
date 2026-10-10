@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -34,7 +33,6 @@ const st = {
 export default function TermsPage() {
   return (
     <>
-      <Header />
       <main id="main-content" style={{ background: "var(--bg)", minHeight: "100vh" }}>
         {/* Page hero */}
         <div style={{ background: "var(--bg-elev-1)", borderBottom: "1px solid var(--fg-4)", padding: "124px 24px 48px", textAlign: "center" }}>

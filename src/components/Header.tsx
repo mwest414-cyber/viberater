@@ -8,11 +8,11 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-3 inset-x-0 z-50 px-3 md:px-6">
+    <header className="site-header fixed top-3 inset-x-0 z-50 px-3 md:px-6">
       <div
         className={`glass mx-auto max-w-[860px] ${open ? "rounded-3xl" : "rounded-[28px]"}`}
-        // the open menu sits over the headline, so it needs a near-solid backing to stay readable
-        style={open ? { background: "rgba(10, 10, 10, 0.97)" } : undefined}
+        // darker than the other glass: large headlines scroll under it. The open menu is near solid so links stay readable
+        style={{ background: open ? "rgba(10, 10, 10, 0.97)" : "rgba(10, 10, 10, 0.72)" }}
       >
       <div className="pl-5 pr-3 flex items-center justify-between h-14">
         <Link href="/" className="flex items-center gap-2.5">
