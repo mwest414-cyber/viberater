@@ -1,54 +1,101 @@
 import type { Metadata } from "next";
+
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import JsonLd from "@/components/JsonLd";
+import ScrollReveals from "@/components/ScrollReveals";
+import { Glow, eyebrow, sectionTitle } from "@/components/HomeSections";
+
+// Layout and copy from Figma "🧪 FAQ page" (approved by Mark 2026-10-10).
 
 export const metadata: Metadata = {
   title: { absolute: "viberater faq: how it works, which places, when it launches" },
   description:
-    "answers to common questions about viberater: what it is, which places it covers, where it starts, whether it's free, and how to get early access.",
+    "answers to common questions about viberater: what a vibe is, which places it covers, who can see you, where it starts, whether it's free, and how to get early access.",
   alternates: { canonical: "/faq" },
 };
 
-const FAQS = [
+type Faq = { q: string; a: string };
+
+const GROUPS: { id: string; title: string; items: Faq[] }[] = [
   {
-    q: "what is viberater?",
-    a: "viberater tells you what a place feels like before you walk in. energy and vibe tags. just the read.",
+    id: "basics",
+    title: "the basics",
+    items: [
+      {
+        q: "what is viberater?",
+        a: "viberater shows you what a place feels like right now, before you walk in. people inside share the energy and a few vibe tags. you get the read.",
+      },
+      {
+        q: "what's a vibe?",
+        a: "one energy word (chill, lively, buzzing, packed or electric) plus up to five tags from 36 across crowd, mood and scene. it takes about ten seconds.",
+      },
+      {
+        q: "what kinds of places?",
+        a: "third places: bars, restaurants, cafés, clubs, outdoor dining, hotel lobbies, gyms, barbers and salons, bookstores and record shops, libraries, museums, parks, plazas and sports courts.",
+      },
+      {
+        q: "how fresh is it?",
+        a: "every vibe fades over six hours, so the read is always about tonight. the room resets at 5am.",
+      },
+    ],
   },
   {
-    q: "how does it work?",
-    a: "we surface vibes from people already inside. two inputs: the energy (chill to electric) and up to five vibe tags (cozy, date night, live music, etc.). that's it. no typing.",
+    id: "using-it",
+    title: "using it",
+    items: [
+      {
+        q: "do i have to be there to drop a vibe?",
+        a: "yes. your phone confirms you're inside the place first, so every vibe comes from someone in the room.",
+      },
+      {
+        q: "how often can i drop a vibe?",
+        a: "once every 90 minutes at the same place. you can drop vibes at different places as often as you like.",
+      },
+      {
+        q: "can i add a place?",
+        a: "places come from public map data, so everyone sees the same list. if somewhere is missing, email hello@getviberater.co.",
+      },
+    ],
   },
   {
-    q: "what kinds of places?",
-    a: "third spaces. bars, cafés, dives, rooftops, record shops, hotel lobbies, parks, laundromats: anywhere people go that isn't home or work.",
+    id: "people-and-privacy",
+    title: "people and privacy",
+    items: [
+      {
+        q: "who can see that i'm here?",
+        a: "only people at the same place, and only if you choose to be seen. go ghost and you stay invisible.",
+      },
+      {
+        q: "what's a wave?",
+        a: "a quick hello to someone in the same room. you both get a notification. a wave lasts while you're both there, and the rest happens in person.",
+      },
+      { q: "how old do i need to be?", a: "17 or older." },
+      {
+        q: "can i delete my account?",
+        a: "yes, any time, in settings. your profile, vibes, photo and waves are deleted with it.",
+      },
+    ],
   },
   {
-    q: "what cities will you be in at launch?",
-    a: "starting with nyc and branching out based on local demand. join the waitlist and we'll tell you when your city goes live.",
-  },
-  {
-    q: "is it free?",
-    a: "yes. the core experience is free. optional stuff down the road, maybe.",
-  },
-  {
-    q: "when does the app launch?",
-    a: "we're building now. waitlist members get in first.",
-  },
-  {
-    q: "ios and android both?",
-    a: "yes. both in the works.",
-  },
-  {
-    q: "how do i get early access?",
-    a: "drop your email below. we'll reach out before it opens to everyone else.",
+    id: "launch",
+    title: "launch",
+    items: [
+      { q: "when does it launch?", a: "we're building now. waitlist members get in first." },
+      {
+        q: "which cities?",
+        a: "starting with nyc and branching out based on local demand. join the waitlist and we'll tell you when your city goes live.",
+      },
+      { q: "iphone and android?", a: "iphone first, in a small nyc beta. android comes after." },
+      { q: "is it free?", a: "yes. the core experience is free." },
+    ],
   },
 ];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({
+  mainEntity: GROUPS.flatMap((g) => g.items).map((f) => ({
     "@type": "Question",
     name: f.q,
     acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -59,90 +106,88 @@ export default function FAQPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
-      <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
-        <div className="mx-auto max-w-xl">
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--lime)",
-              marginBottom: 20,
-            }}
-          >
-            faq
-          </p>
-
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "clamp(36px, 6vw, 52px)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-              color: "var(--fg-0)",
-              marginBottom: 40,
-            }}
-          >
-            questions, answered.
-          </h1>
-
-          <div className="flex flex-col">
-            {FAQS.map((faq, i) => (
-              <div
-                key={faq.q}
-                style={{
-                  borderTop: "1px solid var(--fg-5)",
-                  paddingTop: i === 0 ? 0 : 28,
-                  paddingBottom: 28,
-                  borderTopWidth: i === 0 ? 0 : 1,
-                }}
+      <main id="main-content" className="flex-1">
+        <section className="relative px-6 pt-36 md:pt-44 pb-24">
+          <Glow style={{ top: -140, left: "75%", width: 700, height: 520, background: "radial-gradient(ellipse at center, rgba(215,255,58,0.14) 0%, transparent 70%)" }} />
+          <div className="relative mx-auto max-w-[760px] flex flex-col gap-12">
+            <header className="flex flex-col gap-5">
+              <p className="animate-fade-up" style={eyebrow}>faq</p>
+              <h1
+                className="animate-fade-up delay-100"
+                style={{ ...sectionTitle, fontSize: "clamp(42px, 7vw, 64px)", lineHeight: 1.02 }}
               >
+                questions, answered.
+              </h1>
+              <p className="animate-fade-up delay-200" style={{ fontSize: 18, color: "var(--fg-3)" }}>
+                how viberater works, who sees what, and when it opens.
+              </p>
+              <nav aria-label="faq sections" className="animate-fade-up delay-300 flex flex-wrap gap-2 mt-2">
+                {GROUPS.map((g) => (
+                  <a
+                    key={g.id}
+                    href={`#${g.id}`}
+                    className="faq-chip"
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 500,
+                      color: "var(--fg-0)",
+                      padding: "8px 14px",
+                      borderRadius: 999,
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {g.title}
+                  </a>
+                ))}
+              </nav>
+            </header>
+
+            {GROUPS.map((g) => (
+              <section key={g.id} id={g.id} aria-labelledby={`${g.id}-heading`} className="flex flex-col gap-3" style={{ scrollMarginTop: 96 }}>
                 <h2
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 600,
-                    fontSize: 17,
-                    letterSpacing: "-0.01em",
-                    color: "var(--fg-1)",
-                    marginBottom: 8,
-                  }}
+                  id={`${g.id}-heading`}
+                  style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--fg-3)" }}
                 >
-                  {faq.q}
+                  {g.title}
                 </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "var(--fg-3)", lineHeight: 1.6 }}>
-                  {faq.a}
-                </p>
-              </div>
+                <div data-reveal className="glass rounded-[20px] overflow-hidden">
+                  {g.items.map((f, i) => (
+                    <details key={f.q} className="faq-item" open={i === 0} style={{ borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,0.08)" }}>
+                      <summary>
+                        <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 19, letterSpacing: "-0.01em", color: "var(--fg-0)", lineHeight: 1.3 }}>
+                          {f.q}
+                        </h3>
+                        <span aria-hidden="true" className="faq-sign" />
+                      </summary>
+                      <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--fg-3)", padding: "0 24px 22px" }}>{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
+        </section>
 
-          <div
-            style={{
-              marginTop: 16,
-              paddingTop: 40,
-              borderTop: "1px solid var(--fg-5)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-            }}
-          >
-            <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--fg-3)" }}>
-              something else?{" "}
-              <a
-                href="mailto:hello@getviberater.co"
-                style={{ color: "var(--lime)", textDecoration: "none" }}
-              >
+        <section className="relative px-6 pb-28">
+          <Glow style={{ top: -40, width: 760, height: 380, background: "radial-gradient(ellipse at center, rgba(215,255,58,0.12) 0%, transparent 70%)" }} />
+          <div data-reveal className="relative mx-auto max-w-xl flex flex-col items-center gap-3 text-center">
+            <h2 style={{ ...sectionTitle, fontSize: "clamp(32px, 4.5vw, 40px)" }}>still curious?</h2>
+            <p style={{ fontSize: 17, color: "var(--fg-3)" }}>
+              email{" "}
+              <a href="mailto:hello@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>
                 hello@getviberater.co
               </a>
+              , or get on the list.
             </p>
-            <div style={{ marginTop: 24 }}>
+            <div id="waitlist" className="glass w-full max-w-[488px] rounded-3xl p-5 flex justify-center mt-4" style={{ scrollMarginTop: "96px" }}>
               <WaitlistForm />
             </div>
           </div>
-        </div>
+        </section>
       </main>
+      <ScrollReveals />
       <Footer />
     </>
   );
