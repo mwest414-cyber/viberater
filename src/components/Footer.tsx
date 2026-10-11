@@ -7,11 +7,18 @@ export default function Footer() {
         className="mx-auto max-w-5xl px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4"
         style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.04em", color: "var(--fg-3)" }}
       >
-        <p>© {new Date().getFullYear()} viberater</p>
-        <nav className="flex gap-6">
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2">
+          <p>© {new Date().getFullYear()} viberater</p>
+          <nav aria-label="legal" className="flex gap-6">
+            <Link href="/privacy" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">privacy</Link>
+            <Link href="/terms" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">terms</Link>
+          </nav>
+        </div>
+        <nav aria-label="footer" className="flex items-center gap-6">
           <Link href="/about" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">about</Link>
           <Link href="/faq" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">faq</Link>
           <Link href="/blog" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">blog</Link>
+          <a href="mailto:hello@getviberater.co" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">contact</a>
           <a
             href="https://www.instagram.com/viberater_app/"
             target="_blank"
@@ -36,9 +43,6 @@ export default function Footer() {
               <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
             </svg>
           </a>
-          <a href="mailto:hello@getviberater.co" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">contact</a>
-          <Link href="/privacy" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">privacy</Link>
-          <Link href="/terms" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">terms</Link>
         </nav>
       </div>
     </footer>
