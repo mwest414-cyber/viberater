@@ -1,11 +1,35 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import Link, { useLinkStatus } from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import LogoMark from "./LogoMark";
 
+const NAV = [
+  { href: "/about", label: "about" },
+  { href: "/faq", label: "faq" },
+  { href: "/blog", label: "blog" },
+];
+
+// Pulsing lime dot shown next to a tapped menu link while its page is still loading.
+function PendingDot() {
+  const { pending } = useLinkStatus();
+  return <span aria-hidden="true" className={`nav-pending ${pending ? "is-pending" : ""}`} />;
+}
+
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  // The menu remembers the page it was opened on, so it closes by itself once the new page is showing.
+  const [openedOn, setOpenedOn] = useState<string | null>(null);
+  const open = openedOn === pathname;
+  const close = () => setOpenedOn(null);
+
+  // Load the menu pages in the background right away. On desktop the links are on screen and
+  // Next does this itself; on phones the links only exist once the menu opens, which was too late.
+  useEffect(() => {
+    NAV.forEach(({ href }) => router.prefetch(href));
+  }, [router]);
 
   return (
     <header className="site-header fixed top-3 inset-x-0 z-50 px-3 md:px-6">
@@ -32,11 +56,7 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-7">
-          {[
-            { href: "/about", label: "about" },
-            { href: "/faq", label: "faq" },
-            { href: "/blog", label: "blog" },
-          ].map(({ href, label }) => (
+          {NAV.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
@@ -76,7 +96,7 @@ export default function Header() {
         {/* Mobile toggle */}
         <button
           className="md:hidden w-10 h-10 flex items-center justify-center"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenedOn(open ? null : pathname)}
           aria-label="Toggle menu"
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -99,13 +119,25 @@ export default function Header() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           className="md:hidden px-6 py-5 flex flex-col gap-5"
         >
-          <Link href="/about" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>about</Link>
-          <Link href="/faq" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>faq</Link>
-          <Link href="/blog" style={{ color: "var(--fg-3)", fontSize: 15 }} onClick={() => setOpen(false)}>blog</Link>
+          {NAV.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="mobile-nav-link flex items-center gap-2.5"
+              style={{ color: "var(--fg-3)", fontSize: 15 }}
+              // stays open until the new page shows (see openedOn); tapping the page you're on just closes it
+              onClick={() => {
+                if (href === pathname) close();
+              }}
+            >
+              {label}
+              <PendingDot />
+            </Link>
+          ))}
           <a
             href="#waitlist"
             style={{ color: "var(--lime)", fontWeight: 600, fontSize: 15 }}
-            onClick={() => setOpen(false)}
+            onClick={close}
           >
             get early access
           </a>

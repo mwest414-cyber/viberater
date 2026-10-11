@@ -380,3 +380,12 @@ input:-webkit-autofill:active {
   }
   .glow-soft { filter: none !important; }
 }
+
+/* ── Phone menu tap feedback (components/Header.tsx) ───────── */
+.mobile-nav-link { -webkit-tap-highlight-color: transparent; transition: color 0.15s var(--ease-out); }
+.mobile-nav-link:active,
+.mobile-nav-link:has(.is-pending) { color: var(--fg-0) !important; }
+.nav-pending { width: 6px; height: 6px; border-radius: 3px; background: var(--lime); opacity: 0; transition: opacity 0.15s; }
+.nav-pending.is-pending { opacity: 1; animation: nav-pulse 0.9s ease-in-out infinite; }
+@keyframes nav-pulse { 50% { opacity: 0.3; } }
+@media (prefers-reduced-motion: reduce) { .nav-pending.is-pending { animation: none; } }
