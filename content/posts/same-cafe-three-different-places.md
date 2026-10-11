@@ -36,6 +36,15 @@ same room, same menu. now the line reaches the door, every table has a group, an
 
 the lunch crowd is gone and the room has loosened up. you can hear conversation without it taking over, and a table opened up near an outlet.
 
+plot the whole day and it looks like this:
+
+<figure style="margin:32px 0">
+<picture>
+<source media="(max-width: 600px)" srcset="/images/blog/cafe-energy-line-mobile.png" width="343" height="403">
+<img src="/images/blog/cafe-energy-line.png" width="720" height="464" loading="lazy" alt="line graph of energy at one cafe from 7am to 5pm: chill at 8am, packed at 12pm, lively at 3pm. a made-up example, not real data." style="width:100%;height:auto;border-radius:0">
+</picture>
+</figure>
+
 nothing about the cafe changed between those three lines. what changed is who was in it and what they were doing, which is the whole idea behind a vibe. we covered the language in [what is a vibe, anyway?](https://www.getviberater.co/blog/what-is-a-vibe): one energy level, a few tags.
 
 ## why noise matters more than it seems
