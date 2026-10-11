@@ -2,7 +2,7 @@
 title: "the same cafe is three different places in one day"
 slug: "same-cafe-three-different-places"
 description: "a cafe at 8am, noon and 3pm can feel like three separate rooms. here's why a single rating can't describe it, and what a vibe can."
-date: "2026-10-11"
+date: "2026-10-15"
 author: "viberater"
 tags: ["cafes", "laptop friendly", "third space", "venue vibes", "nyc"]
 canonicalUrl: "https://www.getviberater.co/blog/same-cafe-three-different-places"
