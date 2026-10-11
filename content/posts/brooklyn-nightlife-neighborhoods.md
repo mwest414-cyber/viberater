@@ -52,6 +52,12 @@ it runs late, and it runs on dancing. [house of yes](https://www.houseofyes.org)
 
 it has a strong queer scene, too. [mood ring](https://www.nyctourism.com/nightlife/mood-ring), which the infatuation describes as a "queer, poc-owned bar" with a "laser-filled back room, where berlin techno shakes the walls," is a good example of bushwick's whole idea: the bar is just the front room. the night happens behind it.
 
+## honorable mention: basement
+
+> **electric** · late night · dj · iykyk
+
+a lot of people think of basement as a brooklyn club. it's technically in maspeth, queens, in a [single room under the knockdown center](https://en.wikipedia.org/wiki/Knockdown_Center), and it's been a techno destination since it opened in 2019. the house rule says a lot about the vibe: [cameras get a sticker at the door](https://www.technoairlines.com/club/basement), and phones stay off the dance floor.
+
 ## the catch with neighborhood vibes
 
 a neighborhood's vibe is an average. it tells you what you'll probably find, not what's happening tonight.
