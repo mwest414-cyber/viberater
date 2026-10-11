@@ -73,8 +73,8 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <a
-            href="#waitlist"
+          <Link
+            href="/#waitlist"
             style={{
               fontFamily: "var(--font-body)",
               fontWeight: 600,
@@ -90,7 +90,7 @@ export default function Header() {
             onMouseLeave={(e) => (e.currentTarget.style.background = "var(--lime)")}
           >
             get early access
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -113,9 +113,9 @@ export default function Header() {
       </div>
 
       {open && (
-        <div
+        <nav
           id="mobile-nav"
-          aria-label="Mobile navigation"
+          aria-label="mobile navigation"
           style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           className="md:hidden px-6 py-5 flex flex-col gap-5"
         >
@@ -134,14 +134,14 @@ export default function Header() {
               <PendingDot />
             </Link>
           ))}
-          <a
-            href="#waitlist"
+          <Link
+            href="/#waitlist"
             style={{ color: "var(--lime)", fontWeight: 600, fontSize: 15 }}
             onClick={close}
           >
             get early access
-          </a>
-        </div>
+          </Link>
+        </nav>
       )}
       </div>
     </header>

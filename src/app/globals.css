@@ -2,33 +2,11 @@
 
 /* Fonts are self-hosted by next/font in src/app/layout.tsx */
 
-/* ── Tailwind theme tokens ───────────────────────────────── */
-@theme inline {
-  /* Colors */
-  --color-lime:       #D7FF3A;
-  --color-lime-hover: #C4E933;
-  --color-lime-press: #A8C82B;
-  --color-coral:      #FF5A3C;
-
-  --color-bg:    #0A0A0A;
-  --color-bg-1:  #1A1A1A;
-  --color-bg-2:  #2A2A2A;
-  --color-bg-3:  #2A2A2A; /* alias of bg-2: spec has two elevation levels */
-
-  --color-fg-0:  #E8E8E8; /* alias of fg-1: spec has one primary text color */
-  --color-fg-1:  #E8E8E8;
-  --color-fg-2:  #888888; /* alias of fg-3: spec has one secondary text color */
-  --color-fg-3:  #888888;
-  --color-fg-4:  #555555;
-  --color-fg-5:  #1F1F1F;
-}
-
 /* ── Design system CSS variables ─────────────────────────── */
 :root {
   --lime:          #D7FF3A;
   --lime-hover:    #C4E933;
   --lime-press:    #A8C82B;
-  --lime-glow:     rgba(215, 255, 58, 0.25);
   --coral:         #FF5A3C;
 
   /* Energy ramp: same orange scale as the app's map pins (chill darkest, electric brightest) */
@@ -41,8 +19,6 @@
   --bg:            #0A0A0A;
   --bg-elev-1:     #1A1A1A;
   --bg-elev-2:     #2A2A2A;
-  --bg-elev-3:     #2A2A2A;
-  --scrim:         rgba(10, 10, 10, 0.6);
 
   --fg-0:          #E8E8E8;
   --fg-1:          #E8E8E8;
@@ -56,7 +32,6 @@
   --font-mono:     var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
 
   --ease-out:      cubic-bezier(0.2, 0.8, 0.2, 1);
-  --ease-in:       cubic-bezier(0.4, 0, 0.6, 1);
   --dur-micro:     120ms;
   --dur-element:   220ms;
 }
@@ -106,11 +81,6 @@ input:-webkit-autofill:active {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-ring {
-  0%   { transform: scale(0.6); opacity: 0.9; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
 .animate-fade-up       { animation: fade-up 0.7s var(--ease-out) both; }
 .delay-100             { animation-delay: 100ms; }
 .delay-200             { animation-delay: 200ms; }
@@ -128,7 +98,7 @@ input:-webkit-autofill:active {
 }
 
 /* ── Glass ───────────────────────────────────────────────────
-   Frosted glass for floating chrome (header, waitlist card, teaser cards).
+   Frosted glass for floating chrome (header, waitlist card, feature tiles, post cards, legal cards).
    Solid fallback first; glass only where backdrop-filter is supported.
    The -webkit- values are hardcoded because Safari does not resolve
    custom properties inside -webkit-backdrop-filter. */
@@ -389,3 +359,7 @@ input:-webkit-autofill:active {
 .nav-pending.is-pending { opacity: 1; animation: nav-pulse 0.9s ease-in-out infinite; }
 @keyframes nav-pulse { 50% { opacity: 0.3; } }
 @media (prefers-reduced-motion: reduce) { .nav-pending.is-pending { animation: none; } }
+
+/* ── Footer links (components/Footer.tsx) ───────────────────── */
+.footer-link { color: var(--fg-3); transition: color 0.15s var(--ease-out); }
+.footer-link:hover { color: var(--fg-1); }

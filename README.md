@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# viberater marketing site
 
-## Getting Started
+The public site for viberater at [getviberater.co](https://www.getviberater.co): landing page, waitlist, blog, about, faq and legal pages.
 
-First, run the development server:
+## stack
+
+- Next.js (App Router) with React
+- Tailwind CSS v4 plus a small set of CSS variables in `src/app/globals.css`
+- Deployed on Vercel
+
+Read `AGENTS.md` before touching any Next.js convention: this version of Next may differ from what you expect, and the docs ship in `node_modules/next/dist/docs/`.
+
+## run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build` runs the production build, `npm run lint` runs eslint.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## blog posts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Posts live in `content/posts/` as markdown files with frontmatter. Fields: `title`, `slug`, `description`, `date`, `author`, `tags`, `canonicalUrl`. The file name must match `slug`. Each post gets its own page at `/blog/<slug>` and a generated social card.
 
-## Learn More
+## brand rules
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- lowercase everywhere in UI copy
+- no exclamation marks
+- no em dashes or en dashes (use a colon, comma or period)
+- avoid the words "review", "score" and "rank"
+- say "third space", not "third place"

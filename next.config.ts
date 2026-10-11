@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
   outputFileTracingIncludes: {
-    "/blog/.*": ["./content/posts/**/*"],
+    "/blog/**": ["./content/posts/**/*"],
   },
 };
 

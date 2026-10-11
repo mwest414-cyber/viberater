@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 
 type State = "idle" | "loading" | "success" | "error";
 
@@ -75,9 +75,11 @@ function Input({
 }
 
 function CityInput({
+  id,
   value,
   onChange,
 }: {
+  id: string;
   value: string;
   onChange: (v: string) => void;
 }) {
@@ -151,7 +153,7 @@ function CityInput({
     <div ref={wrapperRef} style={{ position: "relative", flex: 1 }}>
       <input
         ref={inputRef}
-        id="waitlist-city"
+        id={id}
         type="text"
         required
         placeholder="your city"
@@ -228,6 +230,12 @@ export default function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState<State>("idle");
+  // The homepage renders this form twice, so every id is derived from a per-instance React id.
+  const formId = useId();
+  const nameId = `${formId}-name`;
+  const cityId = `${formId}-city`;
+  const emailId = `${formId}-email`;
+  const statusId = `${formId}-status`;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -300,7 +308,7 @@ export default function WaitlistForm() {
         <div className="flex gap-2">
           <div style={{ flex: 1 }}>
             <Input
-              id="waitlist-name"
+              id={nameId}
               placeholder="your name"
               value={name}
               onChange={(v) => { setName(v); setState("idle"); }}
@@ -308,17 +316,17 @@ export default function WaitlistForm() {
               autoComplete="name"
             />
           </div>
-          <CityInput value={city} onChange={(v) => { setCity(v); setState("idle"); }} />
+          <CityInput id={cityId} value={city} onChange={(v) => { setCity(v); setState("idle"); }} />
         </div>
         <Input
-          id="waitlist-email"
+          id={emailId}
           type="email"
           placeholder="your email"
           value={email}
           onChange={(v) => { setEmail(v); setState("idle"); }}
           hasError={state === "error"}
           ariaLabel="Your email address"
-          ariaDescribedby="waitlist-status"
+          ariaDescribedby={statusId}
           autoComplete="email"
         />
         <button
@@ -344,7 +352,7 @@ export default function WaitlistForm() {
         </button>
       </form>
 
-      <div id="waitlist-status" role="status" aria-live="polite" aria-atomic="true">
+      <div id={statusId} role="status" aria-live="polite" aria-atomic="true">
         {state === "error" && (
           <p style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--coral)", letterSpacing: "0.02em" }}>
             that didn&apos;t work. shake the phone, try again.

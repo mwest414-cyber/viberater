@@ -35,7 +35,7 @@ export default function LegalToc({ items }: { items: { id: string; label: string
               <a
                 href={`#${item.id}`}
                 aria-current={on ? "location" : undefined}
-                className="legal-toc-link flex gap-2.5 py-1.5"
+                className="flex gap-2.5 py-1.5"
                 style={{ textDecoration: "none" }}
               >
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, lineHeight: "20px", color: on ? "var(--lime)" : "var(--fg-3)" }}>

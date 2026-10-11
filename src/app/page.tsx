@@ -57,7 +57,7 @@ export default function Home() {
       <main id="main-content" className="flex-1">
         {/* ── Hero ───────────────────────────────────────────────── */}
         <section className="relative flex flex-col items-center justify-center text-center px-6 pt-40 pb-24">
-          {/* Ambient glow — overflow-hidden scoped here so it doesn't clip dropdowns */}
+          {/* Ambient glow: overflow-hidden scoped here so it doesn't clip dropdowns */}
           <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
             <div
               className="glow-soft absolute top-0 left-1/2 -translate-x-1/2"
@@ -211,7 +211,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── App download — coming soon ─────────────────────────── */}
+        {/* ── App download, coming soon ─────────────────────────── */}
         <section aria-labelledby="app-download-heading" className="px-6 pb-24" data-reveal>
           <div className="mx-auto max-w-xl text-center flex flex-col items-center gap-6">
             <h2
