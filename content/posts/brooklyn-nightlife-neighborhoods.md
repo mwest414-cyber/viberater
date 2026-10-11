@@ -2,7 +2,7 @@
 title: "the brooklyn neighborhoods with the most distinct nightlife personalities"
 slug: "brooklyn-nightlife-neighborhoods"
 description: "williamsburg, greenpoint and bushwick are a few blocks apart and nothing alike after dark. here's each one's nightlife personality, read as a vibe."
-date: "2026-10-17"
+date: "2026-10-11"
 author: "viberater"
 tags: ["brooklyn nightlife", "nyc nightlife", "williamsburg", "greenpoint", "bushwick", "venue vibes"]
 canonicalUrl: "https://www.getviberater.co/blog/brooklyn-nightlife-neighborhoods"
