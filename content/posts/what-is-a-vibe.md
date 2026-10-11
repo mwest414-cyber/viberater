@@ -34,21 +34,21 @@ energy tells you *how much*. the tags tell you *what kind*.
 
 there are 36 of them, split across three plain questions: who's here, what does it feel like, what's the setup. you pick at least one and up to five, in any mix across the three. one tag is a quick read. five is a full picture. there's no wrong combination.
 
-### crowd: who's in the room (8)
+### crowd: who's in the room (10)
 
-locals, tourists, young, mature, date night, solo friendly, groups, lgbtq
+locals, tourists, young, mature, date night, solo friendly, groups, lgbtq, family friendly, students
 
 this is the "will i feel like i belong here" answer. a solo-friendly local spot and a groups-and-tourists spot are two completely different tuesdays, even at the same energy level.
 
-### mood: what it feels like (9)
+### mood: what it feels like (10)
 
-cozy, intimate, moody, flirty, gritty, friendly, dimly lit, main character, low-key
+cozy, intimate, moody, flirty, gritty, friendly, dimly lit, main character, low-key, calm
 
 mood is the texture. it's the difference between a room that's buzzing-and-cozy and a room that's buzzing-and-gritty. same energy, opposite night.
 
-### scene: what's the setup (14)
+### scene: what's the setup (16)
 
-dive, bougie, dancy, live music, dj, outdoor seating, rooftop, dog friendly, laptop ok, dress up, sports, iykyk, loud, late night
+dive, bougie, dancy, live music, dj, outdoor seating, rooftop, dog friendly, laptop ok, dress up, sports, iykyk, loud, late night, scenic, active
 
 scene is the practical stuff. can i bring the dog. is there a game on. do i need to dress up. is it a laptop-and-coffee afternoon or a dj-till-late kind of place. this is the bucket that answers "is this the right place for what i'm actually trying to do."
 
