@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
+
+const description =
+  "the terms for using viberater: your account, acceptable use, the vibes you post, and how disputes are handled.";
 
 export const metadata: Metadata = {
   title: "terms of service",
-  description:
-    "the terms for using viberater: your account, acceptable use, the vibes you post, and how disputes are handled.",
+  description,
   alternates: { canonical: "/terms" },
+  ...shareMeta({ title: "terms of service · viberater", description, path: "/terms" }),
 };
 
 const st = {

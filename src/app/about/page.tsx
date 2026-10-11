@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 
@@ -10,11 +11,15 @@ import { Glow, eyebrow, sectionTitle } from "@/components/HomeSections";
 
 // Layout from Figma "🧪 About page" (approved by Mark 2026-10-10).
 
+const title = "about viberater: the vibe app for real venues";
+const description =
+  "viberater reads real third spaces (bars, cafés, dives, rooftops, record shops) by energy and vibe tags, so you know before you go.";
+
 export const metadata: Metadata = {
-  title: { absolute: "about viberater: the vibe app for real venues" },
-  description:
-    "viberater reads real third spaces (bars, cafés, dives, rooftops, record shops) by energy and vibe tags, so you know before you go.",
+  title: { absolute: title },
+  description,
   alternates: { canonical: "/about" },
+  ...shareMeta({ title, description, path: "/about" }),
 };
 
 // Same captions as the homepage energy slider.
@@ -235,7 +240,7 @@ export default function AboutPage() {
               />
               <Rule
                 index={1}
-                title="every kind of third place"
+                title="every kind of third space"
                 body="bars, cafés, dives, rooftops, parks, libraries, record shops, barbers, gyms. anywhere you spend time that isn't home or work."
                 visual={
                   <ul className="grid grid-cols-2 gap-2" aria-hidden="true">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
@@ -8,11 +9,15 @@ import { Glow, eyebrow, sectionTitle } from "@/components/HomeSections";
 
 // Layout and copy from Figma "🧪 FAQ page" (approved by Mark 2026-10-10).
 
+const title = "viberater faq: how it works, which places, when it launches";
+const description =
+  "answers to common questions about viberater: what a vibe is, which places it covers, who can see you, where it starts, whether it's free, and how to get early access.";
+
 export const metadata: Metadata = {
-  title: { absolute: "viberater faq: how it works, which places, when it launches" },
-  description:
-    "answers to common questions about viberater: what a vibe is, which places it covers, who can see you, where it starts, whether it's free, and how to get early access.",
+  title: { absolute: title },
+  description,
   alternates: { canonical: "/faq" },
+  ...shareMeta({ title, description, path: "/faq" }),
 };
 
 type Faq = { q: string; a: string };
@@ -32,7 +37,7 @@ const GROUPS: { id: string; title: string; items: Faq[] }[] = [
       },
       {
         q: "what kinds of places?",
-        a: "third places: bars, restaurants, cafés, clubs, outdoor dining, hotel lobbies, gyms, barbers and salons, bookstores and record shops, libraries, museums, parks, plazas and sports courts.",
+        a: "third spaces: bars, restaurants, cafés, clubs, outdoor dining, hotel lobbies, gyms, barbers and salons, bookstores and record shops, libraries, museums, parks, plazas and sports courts.",
       },
       {
         q: "how fresh is it?",
