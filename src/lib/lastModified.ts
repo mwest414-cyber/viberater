@@ -1,5 +1,4 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
 
 // Last-changed dates for the sitemap, read from git history at build time, so they update on their own
 // whenever a page's files change. If git history isn't available (or is cut off before the last change),
@@ -15,11 +14,13 @@ function git(args: string[]): string | undefined {
 
 let boundary: Set<string> | undefined;
 
-// In a shallow clone the oldest fetched commit looks like it changed every file, so its date can't be trusted.
+// In a shallow clone the oldest fetched commits look like they changed every file, so their dates can't be trusted.
+// (Asking git directly, rather than reading .git/shallow, keeps the build from tracing the whole project.)
 function shallowBoundary(): Set<string> {
   if (boundary) return boundary;
-  const file = git(["rev-parse", "--git-path", "shallow"]);
-  boundary = new Set(file && existsSync(file) ? readFileSync(file, "utf8").split("\n").filter(Boolean) : []);
+  const shallow = git(["rev-parse", "--is-shallow-repository"]) === "true";
+  const roots = shallow ? git(["rev-list", "--max-parents=0", "HEAD"]) : undefined;
+  boundary = new Set(roots ? roots.split("\n").filter(Boolean) : []);
   return boundary;
 }
 

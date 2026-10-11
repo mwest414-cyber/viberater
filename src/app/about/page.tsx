@@ -240,7 +240,7 @@ export default function AboutPage() {
               />
               <Rule
                 index={1}
-                title="every kind of third place"
+                title="every kind of third space"
                 body="bars, cafés, dives, rooftops, parks, libraries, record shops, barbers, gyms. anywhere you spend time that isn't home or work."
                 visual={
                   <ul className="grid grid-cols-2 gap-2" aria-hidden="true">

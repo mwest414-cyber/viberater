@@ -37,7 +37,7 @@ const GROUPS: { id: string; title: string; items: Faq[] }[] = [
       },
       {
         q: "what kinds of places?",
-        a: "third places: bars, restaurants, cafés, clubs, outdoor dining, hotel lobbies, gyms, barbers and salons, bookstores and record shops, libraries, museums, parks, plazas and sports courts.",
+        a: "third spaces: bars, restaurants, cafés, clubs, outdoor dining, hotel lobbies, gyms, barbers and salons, bookstores and record shops, libraries, museums, parks, plazas and sports courts.",
       },
       {
         q: "how fresh is it?",
