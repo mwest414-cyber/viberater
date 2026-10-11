@@ -4,7 +4,6 @@
 export default function SonarRings({ size = 132, color = "#D7FF3A" }: { size?: number; color?: string }) {
   return (
     <svg
-      className="sonar"
       width={size}
       height={size}
       viewBox="0 0 132 132"

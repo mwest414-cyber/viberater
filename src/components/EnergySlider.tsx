@@ -20,7 +20,6 @@ export default function EnergySlider() {
     <div className="flex flex-col items-center text-center gap-3">
       <p
         aria-live="polite"
-        className="energy-word"
         style={{
           fontFamily: "var(--font-display)",
           fontWeight: 700,
