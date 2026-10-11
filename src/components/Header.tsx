@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="site-header fixed top-3 inset-x-0 z-50 px-3 md:px-6">
       <div
-        className={`glass mx-auto max-w-[860px] ${open ? "rounded-3xl" : "rounded-[28px]"}`}
+        className={`glass glass-float mx-auto max-w-[860px] ${open ? "rounded-3xl" : "rounded-[28px]"}`}
         // darker than the other glass: large headlines scroll under it. The open menu is near solid so links stay readable
         style={{ background: open ? "rgba(10, 10, 10, 0.97)" : "rgba(10, 10, 10, 0.72)" }}
       >

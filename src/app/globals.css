@@ -364,3 +364,19 @@ input:-webkit-autofill:active {
 .prose pre code { background: none; padding: 0; }
 .prose hr { border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 48px 0; }
 .prose img { border-radius: 16px; }
+
+/* ── Phones: lighter effects ───────────────────────────────
+   Blur is the most expensive effect for a phone's graphics chip, and every glass card
+   re-blurs what's behind it on every frame while you scroll. On phones and touch screens
+   only the floating header (.glass-float) keeps its blur; other glass cards keep the same
+   tint without it. The background glows drop their extra blur filter: they are already
+   soft radial gradients, so they look nearly the same. Computers are unchanged.
+   Kept at the end of the file so it wins over the rules above. */
+@media (hover: none), (max-width: 767px) {
+  .glass:not(.glass-float),
+  .prose blockquote {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .glow-soft { filter: none !important; }
+}
