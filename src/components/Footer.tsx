@@ -12,6 +12,30 @@ export default function Footer() {
           <Link href="/about" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">about</Link>
           <Link href="/faq" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">faq</Link>
           <Link href="/blog" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">blog</Link>
+          <a
+            href="https://www.instagram.com/viberater_app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="viberater on Instagram"
+            style={{ color: "var(--fg-3)", display: "inline-flex", alignItems: "center" }}
+            className="hover:text-fg-1 transition-colors"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+            </svg>
+          </a>
           <a href="mailto:hello@getviberater.co" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">contact</a>
           <Link href="/privacy" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">privacy</Link>
           <Link href="/terms" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">terms</Link>
