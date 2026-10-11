@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import ScrollReveals from "@/components/ScrollReveals";
@@ -6,23 +7,15 @@ import { Glow, eyebrow, sectionTitle } from "@/components/HomeSections";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "./PostCard";
 
+const title = "viberater blog: vibe culture, bar theory and third spaces";
+const description =
+  "essays on vibe culture, bar theory and the future of third spaces: what makes a room feel right, and how to know the vibe before you go inside.";
+
 export const metadata: Metadata = {
-  title: "blog",
-  description: "viberater: takes on vibe culture, bar theory, and the future of third spaces.",
-  alternates: { canonical: "https://www.getviberater.co/blog" },
-  openGraph: {
-    type: "website",
-    url: "https://www.getviberater.co/blog",
-    title: "blog · viberater",
-    description: "takes on vibe culture, bar theory, and the future of third spaces.",
-    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "viberater blog" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "blog · viberater",
-    description: "takes on vibe culture, bar theory, and the future of third spaces.",
-    images: ["/images/og/default.png"],
-  },
+  title: { absolute: title },
+  description,
+  alternates: { canonical: "/blog" },
+  ...shareMeta({ title, description, path: "/blog" }),
 };
 
 export default function BlogPage() {

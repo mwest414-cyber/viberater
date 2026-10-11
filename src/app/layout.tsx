@@ -14,13 +14,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.getviberater.co"),
   title: { default: "viberater", template: "%s · viberater" },
   description: "know the vibe before you come inside. viberater shows you the vibe at real venues so you always know what you're walking into.",
+  // Fallback only: indexable pages set their own share tags with shareMeta (src/lib/shareMeta.ts).
+  // No url here, so a page without its own tags never claims to be the homepage.
   openGraph: {
     title: "viberater",
     description: "know the vibe before you come inside.",
     type: "website",
     siteName: "viberater",
-    url: "https://www.getviberater.co",
-    images: [{ url: "/images/og/default.png", width: 1200, height: 630, alt: "viberater" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "viberater: know the vibe before you come inside." }],
   },
   twitter: {
     card: "summary_large_image",

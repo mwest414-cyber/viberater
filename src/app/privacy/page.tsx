@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
+
+const description =
+  "what viberater collects, what is public and private, how your data is used and shared, and your choices, including deleting your account.";
 
 export const metadata: Metadata = {
   title: "privacy policy",
-  description:
-    "what viberater collects, what is public and private, how your data is used and shared, and your choices, including deleting your account.",
+  description,
   alternates: { canonical: "/privacy" },
+  ...shareMeta({ title: "privacy policy · viberater", description, path: "/privacy" }),
 };
 
 const st = {

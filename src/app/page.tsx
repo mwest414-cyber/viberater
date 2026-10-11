@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
 import WaitlistForm from "@/components/WaitlistForm";
 import LogoMark from "@/components/LogoMark";
@@ -6,11 +7,15 @@ import JsonLd from "@/components/JsonLd";
 import ScrollReveals from "@/components/ScrollReveals";
 import { EnergySection, FeatureTiles, ProductScreens } from "@/components/HomeSections";
 
+const title = "viberater: know the vibe before you come inside";
+const description =
+  "viberater shows you the vibe at real venues (bars, dives, cafés, rooftops) so you know what you're walking into before you get there.";
+
 export const metadata: Metadata = {
-  title: "viberater: know the vibe before you come inside",
+  title,
+  description,
   alternates: { canonical: "/" },
-  description:
-    "viberater shows you the vibe at real venues (bars, dives, cafés, rooftops) so you know what you're walking into before you get there.",
+  ...shareMeta({ title, description, path: "/" }),
 };
 
 const APP_STORE_ICON = (
