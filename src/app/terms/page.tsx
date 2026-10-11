@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
+import { Bullets, Card, Closing, ContactCard, Em, H3, Label, LegalPage, Notice, P, Section, Table } from "@/components/legal/Legal";
 
 const description =
   "the terms for using viberater: your account, acceptable use, the vibes you post, and how disputes are handled.";
@@ -12,118 +13,62 @@ export const metadata: Metadata = {
   ...shareMeta({ title: "terms of service · viberater", description, path: "/terms" }),
 };
 
-const st = {
-  section: { marginBottom: 48 } as React.CSSProperties,
-  h2: { fontSize: 32, fontWeight: 600, marginBottom: 12, color: "var(--fg-0)", paddingBottom: 8, borderBottom: "1px solid var(--fg-4)" } as React.CSSProperties,
-  h3: { fontSize: 24, fontWeight: 600, marginTop: 24, marginBottom: 8, color: "var(--fg-1)" } as React.CSSProperties,
-  h4: { fontSize: 20, fontWeight: 600, marginTop: 12, marginBottom: 8, color: "var(--fg-0)" } as React.CSSProperties,
-  p: { marginBottom: 12, color: "var(--fg-1)", lineHeight: 1.65 } as React.CSSProperties,
-  ul: { marginLeft: 32, marginBottom: 12 } as React.CSSProperties,
-  li: { marginBottom: 8, color: "var(--fg-1)", lineHeight: 1.65 } as React.CSSProperties,
-  lime: { color: "var(--lime)" } as React.CSSProperties,
-  limeSemi: { color: "var(--lime)", fontWeight: 600 } as React.CSSProperties,
-  versionInfo: { background: "var(--bg-elev-1)", padding: "12px 16px", borderRadius: 8, marginBottom: 24, fontSize: 13, color: "var(--fg-2)", border: "1px solid var(--fg-4)" } as React.CSSProperties,
-  toc: { background: "var(--bg-elev-1)", borderLeft: "3px solid var(--lime)", padding: 16, marginBottom: 24, borderRadius: 8 } as React.CSSProperties,
-  tocH2: { fontSize: 24, fontWeight: 600, color: "var(--fg-0)", marginBottom: 12 } as React.CSSProperties,
-  warningBox: { background: "var(--bg-elev-1)", borderLeft: "3px solid var(--coral)", padding: 16, borderRadius: 8, margin: "16px 0" } as React.CSSProperties,
-  warningH4: { color: "var(--coral)", fontSize: 20, fontWeight: 600, marginBottom: 8 } as React.CSSProperties,
-  contactBox: { background: "var(--bg-elev-2)", color: "var(--fg-0)", padding: 32, borderRadius: 20, marginTop: 24, textAlign: "center" as const, border: "1px solid var(--fg-4)" } as React.CSSProperties,
-  contactH3: { color: "var(--lime)", fontSize: 24, fontWeight: 600, marginBottom: 8 } as React.CSSProperties,
-  table: { width: "100%", borderCollapse: "collapse" as const, margin: "16px 0", fontSize: 13 } as React.CSSProperties,
-  th: { background: "var(--bg-elev-2)", color: "var(--lime)", padding: 12, textAlign: "left" as const, fontWeight: 600, borderBottom: "1px solid var(--fg-4)" } as React.CSSProperties,
-  td: { padding: 12, borderBottom: "1px solid var(--fg-5)", color: "var(--fg-1)" } as React.CSSProperties,
-};
+// Layout from Figma "🧪 Legal pages" (approved by Mark 2026-10-10). The terms text is unchanged; headings are lowercase to match the site.
+
+const TOC = [
+  { id: "introduction", label: "introduction" },
+  { id: "account", label: "creating your account" },
+  { id: "acceptable-use", label: "acceptable use policy" },
+  { id: "content", label: "your content (vibes)" },
+  { id: "intellectual-property", label: "our intellectual property" },
+  { id: "public-platform", label: "public platform & data use" },
+  { id: "termination", label: "suspension & termination" },
+  { id: "disclaimers", label: "disclaimers & liability" },
+  { id: "dispute-resolution", label: "dispute resolution" },
+  { id: "changes", label: "changes to these terms" },
+  { id: "contact", label: "contact us" },
+];
+
+const email = <Em>hello@getviberater.co</Em>;
 
 export default function TermsPage() {
   return (
     <>
-      <main id="main-content" style={{ background: "var(--bg)", minHeight: "100vh" }}>
-        {/* Page hero */}
-        <div style={{ background: "var(--bg-elev-1)", borderBottom: "1px solid var(--fg-4)", padding: "124px 24px 48px", textAlign: "center" }}>
-          <h1 style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.01em", color: "var(--lime)", marginBottom: 8, fontFamily: "var(--font-display)" }}>
-            terms of service
-          </h1>
-          <p style={{ fontSize: 17, color: "var(--fg-2)" }}>
-            the rules that govern your use of VibeRater.
-          </p>
-        </div>
+      <LegalPage
+        title="terms of service"
+        subtitle="the rules that govern your use of VibeRater."
+        chips={["version 1.0 · april 24, 2026", "updated october 3, 2026", "first released at launch"]}
+        toc={TOC}
+      >
+        <Notice label="important notice">
+          <P>By using VibeRater, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, you must not use VibeRater. Please read both documents carefully before using our app.</P>
+        </Notice>
 
-        <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px" }}>
-          {/* Version info */}
-          <div style={st.versionInfo}>
-            <strong style={st.limeSemi}>Version 1.0, April 24, 2026</strong><br />
-            Last updated: October 3, 2026 | First version released at launch
-          </div>
+        <Section id="introduction" num="01" title="introduction">
+          <P>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater. By using VibeRater, you agree to be bound by these Terms.</P>
+          <H3>what is viberater?</H3>
+          <P>VibeRater is a mobile app that allows you to share and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You drop a vibe at a venue using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</P>
+          <H3>related documents</H3>
+          <P>These Terms include and reference our Privacy Policy and Community Guidelines, which are incorporated by reference.</P>
+        </Section>
 
-          {/* Warning */}
-          <div style={st.warningBox}>
-            <h4 style={st.warningH4}>Important Notice</h4>
-            <p style={{ ...st.p, marginBottom: 0 }}>
-              By using VibeRater, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, you must not use VibeRater. Please read both documents carefully before using our app.
-            </p>
-          </div>
+        <Section id="account" num="02" title="creating your account">
+          <H3>age requirement</H3>
+          <P>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and we do not allow anyone under 17 to use VibeRater. By creating an account, you represent that you are 17 years or older.</P>
+          <H3>account creation</H3>
+          <P>You can sign up using Apple, Google, or your email and a password. You may only create one account per person.</P>
+          <H3>your display name</H3>
+          <P>Your display name must not contain anything harmful, hateful, discriminatory, defamatory, or illegal, and must not impersonate another person.</P>
+          <H3>your responsibilities</H3>
+          <P>You are solely responsible for keeping your password confidential, notifying us of unauthorized access, maintaining accurate account information, and all activity on your account.</P>
+        </Section>
 
-          {/* Table of contents */}
-          <div style={st.toc}>
-            <h2 style={st.tocH2}>contents</h2>
-            <ol style={{ paddingLeft: 24, marginBottom: 0, columns: 2, columnGap: 32 } as React.CSSProperties}>
-              {[
-                ["#introduction", "Introduction"],
-                ["#account", "Creating Your Account"],
-                ["#acceptable-use", "Acceptable Use Policy"],
-                ["#content", "Your Content (Vibes)"],
-                ["#intellectual-property", "Our Intellectual Property"],
-                ["#public-platform", "Public Platform & Data Use"],
-                ["#termination", "Suspension & Termination"],
-                ["#disclaimers", "Disclaimers & Liability"],
-                ["#dispute-resolution", "Dispute Resolution"],
-                ["#changes", "Changes to These Terms"],
-                ["#contact", "Contact Us"],
-              ].map(([href, label]) => (
-                <li key={href} style={{ marginBottom: 8, breakInside: "avoid" } as React.CSSProperties}>
-                  <a href={href} style={{ color: "var(--lime)", textDecoration: "none" }}>{label}</a>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Section 1 */}
-          <section id="introduction" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>1.</span> Introduction</h2>
-            <p style={st.p}>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater. By using VibeRater, you agree to be bound by these Terms.</p>
-
-            <h3 style={st.h3}>What is VibeRater?</h3>
-            <p style={st.p}>VibeRater is a mobile app that allows you to share and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You drop a vibe at a venue using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</p>
-
-            <h3 style={st.h3}>Related Documents</h3>
-            <p style={st.p}>These Terms include and reference our Privacy Policy and Community Guidelines, which are incorporated by reference.</p>
-          </section>
-
-          {/* Section 2 */}
-          <section id="account" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>2.</span> Creating Your Account</h2>
-
-            <h3 style={st.h3}>Age Requirement</h3>
-            <p style={st.p}>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and we do not allow anyone under 17 to use VibeRater. By creating an account, you represent that you are 17 years or older.</p>
-
-            <h3 style={st.h3}>Account Creation</h3>
-            <p style={st.p}>You can sign up using Apple, Google, or your email and a password. You may only create one account per person.</p>
-
-            <h3 style={st.h3}>Your Display Name</h3>
-            <p style={st.p}>Your display name must not contain anything harmful, hateful, discriminatory, defamatory, or illegal, and must not impersonate another person.</p>
-
-            <h3 style={st.h3}>Your Responsibilities</h3>
-            <p style={st.p}>You are solely responsible for keeping your password confidential, notifying us of unauthorized access, maintaining accurate account information, and all activity on your account.</p>
-          </section>
-
-          {/* Section 3 */}
-          <section id="acceptable-use" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>3.</span> Acceptable Use Policy</h2>
-            <p style={st.p}>When using VibeRater, you agree not to:</p>
-
-            <h3 style={st.h3}>Prohibited Behavior</h3>
-            <ul style={st.ul}>
-              {[
+        <Section id="acceptable-use" num="03" title="acceptable use policy">
+          <P>When using VibeRater, you agree not to:</P>
+          <Card gap={12}>
+            <Label color="var(--lime)">prohibited behavior</Label>
+            <Bullets
+              items={[
                 "Drop fake vibes that don't reflect your genuine experience",
                 "Manipulate the system or artificially inflate/deflate a venue's vibe",
                 "Engage in harassment, bullying, or abuse",
@@ -132,125 +77,68 @@ export default function TermsPage() {
                 "Submit spam or marketing content",
                 "Copy or scrape VibeRater content",
                 "Train AI models on our data without permission",
-              ].map((item) => (
-                <li key={item} style={st.li}>{item}</li>
-              ))}
-            </ul>
+              ]}
+            />
+          </Card>
+          <H3>enforcement</H3>
+          <P>If we detect violations, we may remove your vibes, suspend your account, or permanently terminate it.</P>
+        </Section>
 
-            <h3 style={st.h3}>Enforcement</h3>
-            <p style={st.p}>If we detect violations, we may remove your vibes, suspend your account, or permanently terminate it.</p>
-          </section>
+        <Section id="content" num="04" title="your content (vibes)">
+          <H3>you own your vibes</H3>
+          <P>You own all vibes and other content you submit. By submitting content, you grant VibeRater a worldwide license to use, reproduce, distribute, and display your content.</P>
+          <H3>public content and copies outside viberater</H3>
+          <P><Em>Important:</Em> Because VibeRater is an open platform, vibes are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those.</P>
+        </Section>
 
-          {/* Section 4 */}
-          <section id="content" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>4.</span> Your Content (Vibes)</h2>
+        <Section id="intellectual-property" num="05" title="our intellectual property">
+          <P>VibeRater and all content on our platform (except Your Content) are owned by VibeRater. You agree not to copy, reverse engineer, or use our intellectual property without permission.</P>
+        </Section>
 
-            <h3 style={st.h3}>You Own Your Vibes</h3>
-            <p style={st.p}>You own all vibes and other content you submit. By submitting content, you grant VibeRater a worldwide license to use, reproduce, distribute, and display your content.</p>
+        <Section id="public-platform" num="06" title="public platform & data use">
+          <P>VibeRater is an open platform where vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing {email}.</P>
+        </Section>
 
-            <h3 style={st.h3}>Public Content and Copies Outside VibeRater</h3>
-            <p style={st.p}><strong style={st.limeSemi}>Important:</strong> Because VibeRater is an open platform, vibes are public by default and may be indexed by search engines, accessed by AI systems, and used by third parties. If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those.</p>
-          </section>
+        <Section id="termination" num="07" title="suspension & termination">
+          <H3>viberater&apos;s right to terminate</H3>
+          <P>We may suspend or terminate your account if you violate these Terms, drop fake vibes, engage in abusive behavior, attempt to manipulate the system, or violate applicable laws.</P>
+          <H3>your right to delete your account</H3>
+          <P>You can delete your account at any time. Your profile information, vibes, waves, and saved places are permanently deleted within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain.</P>
+        </Section>
 
-          {/* Section 5 */}
-          <section id="intellectual-property" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>5.</span> Our Intellectual Property</h2>
-            <p style={st.p}>VibeRater and all content on our platform (except Your Content) are owned by VibeRater. You agree not to copy, reverse engineer, or use our intellectual property without permission.</p>
-          </section>
+        <Section id="disclaimers" num="08" title="disclaimers & liability">
+          <H3>no warranty</H3>
+          <P>VibeRater is provided &quot;AS IS&quot; without warranties of accuracy, reliability, or fitness for any particular purpose.</P>
+          <H3>limitations on liability</H3>
+          <P>To the extent permitted by law, we are not liable for indirect, incidental, or consequential damages, and our total liability is limited to $100 USD.</P>
+          <H3>indemnification</H3>
+          <P>You agree to indemnify VibeRater from claims arising from your use of the app, violation of these Terms, or infringement of third-party rights.</P>
+        </Section>
 
-          {/* Section 6 */}
-          <section id="public-platform" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>6.</span> Public Platform & Data Use</h2>
-            <p style={st.p}>VibeRater is an open platform where vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). You can opt out of AI indexing by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
-          </section>
+        <Section id="dispute-resolution" num="09" title="dispute resolution">
+          <H3>informal resolution</H3>
+          <P>If you have a dispute, contact our support team first at {email}.</P>
+          <H3>governing law</H3>
+          <P>These Terms are governed by the laws of the State of New York, USA.</P>
+          <H3>jurisdiction</H3>
+          <P>You agree that any legal action must be brought exclusively in New York courts.</P>
+        </Section>
 
-          {/* Section 7 */}
-          <section id="termination" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>7.</span> Suspension & Termination</h2>
+        <Section id="changes" num="10" title="changes to these terms">
+          <P>We may change these Terms at any time. Your continued use of VibeRater indicates your acceptance of updated Terms.</P>
+        </Section>
 
-            <h3 style={st.h3}>VibeRater&apos;s Right to Terminate</h3>
-            <p style={st.p}>We may suspend or terminate your account if you violate these Terms, drop fake vibes, engage in abusive behavior, attempt to manipulate the system, or violate applicable laws.</p>
+        <Section id="contact" num="11" title="contact us">
+          <ContactCard title="viberater support" />
+        </Section>
 
-            <h3 style={st.h3}>Your Right to Delete Your Account</h3>
-            <p style={st.p}>You can delete your account at any time. Your profile information, vibes, waves, and saved places are permanently deleted within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain.</p>
-          </section>
+        <Section title="version history">
+          <P>This is the first version of VibeRater&apos;s Terms of Service, released upon initial platform launch.</P>
+          <Table head={["version", "date", "status"]} widths={[96, 170]} rows={[[<Em key="v">1.0</Em>, "April 24, 2026", "Initial release (first version)"]]} />
+        </Section>
 
-          {/* Section 8 */}
-          <section id="disclaimers" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>8.</span> Disclaimers & Liability</h2>
-
-            <h3 style={st.h3}>No Warranty</h3>
-            <p style={st.p}>VibeRater is provided &quot;AS IS&quot; without warranties of accuracy, reliability, or fitness for any particular purpose.</p>
-
-            <h3 style={st.h3}>Limitations on Liability</h3>
-            <p style={st.p}>To the extent permitted by law, we are not liable for indirect, incidental, or consequential damages, and our total liability is limited to $100 USD.</p>
-
-            <h3 style={st.h3}>Indemnification</h3>
-            <p style={st.p}>You agree to indemnify VibeRater from claims arising from your use of the app, violation of these Terms, or infringement of third-party rights.</p>
-          </section>
-
-          {/* Section 9 */}
-          <section id="dispute-resolution" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>9.</span> Dispute Resolution</h2>
-
-            <h3 style={st.h3}>Informal Resolution</h3>
-            <p style={st.p}>If you have a dispute, contact our support team first at <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
-
-            <h3 style={st.h3}>Governing Law</h3>
-            <p style={st.p}>These Terms are governed by the laws of the State of New York, USA.</p>
-
-            <h3 style={st.h3}>Jurisdiction</h3>
-            <p style={st.p}>You agree that any legal action must be brought exclusively in New York courts.</p>
-          </section>
-
-          {/* Section 10 */}
-          <section id="changes" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>10.</span> Changes to These Terms</h2>
-            <p style={st.p}>We may change these Terms at any time. Your continued use of VibeRater indicates your acceptance of updated Terms.</p>
-          </section>
-
-          {/* Section 11 */}
-          <section id="contact" style={st.section}>
-            <h2 style={st.h2}><span style={st.lime}>11.</span> Contact Us</h2>
-            <div style={st.contactBox}>
-              <h3 style={st.contactH3}>VibeRater Support</h3>
-              <p style={st.p}>Email: <a href="mailto:hello@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>hello@getviberater.co</a></p>
-              <p style={st.p}>Website: <a href="https://getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>getviberater.co</a></p>
-              <p style={{ ...st.p, marginTop: 16, fontSize: 13, marginBottom: 0 }}>We typically respond within 5 business days</p>
-            </div>
-          </section>
-
-          {/* Version history */}
-          <section style={st.section}>
-            <h2 style={st.h2}>Version History</h2>
-            <p style={st.p}>This is the first version of VibeRater&apos;s Terms of Service, released upon initial platform launch.</p>
-            <table style={st.table}>
-              <thead>
-                <tr>
-                  <th scope="col" style={st.th}>Version</th>
-                  <th scope="col" style={st.th}>Date</th>
-                  <th scope="col" style={st.th}>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={st.td}><strong style={st.limeSemi}>1.0</strong></td>
-                  <td style={st.td}>April 24, 2026</td>
-                  <td style={st.td}>Initial release (first version)</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          {/* Closing */}
-          <section>
-            <p style={{ textAlign: "center", marginTop: 48, color: "var(--fg-2)" }}>
-              <strong style={st.limeSemi}>know the vibe before you come inside.</strong><br />
-              respect the community that makes VibeRater possible.
-            </p>
-          </section>
-        </div>
-      </main>
+        <Closing line="respect the community that makes VibeRater possible." />
+      </LegalPage>
       <Footer />
     </>
   );
