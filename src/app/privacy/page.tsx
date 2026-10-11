@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { shareMeta } from "@/lib/shareMeta";
 import Footer from "@/components/Footer";
+import { Bullets, Card, Closing, ContactCard, Em, Group, H3, LegalPage, Notice, P, Section, Table } from "@/components/legal/Legal";
 
 const description =
   "what viberater collects, what is public and private, how your data is used and shared, and your choices, including deleting your account.";
@@ -12,307 +13,176 @@ export const metadata: Metadata = {
   ...shareMeta({ title: "privacy policy · viberater", description, path: "/privacy" }),
 };
 
-const st = {
-  section: { marginBottom: 48 } as React.CSSProperties,
-  h2: { fontSize: 32, fontWeight: 600, marginBottom: 12, color: "var(--fg-0)", paddingBottom: 8, borderBottom: "1px solid var(--fg-4)" } as React.CSSProperties,
-  h3: { fontSize: 24, fontWeight: 600, marginTop: 24, marginBottom: 8, color: "var(--fg-1)" } as React.CSSProperties,
-  h4lime: { fontSize: 20, fontWeight: 600, marginTop: 12, marginBottom: 8, color: "var(--lime)" } as React.CSSProperties,
-  p: { marginBottom: 12, color: "var(--fg-1)", lineHeight: 1.65 } as React.CSSProperties,
-  ul: { marginLeft: 32, marginBottom: 12 } as React.CSSProperties,
-  li: { marginBottom: 8, color: "var(--fg-1)", lineHeight: 1.65 } as React.CSSProperties,
-  lime: { color: "var(--lime)" } as React.CSSProperties,
-  limeSemi: { color: "var(--lime)", fontWeight: 600 } as React.CSSProperties,
-  versionInfo: { background: "var(--bg-elev-1)", padding: "12px 16px", borderRadius: 8, marginBottom: 24, fontSize: 13, color: "var(--fg-2)", border: "1px solid var(--fg-4)" } as React.CSSProperties,
-  toc: { background: "var(--bg-elev-1)", borderLeft: "3px solid var(--lime)", padding: 16, marginBottom: 24, borderRadius: 8 } as React.CSSProperties,
-  tocH2: { fontSize: 24, fontWeight: 600, color: "var(--fg-0)", marginBottom: 12 } as React.CSSProperties,
-  warningBox: { background: "var(--bg-elev-1)", borderLeft: "3px solid var(--coral)", padding: 16, borderRadius: 8, margin: "16px 0" } as React.CSSProperties,
-  warningH4: { color: "var(--coral)", fontSize: 20, fontWeight: 600, marginBottom: 8 } as React.CSSProperties,
-  dataSection: { background: "var(--bg-elev-1)", padding: 16, borderRadius: 12, marginBottom: 16, border: "1px solid var(--fg-4)" } as React.CSSProperties,
-  dataType: { marginBottom: 16 } as React.CSSProperties,
-  contactBox: { background: "var(--bg-elev-2)", color: "var(--fg-0)", padding: 32, borderRadius: 20, marginTop: 24, textAlign: "center" as const, border: "1px solid var(--fg-4)" } as React.CSSProperties,
-  contactH3: { color: "var(--lime)", fontSize: 24, fontWeight: 600, marginBottom: 8 } as React.CSSProperties,
-  table: { width: "100%", borderCollapse: "collapse" as const, margin: "16px 0", fontSize: 13 } as React.CSSProperties,
-  th: { background: "var(--bg-elev-2)", color: "var(--lime)", padding: 12, textAlign: "left" as const, fontWeight: 600, borderBottom: "1px solid var(--fg-4)" } as React.CSSProperties,
-  td: { padding: 12, borderBottom: "1px solid var(--fg-5)", color: "var(--fg-1)" } as React.CSSProperties,
-};
+// Layout from Figma "🧪 Legal pages" (approved by Mark 2026-10-10). The policy text is unchanged; headings are lowercase to match the site.
+
+const TOC = [
+  { id: "introduction", label: "introduction" },
+  { id: "open-platform", label: "viberater is an open platform" },
+  { id: "data-collection", label: "what data we collect" },
+  { id: "public-private", label: "public vs. private data" },
+  { id: "how-we-use", label: "how we use your data" },
+  { id: "data-sharing", label: "how we share your data" },
+  { id: "ai-systems", label: "ai & search engine access" },
+  { id: "data-security", label: "data security" },
+  { id: "user-rights", label: "your rights & choices" },
+  { id: "retention", label: "data retention" },
+  { id: "gdpr", label: "notice for european users" },
+  { id: "age", label: "age requirement" },
+  { id: "contact", label: "contact us" },
+];
+
+const email = <Em>hello@getviberater.co</Em>;
 
 export default function PrivacyPage() {
   return (
     <>
-      <main id="main-content" style={{ background: "var(--bg)", minHeight: "100vh" }}>
-        {/* Page hero */}
-        <div style={{ background: "var(--bg-elev-1)", borderBottom: "1px solid var(--fg-4)", padding: "124px 24px 48px", textAlign: "center" }}>
-          <h1 style={{ fontSize: 44, fontWeight: 700, letterSpacing: "-0.01em", color: "var(--lime)", marginBottom: 8, fontFamily: "var(--font-display)" }}>
-            privacy policy
-          </h1>
-          <p style={{ fontSize: 17, color: "var(--fg-2)" }}>
-            know how we protect your vibe data.
-          </p>
-        </div>
+      <LegalPage
+        title="privacy policy"
+        subtitle="know how we protect your vibe data."
+        chips={["version 1.1", "updated october 4, 2026", "first released april 24, 2026"]}
+        toc={TOC}
+      >
+        <Notice label="important notice">
+          <P>By using VibeRater, you agree to be bound by this Privacy Policy. If you do not agree, you must not use VibeRater. Please read this document carefully before using our app.</P>
+        </Notice>
 
-        <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px" }}>
-          {/* Version info */}
-          <div style={st.versionInfo}>
-            <strong style={st.limeSemi}>Version 1.1, October 4, 2026</strong><br />
-            Last updated: October 4, 2026 | First version released April 24, 2026
-          </div>
+        <Section id="introduction" num="01" title="introduction">
+          <P>Welcome to VibeRater. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have. By using VibeRater, you agree to the terms of this policy.</P>
+          <P>If you have questions, contact us at {email}.</P>
+        </Section>
 
-          {/* Warning */}
-          <div style={st.warningBox}>
-            <h4 style={st.warningH4}>Important Notice</h4>
-            <p style={{ ...st.p, marginBottom: 0 }}>
-              By using VibeRater, you agree to be bound by this Privacy Policy. If you do not agree, you must not use VibeRater. Please read this document carefully before using our app.
-            </p>
-          </div>
+        <Section id="open-platform" num="02" title="viberater is an open platform">
+          <P><Em>Important: VibeRater is designed as an open platform.</Em> When you drop a vibe at a venue, that vibe and your profile become publicly visible to anyone who visits VibeRater, including search engines and AI systems.</P>
+          <Notice label="what this means">
+            <Bullets
+              items={[
+                <>Your vibes are <Em>public by default</Em> and visible to everyone</>,
+                "Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini",
+                "Third parties may incorporate your vibes into their own products and services",
+                "If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can't control those",
+              ]}
+            />
+          </Notice>
+          <P>We believe transparency about venue vibes serves the public good. Your vibes help people discover spaces with atmospheres that match what they&apos;re looking for. This open approach is core to how VibeRater works.</P>
+        </Section>
 
-          {/* Table of contents */}
-          <div style={st.toc}>
-            <h2 style={st.tocH2}>contents</h2>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, columns: 2, columnGap: 32 } as React.CSSProperties}>
-              {[
-                ["#introduction", "1. Introduction"],
-                ["#open-platform", "2. VibeRater is an Open Platform"],
-                ["#data-collection", "3. What Data We Collect"],
-                ["#public-private", "4. Public vs. Private Data"],
-                ["#how-we-use", "5. How We Use Your Data"],
-                ["#data-sharing", "6. How We Share Your Data"],
-                ["#ai-systems", "7. AI & Search Engine Access"],
-                ["#data-security", "8. Data Security"],
-                ["#user-rights", "9. Your Rights & Choices"],
-                ["#retention", "10. Data Retention"],
-                ["#gdpr", "11. Notice for European Users"],
-                ["#age", "12. Age Requirement"],
-                ["#contact", "13. Contact Us"],
-              ].map(([href, label]) => (
-                <li key={href} style={{ marginBottom: 8, breakInside: "avoid" } as React.CSSProperties}>
-                  <a href={href} style={{ color: "var(--lime)", textDecoration: "none" }}>{label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <Section id="data-collection" num="03" title="what data we collect">
+          <H3>3.1 public data (visible to everyone)</H3>
+          <P>This information is displayed publicly on VibeRater and may be indexed by search engines and AI systems:</P>
+          <Card>
+            <Group
+              label="your profile"
+              items={["Display name (required)", "Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it"]}
+            />
+            <Group
+              label="your vibes"
+              items={[
+                "Venue where you dropped a vibe",
+                "Energy level you picked (chill, lively, buzzing, packed, or electric)",
+                'Vibe tags you selected (e.g., "cozy," "dancy," "date night")',
+                'Crowd level description (e.g., "quiet," "moderate," "packed")',
+                "Date and time you dropped the vibe",
+              ]}
+            />
+          </Card>
 
-          {/* Section 1 */}
-          <section id="introduction" style={st.section}>
-            <h2 style={st.h2}>1. Introduction</h2>
-            <p style={st.p}>Welcome to VibeRater. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have. By using VibeRater, you agree to the terms of this policy.</p>
-            <p style={st.p}>If you have questions, contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
-          </section>
+          <H3>3.2 private data (not shown publicly)</H3>
+          <P>This information is kept private and not visible to the public:</P>
+          <Card>
+            <Group
+              label="account information"
+              items={[
+                "Email address (required for account recovery)",
+                "Password (encrypted)",
+                "Phone number (optional)",
+                "Date of birth (required, used only to confirm you are old enough to use VibeRater)",
+                "Sign-in details from Apple or Google (if you sign in with them)",
+                "Places you save (visible only to you)",
+              ]}
+            />
+            <Group
+              label="location data"
+              items={["Your precise GPS location (when you grant permission)", "Venues you've visited (even if you don't drop a vibe)", "Your search history on the app"]}
+            />
+            <Group
+              label="device information"
+              items={["Device type and operating system", "Device ID and advertising ID", "Browser type and version", "IP address", "Screen resolution and device settings"]}
+            />
+            <Group
+              label="usage data"
+              items={["How you interact with the app (taps, swipes, time spent)", "Features you use most", "App crashes and errors", "Pages or screens you view"]}
+            />
+          </Card>
 
-          {/* Section 2 */}
-          <section id="open-platform" style={st.section}>
-            <h2 style={st.h2}>2. VibeRater is an Open Platform</h2>
-            <p style={st.p}><strong style={st.limeSemi}>Important: VibeRater is designed as an open platform.</strong> When you drop a vibe at a venue, that vibe and your profile become publicly visible to anyone who visits VibeRater, including search engines and AI systems.</p>
+          <H3>3.3 data from third parties</H3>
+          <P>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from the Overture Maps Foundation and OpenStreetMap, and the map you see is provided by Mapbox.</P>
+        </Section>
 
-            <div style={st.warningBox}>
-              <h4 style={st.warningH4}>What This Means</h4>
-              <ul style={st.ul}>
-                <li style={st.li}>Your vibes are <strong style={st.limeSemi}>public by default</strong> and visible to everyone</li>
-                <li style={st.li}>Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini</li>
-                <li style={st.li}>Third parties may incorporate your vibes into their own products and services</li>
-                <li style={st.li}>If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can&apos;t control those</li>
-              </ul>
-            </div>
+        <Section id="public-private" num="04" title="public vs. private data">
+          <P>Understanding the difference is important:</P>
+          <Table
+            head={["public data", "private data"]}
+            rows={[
+              ["Visible on VibeRater to everyone", "Not shown on VibeRater publicly"],
+              ["Indexed by Google and other search engines", "Not indexed by search engines"],
+              ["May be accessed by AI systems", "Not shared with AI systems"],
+              ["Example: Your vibes", "Example: Your email, password, location"],
+            ]}
+          />
+        </Section>
 
-            <p style={st.p}>We believe transparency about venue vibes serves the public good. Your vibes help people discover spaces with atmospheres that match what they&apos;re looking for. This open approach is core to how VibeRater works.</p>
-          </section>
+        <Section id="how-we-use" num="05" title="how we use your data">
+          <P>We use your data to provide VibeRater, personalize your experience, communicate with you, improve our services, and comply with legal obligations. This includes showing you relevant venues, storing your vibes, recommending new places based on your preferences, and analyzing how the app is used to fix bugs and add features.</P>
+        </Section>
 
-          {/* Section 3 */}
-          <section id="data-collection" style={st.section}>
-            <h2 style={st.h2}>3. What Data We Collect</h2>
+        <Section id="data-sharing" num="06" title="how we share your data">
+          <P>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We use Supabase to store accounts, profiles, vibes and profile photos and to handle sign-in, Resend to send account emails such as the message that confirms your email address, Mapbox to display maps, and Vercel to host our website. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</P>
+        </Section>
 
-            <h3 style={st.h3}>3.1 Public Data (Visible to Everyone)</h3>
-            <p style={st.p}>This information is displayed publicly on VibeRater and may be indexed by search engines and AI systems:</p>
-            <div style={st.dataSection}>
-              <div style={st.dataType}>
-                <h4 style={st.h4lime}>Your Profile</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>Display name (required)</li>
-                  <li style={st.li}>Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it</li>
-                </ul>
-              </div>
-              <div style={st.dataType}>
-                <h4 style={st.h4lime}>Your Vibes</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>Venue where you dropped a vibe</li>
-                  <li style={st.li}>Energy level you picked (chill, lively, buzzing, packed, or electric)</li>
-                  <li style={st.li}>Vibe tags you selected (e.g., &quot;cozy,&quot; &quot;dancy,&quot; &quot;date night&quot;)</li>
-                  <li style={st.li}>Crowd level description (e.g., &quot;quiet,&quot; &quot;moderate,&quot; &quot;packed&quot;)</li>
-                  <li style={st.li}>Date and time you dropped the vibe</li>
-                </ul>
-              </div>
-            </div>
+        <Section id="ai-systems" num="07" title="ai & search engine access">
+          <P>Because VibeRater is an open platform, your public vibes may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing {email}.</P>
+        </Section>
 
-            <h3 style={st.h3}>3.2 Private Data (Not Shown Publicly)</h3>
-            <p style={st.p}>This information is kept private and not visible to the public:</p>
-            <div style={st.dataSection}>
-              <div style={st.dataType}>
-                <h4 style={st.h4lime}>Account Information</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>Email address (required for account recovery)</li>
-                  <li style={st.li}>Password (encrypted)</li>
-                  <li style={st.li}>Phone number (optional)</li>
-                  <li style={st.li}>Date of birth (required, used only to confirm you are old enough to use VibeRater)</li>
-                  <li style={st.li}>Sign-in details from Apple or Google (if you sign in with them)</li>
-                  <li style={st.li}>Places you save (visible only to you)</li>
-                </ul>
-              </div>
-              <div style={st.dataType}>
-                <h4 style={st.h4lime}>Location Data</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>Your precise GPS location (when you grant permission)</li>
-                  <li style={st.li}>Venues you&apos;ve visited (even if you don&apos;t drop a vibe)</li>
-                  <li style={st.li}>Your search history on the app</li>
-                </ul>
-              </div>
-              <div style={st.dataType}>
-                <h4 style={st.h4lime}>Device Information</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>Device type and operating system</li>
-                  <li style={st.li}>Device ID and advertising ID</li>
-                  <li style={st.li}>Browser type and version</li>
-                  <li style={st.li}>IP address</li>
-                  <li style={st.li}>Screen resolution and device settings</li>
-                </ul>
-              </div>
-              <div style={{ ...st.dataType, marginBottom: 0 }}>
-                <h4 style={st.h4lime}>Usage Data</h4>
-                <ul style={st.ul}>
-                  <li style={st.li}>How you interact with the app (taps, swipes, time spent)</li>
-                  <li style={st.li}>Features you use most</li>
-                  <li style={st.li}>App crashes and errors</li>
-                  <li style={st.li}>Pages or screens you view</li>
-                </ul>
-              </div>
-            </div>
+        <Section id="data-security" num="08" title="data security">
+          <P>We protect your data with HTTPS/TLS encryption, encrypted storage, access controls, and regular security audits. No system is 100% secure, but we implement industry-standard protections. If you suspect unauthorized access, contact us immediately.</P>
+        </Section>
 
-            <h3 style={st.h3}>3.3 Data from Third Parties</h3>
-            <p style={st.p}>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from the Overture Maps Foundation and OpenStreetMap, and the map you see is provided by Mapbox.</p>
-          </section>
+        <Section id="user-rights" num="09" title="your rights & choices">
+          <P>You can change your display name and profile photo in the app (Settings), and you can delete your account in the app (Settings, then delete account). When you delete your account, we erase your profile, profile photo, vibes, waves, saved places and blocks, and we complete full deletion within 30 days. You can also access or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email {email} to exercise these rights, and we&apos;ll respond within 30 days.</P>
+        </Section>
 
-          {/* Section 4 */}
-          <section id="public-private" style={st.section}>
-            <h2 style={st.h2}>4. Public vs. Private Data</h2>
-            <p style={st.p}>Understanding the difference is important:</p>
-            <table style={st.table}>
-              <thead>
-                <tr>
-                  <th scope="col" style={st.th}>Public Data</th>
-                  <th scope="col" style={st.th}>Private Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Visible on VibeRater to everyone", "Not shown on VibeRater publicly"],
-                  ["Indexed by Google and other search engines", "Not indexed by search engines"],
-                  ["May be accessed by AI systems", "Not shared with AI systems"],
-                  ["Example: Your vibes", "Example: Your email, password, location"],
-                ].map(([pub, priv]) => (
-                  <tr key={pub}>
-                    <td style={st.td}>{pub}</td>
-                    <td style={st.td}>{priv}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
+        <Section id="retention" num="10" title="data retention">
+          <P>We retain account data while your account is active (deleted within 30 days of you deleting your account), profile photos until you replace them or delete your account, saved places until you remove them or delete your account, vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</P>
+        </Section>
 
-          {/* Section 5 */}
-          <section id="how-we-use" style={st.section}>
-            <h2 style={st.h2}>5. How We Use Your Data</h2>
-            <p style={st.p}>We use your data to provide VibeRater, personalize your experience, communicate with you, improve our services, and comply with legal obligations. This includes showing you relevant venues, storing your vibes, recommending new places based on your preferences, and analyzing how the app is used to fix bugs and add features.</p>
-          </section>
+        <Section id="gdpr" num="11" title="notice for european users">
+          <P>If you&apos;re in the EEA or UK, GDPR applies. We&apos;re the data controller. We process data based on contract, legitimate interests, consent, or legal obligation. You have rights to access, correct, delete, port, restrict, object, and withdraw consent. Email {email} or lodge a complaint with your local data protection authority.</P>
+        </Section>
 
-          {/* Section 6 */}
-          <section id="data-sharing" style={st.section}>
-            <h2 style={st.h2}>6. How We Share Your Data</h2>
-            <p style={st.p}>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We use Supabase to store accounts, profiles, vibes and profile photos and to handle sign-in, Resend to send account emails such as the message that confirms your email address, Mapbox to display maps, and Vercel to host our website. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</p>
-          </section>
+        <Section id="age" num="12" title="age requirement">
+          <P>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and anyone under 17 cannot continue.</P>
+          <P>If you are a parent or guardian and discover that your child under 17 has created a VibeRater account, please contact us at {email} and we will help remove the account.</P>
+          <P>We do not knowingly collect personal data from anyone under 17. If you believe we have collected data from someone under 17, please contact us immediately.</P>
+        </Section>
 
-          {/* Section 7 */}
-          <section id="ai-systems" style={st.section}>
-            <h2 style={st.h2}>7. AI & Search Engine Access</h2>
-            <p style={st.p}>Because VibeRater is an open platform, your public vibes may be accessed by search engines and AI systems like ChatGPT, Gemini, and Claude for training and responses. You can opt out by emailing <strong style={st.limeSemi}>hello@getviberater.co</strong>.</p>
-          </section>
+        <Section id="contact" num="13" title="contact us">
+          <ContactCard title="privacy team" />
+        </Section>
 
-          {/* Section 8 */}
-          <section id="data-security" style={st.section}>
-            <h2 style={st.h2}>8. Data Security</h2>
-            <p style={st.p}>We protect your data with HTTPS/TLS encryption, encrypted storage, access controls, and regular security audits. No system is 100% secure, but we implement industry-standard protections. If you suspect unauthorized access, contact us immediately.</p>
-          </section>
+        <Section title="version history">
+          <P>Changes to this Privacy Policy are listed below.</P>
+          <Table
+            head={["version", "date", "status"]}
+            widths={[96, 170]}
+            rows={[
+              [<Em key="v">1.1</Em>, "October 4, 2026", "Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)"],
+              [<Em key="v">1.0</Em>, "April 24, 2026", "Initial release (first version)"],
+            ]}
+          />
+        </Section>
 
-          {/* Section 9 */}
-          <section id="user-rights" style={st.section}>
-            <h2 style={st.h2}>9. Your Rights & Choices</h2>
-            <p style={st.p}>You can change your display name and profile photo in the app (Settings), and you can delete your account in the app (Settings, then delete account). When you delete your account, we erase your profile, profile photo, vibes, waves, saved places and blocks, and we complete full deletion within 30 days. You can also access or port your data. You can control location permissions, opt out of marketing, and limit personalized ads. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> to exercise these rights, and we&apos;ll respond within 30 days.</p>
-          </section>
-
-          {/* Section 10 */}
-          <section id="retention" style={st.section}>
-            <h2 style={st.h2}>10. Data Retention</h2>
-            <p style={st.p}>We retain account data while your account is active (deleted within 30 days of you deleting your account), profile photos until you replace them or delete your account, saved places until you remove them or delete your account, vibes until you delete them or delete your account (within 30 days), location data for 90 days, device/usage data for 12 months, and support records for 2 years.</p>
-          </section>
-
-          {/* Section 11 */}
-          <section id="gdpr" style={st.section}>
-            <h2 style={st.h2}>11. Notice for European Users</h2>
-            <p style={st.p}>If you&apos;re in the EEA or UK, GDPR applies. We&apos;re the data controller. We process data based on contract, legitimate interests, consent, or legal obligation. You have rights to access, correct, delete, port, restrict, object, and withdraw consent. Email <strong style={st.limeSemi}>hello@getviberater.co</strong> or lodge a complaint with your local data protection authority.</p>
-          </section>
-
-          {/* Section 12 */}
-          <section id="age" style={st.section}>
-            <h2 style={st.h2}>12. Age Requirement</h2>
-            <p style={st.p}>You must be at least 17 years old to use VibeRater. We ask for your date of birth when you create an account, and anyone under 17 cannot continue.</p>
-            <p style={st.p}>If you are a parent or guardian and discover that your child under 17 has created a VibeRater account, please contact us at <strong style={st.limeSemi}>hello@getviberater.co</strong> and we will help remove the account.</p>
-            <p style={st.p}>We do not knowingly collect personal data from anyone under 17. If you believe we have collected data from someone under 17, please contact us immediately.</p>
-          </section>
-
-          {/* Section 13 */}
-          <section id="contact" style={st.section}>
-            <h2 style={st.h2}>13. Contact Us</h2>
-            <div style={st.contactBox}>
-              <h3 style={st.contactH3}>Privacy Team</h3>
-              <p style={st.p}>Email: <a href="mailto:hello@getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>hello@getviberater.co</a></p>
-              <p style={st.p}>Website: <a href="https://getviberater.co" style={{ color: "var(--lime)", textDecoration: "none" }}>getviberater.co</a></p>
-              <p style={{ ...st.p, marginTop: 16, fontSize: 13, marginBottom: 0 }}>We typically respond within 5 business days</p>
-            </div>
-          </section>
-
-          {/* Version history */}
-          <section style={st.section}>
-            <h2 style={st.h2}>Version History</h2>
-            <p style={st.p}>Changes to this Privacy Policy are listed below.</p>
-            <table style={st.table}>
-              <thead>
-                <tr>
-                  <th scope="col" style={st.th}>Version</th>
-                  <th scope="col" style={st.th}>Date</th>
-                  <th scope="col" style={st.th}>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style={st.td}><strong style={st.limeSemi}>1.1</strong></td>
-                  <td style={st.td}>October 4, 2026</td>
-                  <td style={st.td}>Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)</td>
-                </tr>
-                <tr>
-                  <td style={st.td}><strong style={st.limeSemi}>1.0</strong></td>
-                  <td style={st.td}>April 24, 2026</td>
-                  <td style={st.td}>Initial release (first version)</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          {/* Closing */}
-          <section>
-            <p style={{ textAlign: "center", marginTop: 48, color: "var(--fg-2)" }}>
-              <strong style={st.limeSemi}>know the vibe before you come inside.</strong><br />
-              and know how we protect your vibe data.
-            </p>
-          </section>
-        </div>
-      </main>
+        <Closing line="and know how we protect your vibe data." />
+      </LegalPage>
       <Footer />
     </>
   );
