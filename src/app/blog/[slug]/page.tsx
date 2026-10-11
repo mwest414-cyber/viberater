@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import ScrollReveals from "@/components/ScrollReveals";
+import { Glow, sectionTitle } from "@/components/HomeSections";
+import PostCard from "../PostCard";
 import WaitlistForm from "@/components/WaitlistForm";
-import { getPost, getAllPosts } from "@/lib/posts";
+import { formatPostDate, getPost, getAllPosts } from "@/lib/posts";
 
 const SITE = "https://www.getviberater.co";
 
@@ -76,148 +79,101 @@ export default async function BlogPostPage({ params }: Props) {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
+  // "keep reading": the two most recent other posts
+  const more = getAllPosts().filter((p) => p.slug !== post.slug).slice(0, 2);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main id="main-content" className="flex-1 pt-28 pb-24 px-6">
-        <div className="mx-auto max-w-xl">
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-            <Link
-              href="/blog"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--fg-3)",
-                textDecoration: "none",
-              }}
-            >
-              ← blog
-            </Link>
-            {post.category && (
-              <>
-                <span style={{ color: "var(--fg-5)", fontSize: 10 }}>·</span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "var(--lime)",
-                  }}
-                >
-                  {post.category}
-                </span>
-              </>
-            )}
-          </div>
-
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "clamp(32px, 5.5vw, 48px)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-              color: "var(--fg-0)",
-              marginBottom: 16,
-            }}
-          >
-            {post.title}
-          </h1>
-
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 48 }}>
-            <time
-              dateTime={post.date}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.05em",
-                color: "var(--fg-2)",
-              }}
-            >
-              {new Date(post.date + "T00:00:00").toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </time>
-            {post.author && (
-              <>
-                <span style={{ color: "var(--fg-5)", fontSize: 10 }}>·</span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    letterSpacing: "0.05em",
-                    color: "var(--fg-2)",
-                  }}
-                >
-                  {post.author}
-                </span>
-              </>
-            )}
-          </div>
-
-          <div
-            className="prose"
-            style={{ fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.65, color: "var(--fg-2)" }}
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
-
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2" style={{ marginTop: 40 }}>
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "var(--fg-2)",
-                    background: "var(--bg-elev-2)",
-                    border: "1px solid var(--fg-4)",
-                    padding: "4px 10px",
-                    borderRadius: 4,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
+      <main id="main-content" className="flex-1">
+        <article className="relative px-6 pt-36 md:pt-40 pb-16">
+          <Glow style={{ top: -140, left: "75%", width: 760, height: 560, background: "radial-gradient(ellipse at center, rgba(215,255,58,0.13) 0%, transparent 70%)" }} />
+          <div className="relative mx-auto max-w-[680px]">
+            <div className="animate-fade-up flex flex-wrap items-center gap-x-4 gap-y-2 mb-7" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--fg-3)" }}>
+              <Link href="/blog" className="glass rounded-full px-3.5 py-2" style={{ color: "var(--fg-0)", textDecoration: "none" }}>
+                ← blog
+              </Link>
+              <span>
+                <time dateTime={post.date}>{formatPostDate(post.date)}</time> · {post.readingMinutes} min read
+              </span>
+              {post.category ? <span style={{ color: "var(--lime)", textTransform: "uppercase", letterSpacing: "0.08em", fontSize: 11 }}>{post.category}</span> : null}
             </div>
-          )}
 
-          <div
-            style={{
-              marginTop: 56,
-              paddingTop: 40,
-              borderTop: "1px solid var(--fg-5)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 16,
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-display)",
-                fontWeight: 700,
-                fontSize: 20,
-                color: "var(--fg-0)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              get early access.
-            </p>
-            <WaitlistForm />
+            <h1 className="animate-fade-up delay-100" style={{ ...sectionTitle, fontSize: "clamp(40px, 7vw, 64px)", lineHeight: 1.03 }}>
+              {post.title}
+            </h1>
+            {post.description ? (
+              <p className="animate-fade-up delay-200 mt-5" style={{ fontSize: "clamp(18px, 2.2vw, 21px)", lineHeight: 1.55, color: "var(--fg-2)" }}>
+                {post.description}
+              </p>
+            ) : null}
+
+            <div className="animate-fade-up delay-300 mt-9 pt-9" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="prose" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            </div>
+
+            {post.tags && post.tags.length > 0 ? (
+              <div className="mt-12 flex flex-col gap-3">
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-4)" }}>
+                  tagged
+                </span>
+                <ul className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 500,
+                        color: "var(--fg-0)",
+                        padding: "6px 12px",
+                        borderRadius: 999,
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }}
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
-        </div>
+        </article>
+
+        {more.length > 0 ? (
+          <section aria-labelledby="keep-reading" className="px-6 pb-20">
+            <div className="mx-auto max-w-5xl flex flex-col gap-5">
+              <h2
+                id="keep-reading"
+                data-reveal
+                style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--lime)" }}
+              >
+                keep reading
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {more.map((p, i) => (
+                  <PostCard key={p.slug} post={p} index={i} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        <section className="relative px-6 pb-28">
+          <Glow style={{ top: -40, width: 760, height: 380, background: "radial-gradient(ellipse at center, rgba(215,255,58,0.12) 0%, transparent 70%)" }} />
+          <div data-reveal className="relative mx-auto max-w-xl flex flex-col items-center gap-3 text-center">
+            <h2 style={{ ...sectionTitle, fontSize: "clamp(32px, 4.5vw, 40px)" }}>get early access.</h2>
+            <p style={{ fontSize: 17, color: "var(--fg-3)" }}>be first in the door when viberater opens in nyc.</p>
+            <div id="waitlist" className="glass w-full max-w-[488px] rounded-3xl p-5 flex justify-center mt-4" style={{ scrollMarginTop: "96px" }}>
+              <WaitlistForm />
+            </div>
+          </div>
+        </section>
       </main>
+      <ScrollReveals />
       <Footer />
     </>
   );

@@ -216,6 +216,13 @@ input:-webkit-autofill:active {
 .faq-item[open] .faq-sign::before, .faq-item[open] .faq-sign::after { background: var(--lime); }
 .faq-item[open] .faq-sign::after { transform: rotate(0deg); }
 .faq-chip:hover { border-color: rgba(255,255,255,0.3) !important; }
+/* keeps the scroll reveal (opacity, transform) and adds a quick hover on the border */
+.post-card {
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), border-color var(--dur-element) var(--ease-out);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms), calc(var(--reveal-i, 0) * 70ms), 0s;
+}
+.post-card:hover { border-color: rgba(255,255,255,0.22); }
+.post-card:hover .post-card-title { color: #FFFFFF; }
 
 /* ── Energy slider ───────────────────────────────────────── */
 .energy-range {
@@ -317,21 +324,43 @@ input:-webkit-autofill:active {
 }
 .skip-link:focus { top: 0; }
 
-/* ── Blog prose ──────────────────────────────────────────── */
-.prose h2 { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--fg-0); margin: 40px 0 16px; line-height: 1.2; }
-.prose h3 { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; color: var(--fg-1); margin: 32px 0 12px; }
-.prose p  { margin: 0 0 20px; }
+/* ── Blog prose (Figma "Blog pages", 2026-10-10) ─────────── */
+.prose { font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: #B0B0B0; }
+.prose h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.4vw, 32px); letter-spacing: -0.02em; color: var(--fg-0); margin: 56px 0 18px; line-height: 1.2; text-wrap: balance; }
+.prose h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: var(--fg-0); margin: 40px 0 12px; line-height: 1.25; }
+.prose p  { margin: 0 0 24px; }
 .prose p:last-child { margin-bottom: 0; }
-.prose strong { color: var(--fg-1); font-weight: 600; }
+.prose strong { color: var(--fg-0); font-weight: 600; }
 .prose em { font-style: italic; }
-.prose a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; }
+.prose a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .prose a:hover { color: var(--lime-hover); }
-.prose ul, .prose ol { margin: 0 0 20px 24px; }
-.prose li { margin-bottom: 6px; }
+.prose ul, .prose ol { margin: 0 0 24px; padding-left: 24px; }
+.prose li { margin-bottom: 10px; padding-left: 4px; }
 .prose ul { list-style-type: disc; }
+.prose ul li::marker { color: var(--lime); }
 .prose ol { list-style-type: decimal; }
-.prose blockquote { border-left: 2px solid var(--lime); padding-left: 20px; margin: 24px 0; color: var(--fg-2); font-style: italic; }
-.prose code { font-family: var(--font-mono); font-size: 13px; background: var(--bg-elev-2); color: var(--fg-1); padding: 2px 6px; border-radius: 4px; }
-.prose pre { background: var(--bg-elev-2); border: 1px solid var(--fg-5); border-radius: 8px; padding: 20px; overflow-x: auto; margin: 0 0 20px; }
+.prose ol li::marker { color: var(--lime); font-family: var(--font-mono); font-size: 14px; }
+.prose blockquote {
+  margin: 32px 0;
+  padding: 24px 28px 24px 44px;
+  position: relative;
+  border-radius: 20px;
+  background: rgba(10, 10, 10, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--fg-0);
+  font-style: normal;
+}
+.prose blockquote::before { content: ""; position: absolute; left: 24px; top: 24px; bottom: 24px; width: 3px; border-radius: 2px; background: var(--lime); }
+.prose blockquote p { margin: 0; }
+.prose code { font-family: var(--font-mono); font-size: 14px; background: var(--bg-elev-2); color: var(--fg-1); padding: 2px 6px; border-radius: 4px; }
+.prose pre { background: var(--bg-elev-2); border: 1px solid var(--fg-5); border-radius: 12px; padding: 20px; overflow-x: auto; margin: 0 0 24px; }
 .prose pre code { background: none; padding: 0; }
-.prose hr { border: none; border-top: 1px solid var(--fg-5); margin: 40px 0; }
+.prose hr { border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 48px 0; }
+.prose img { border-radius: 16px; }
