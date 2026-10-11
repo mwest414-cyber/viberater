@@ -39,7 +39,7 @@ export default function PrivacyPage() {
       <LegalPage
         title="privacy policy"
         subtitle="know how we protect your vibe data."
-        chips={["version 1.1", "updated october 4, 2026", "first released april 24, 2026"]}
+        chips={["version 1.2", "updated october 11, 2026", "first released april 24, 2026"]}
         toc={TOC}
       >
         <Notice label="important notice">
@@ -52,11 +52,12 @@ export default function PrivacyPage() {
         </Section>
 
         <Section id="open-platform" num="02" title="viberater is an open platform">
-          <P><Em>Important: VibeRater is designed as an open platform.</Em> When you drop a vibe at a venue, that vibe and your profile become publicly visible to anyone who visits VibeRater, including search engines and AI systems.</P>
+          <P><Em>Important: VibeRater is designed as an open platform for vibes, not for people.</Em> When you drop a vibe at a venue, your vibe (the energy level and tags you chose, and when) becomes part of that venue&apos;s public vibe, which anyone who visits VibeRater can see, including search engines and AI systems. Your vibe is shown without your name or photo.</P>
           <Notice label="what this means">
             <Bullets
               items={[
-                <>Your vibes are <Em>public by default</Em> and visible to everyone</>,
+                <>Your vibes are <Em>public by default, but not linked to you</Em>: people see a venue&apos;s vibe, not who dropped it</>,
+                "Your display name and profile photo are only shown to other people when you turn on \"be seen\" at a venue, and only to people who are also seen at that venue. Go ghost and you're off that list",
                 "Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini",
                 "Third parties may incorporate your vibes into their own products and services",
                 "If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can't control those",
@@ -67,13 +68,9 @@ export default function PrivacyPage() {
         </Section>
 
         <Section id="data-collection" num="03" title="what data we collect">
-          <H3>3.1 public data (visible to everyone)</H3>
-          <P>This information is displayed publicly on VibeRater and may be indexed by search engines and AI systems:</P>
+          <H3>3.1 public data (visible to everyone, without your name)</H3>
+          <P>This information is displayed publicly on VibeRater as part of the venue&apos;s vibe, not linked to your name or photo, and may be indexed by search engines and AI systems:</P>
           <Card>
-            <Group
-              label="your profile"
-              items={["Display name (required)", "Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it"]}
-            />
             <Group
               label="your vibes"
               items={[
@@ -86,7 +83,16 @@ export default function PrivacyPage() {
             />
           </Card>
 
-          <H3>3.2 private data (not shown publicly)</H3>
+          <H3>3.2 visible only when you choose to be seen</H3>
+          <P>This information is shown only to people who are also seen at the same venue, while you&apos;re seen there:</P>
+          <Card>
+            <Group
+              label="your profile"
+              items={["Display name (required)", "Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it"]}
+            />
+          </Card>
+
+          <H3>3.3 private data (not shown publicly)</H3>
           <P>This information is kept private and not visible to the public:</P>
           <Card>
             <Group
@@ -114,7 +120,7 @@ export default function PrivacyPage() {
             />
           </Card>
 
-          <H3>3.3 data from third parties</H3>
+          <H3>3.4 data from third parties</H3>
           <P>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from the Overture Maps Foundation and OpenStreetMap, and the map you see is provided by Mapbox.</P>
         </Section>
 
@@ -126,9 +132,10 @@ export default function PrivacyPage() {
               ["Visible on VibeRater to everyone", "Not shown on VibeRater publicly"],
               ["Indexed by Google and other search engines", "Not indexed by search engines"],
               ["May be accessed by AI systems", "Not shared with AI systems"],
-              ["Example: Your vibes", "Example: Your email, password, location"],
+              ["Example: Your vibes (without your name)", "Example: Your email, password, location"],
             ]}
           />
+          <P>Your name and photo sit in between: they&apos;re only shown to people at the same venue when you choose to be seen (see 3.2).</P>
         </Section>
 
         <Section id="how-we-use" num="05" title="how we use your data">
@@ -175,6 +182,7 @@ export default function PrivacyPage() {
             head={["version", "date", "status"]}
             widths={[96, 170]}
             rows={[
+              [<Em key="v">1.2</Em>, "October 11, 2026", "Clarified that vibes are shown without your name, and that your display name and photo are only shown to people at the same venue when you choose to be seen"],
               [<Em key="v">1.1</Em>, "October 4, 2026", "Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)"],
               [<Em key="v">1.0</Em>, "April 24, 2026", "Initial release (first version)"],
             ]}
