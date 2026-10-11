@@ -28,7 +28,7 @@ export const sectionTitle: CSSProperties = {
 export function Glow({ style }: { style: CSSProperties }) {
   return (
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
-      <div className="absolute left-1/2 -translate-x-1/2" style={{ filter: "blur(70px)", ...style }} />
+      <div className="glow-soft absolute left-1/2 -translate-x-1/2" style={{ filter: "blur(70px)", ...style }} />
     </div>
   );
 }

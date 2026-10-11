@@ -40,8 +40,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {/* Route changes cross fade (styles in globals.css); browsers without view transitions just swap pages */}
         <ViewTransition default="page-fade">{children}</ViewTransition>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HKT1KPSDR" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">{`
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HKT1KPSDR" strategy="lazyOnload" />
+        <Script id="google-analytics" strategy="lazyOnload">{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());

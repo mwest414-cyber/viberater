@@ -60,7 +60,7 @@ export default function Home() {
           {/* Ambient glow — overflow-hidden scoped here so it doesn't clip dropdowns */}
           <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2"
+              className="glow-soft absolute top-0 left-1/2 -translate-x-1/2"
               style={{
                 width: 960,
                 height: 640,
@@ -268,7 +268,7 @@ export default function Home() {
         <section className="relative px-6 pb-28">
           <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ overflowX: "clip" }}>
             <div
-              className="absolute left-1/2 -translate-x-1/2"
+              className="glow-soft absolute left-1/2 -translate-x-1/2"
               style={{
                 bottom: 40,
                 width: 760,
