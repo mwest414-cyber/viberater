@@ -2,15 +2,30 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 import ScrollReveals from "@/components/ScrollReveals";
 import { Glow, sectionTitle } from "@/components/HomeSections";
 import PostCard from "../PostCard";
 import WaitlistForm from "@/components/WaitlistForm";
-import { formatPostDate, getPost, getAllPosts } from "@/lib/posts";
+import { formatPostDate, getPost, getAllPosts, type PostSummary } from "@/lib/posts";
+import { lastModified, latest } from "@/lib/lastModified";
 
 const SITE = "https://www.getviberater.co";
 
 type Props = { params: Promise<{ slug: string }> };
+
+// Same rule as the sitemap: a later edit to the post file counts, otherwise the publish date. ISO string.
+function modifiedISO(post: PostSummary): string {
+  const d = latest(new Date(post.date), lastModified([`content/posts/${post.slug}.md`]));
+  return d ? d.toISOString() : post.date;
+}
+
+// Posts with no author, or signed "viberater", are published by the brand itself.
+function authorFor(post: PostSummary) {
+  return !post.author || post.author === "viberater"
+    ? { "@type": "Organization", name: "viberater", url: SITE }
+    : { "@type": "Person", name: post.author };
+}
 
 export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -23,6 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = post.canonicalUrl ?? `${SITE}/blog/${post.slug}`;
   const ogImage = post.ogImage ?? `${SITE}/blog/${post.slug}/opengraph-image`;
+  const modifiedTime = modifiedISO(post);
 
   return {
     title: post.title,
@@ -36,6 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       url,
       publishedTime: post.date,
+      modifiedTime,
       tags: post.tags,
       siteName: "viberater",
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
@@ -64,11 +81,8 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     image: ogImage,
     datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      "@type": "Person",
-      name: post.author ?? "viberater",
-    },
+    dateModified: modifiedISO(post),
+    author: authorFor(post),
     publisher: {
       "@type": "Organization",
       name: "viberater",
@@ -84,10 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <main id="main-content" className="flex-1">
         <article className="relative px-6 pt-36 md:pt-40 pb-16">
           <Glow style={{ top: -140, left: "75%", width: 760, height: 560, background: "radial-gradient(ellipse at center, rgba(215,255,58,0.13) 0%, transparent 70%)" }} />

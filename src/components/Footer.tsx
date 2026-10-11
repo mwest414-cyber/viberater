@@ -10,22 +10,22 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2">
           <p>© {new Date().getFullYear()} viberater</p>
           <nav aria-label="legal" className="flex gap-6">
-            <Link href="/privacy" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">privacy</Link>
-            <Link href="/terms" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">terms</Link>
+            <Link href="/privacy" className="footer-link">privacy</Link>
+            <Link href="/terms" className="footer-link">terms</Link>
           </nav>
         </div>
         <nav aria-label="footer" className="flex items-center gap-6">
-          <Link href="/about" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">about</Link>
-          <Link href="/faq" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">faq</Link>
-          <Link href="/blog" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">blog</Link>
-          <a href="mailto:hello@getviberater.co" style={{ color: "var(--fg-3)" }} className="hover:text-fg-1 transition-colors">contact</a>
+          <Link href="/about" className="footer-link">about</Link>
+          <Link href="/faq" className="footer-link">faq</Link>
+          <Link href="/blog" className="footer-link">blog</Link>
+          <a href="mailto:hello@getviberater.co" className="footer-link">contact</a>
           <a
             href="https://www.instagram.com/viberater_app/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="viberater on Instagram"
-            style={{ color: "var(--fg-3)", display: "inline-flex", alignItems: "center" }}
-            className="hover:text-fg-1 transition-colors"
+            style={{ display: "inline-flex", alignItems: "center" }}
+            className="footer-link"
           >
             <svg
               width="16"

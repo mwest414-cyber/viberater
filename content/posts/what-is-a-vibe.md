@@ -1,7 +1,7 @@
 ---
 title: "what is a vibe, anyway?"
 slug: "what-is-a-vibe"
-description: "a viberater vibe is one energy level plus a few tags. here's the whole language: 5 energy levels and 31 tags across crowd, mood, and scene."
+description: "a viberater vibe is one energy level plus a few tags. here's the whole language: 5 energy levels and 36 tags across crowd, mood, and scene."
 date: "2026-10-03"
 author: "viberater"
 tags: ["vibes", "nyc nightlife", "nightlife app", "venue vibes", "third spaces"]
@@ -32,7 +32,7 @@ one place, one energy, right now. that's the headline of every vibe. it's also w
 
 energy tells you *how much*. the tags tell you *what kind*.
 
-there are 31 of them, split across three plain questions: who's here, what does it feel like, what's the setup. you pick at least one and up to five, in any mix across the three. one tag is a quick read. five is a full picture. there's no wrong combination.
+there are 36 of them, split across three plain questions: who's here, what does it feel like, what's the setup. you pick at least one and up to five, in any mix across the three. one tag is a quick read. five is a full picture. there's no wrong combination.
 
 ### crowd: who's in the room (8)
 
@@ -66,6 +66,6 @@ put it together and a vibe looks like this:
 
 > **buzzing** · date night · cozy · dimly lit
 
-one energy level, a few tags, and you already know whether to walk in. that's the entire language. five energy levels, thirty-one tags, and a quick drop that tells a stranger everything they need to know before they get there.
+one energy level, a few tags, and you already know whether to walk in. that's the entire language. five energy levels, thirty-six tags, and a quick drop that tells a stranger everything they need to know before they get there.
 
 know the vibe before you come inside.

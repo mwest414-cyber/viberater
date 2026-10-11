@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "email confirmed | viberater",
+  title: "email confirmed",
   description: "your email is confirmed. open viberater and sign in.",
   robots: { index: false, follow: false },
 };
