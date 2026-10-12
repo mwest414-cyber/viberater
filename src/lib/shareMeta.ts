@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE = "https://www.getviberater.co";
-const IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "viberater: know the vibe before you come inside." };
+const IMAGE = { url: "/opengraph-image.png", width: 1200, height: 630, alt: "viberater: know the vibe before you come inside." };
 
 // Share tags (link previews in messages and social, plus og:url) for one page.
 // Next replaces the whole openGraph/twitter object per page rather than merging it with the layout's,
