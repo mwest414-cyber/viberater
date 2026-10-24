@@ -2,7 +2,7 @@
 title: "going out alone: how to read a room before you walk in"
 slug: "going-out-alone-read-a-room"
 description: "walking into a place alone is a different question than walking in with friends. here's what people say makes it comfortable, and what a vibe can tell you before you go."
-date: "2026-10-29"
+date: "2026-10-24"
 author: "viberater"
 tags: ["going out alone", "solo dining", "solo friendly", "venue vibes", "nyc"]
 canonicalUrl: "https://www.getviberater.co/blog/going-out-alone-read-a-room"
