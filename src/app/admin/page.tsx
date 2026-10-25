@@ -500,9 +500,10 @@ export default function AdminPage() {
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: 40, lineHeight: "48px", fontWeight: 700, color: c.text, margin: 0 }}>reports</h1>
           </div>
           {session ? (
-            <span style={{ fontSize: 13, color: c.muted }}>
-              {session.user.email} · <button type="button" onClick={signOut} style={{ background: "none", border: 0, color: c.muted, textDecoration: "underline", cursor: "pointer", fontSize: 13 }}>sign out</button>
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 13, color: c.muted }}>signed in as {session.user.email}</span>
+              <Pill onClick={signOut}>sign out</Pill>
+            </div>
           ) : null}
         </header>
 
