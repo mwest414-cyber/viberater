@@ -39,7 +39,7 @@ export default function PrivacyPage() {
       <LegalPage
         title="privacy policy"
         subtitle="know how we protect your vibe data."
-        chips={["version 1.2", "updated october 11, 2026", "first released april 24, 2026"]}
+        chips={["version 1.3", "updated october 25, 2026", "first released april 24, 2026"]}
         toc={TOC}
       >
         <Notice label="important notice">
@@ -57,7 +57,7 @@ export default function PrivacyPage() {
             <Bullets
               items={[
                 <>Your vibes are <Em>public by default, but not linked to you</Em>: people see a venue&apos;s vibe, not who dropped it</>,
-                "Your display name and profile photo are only shown to other people when you turn on \"be seen\" at a venue, and only to people who are also seen at that venue. Go ghost and you're off that list",
+                "When you drop a vibe at a venue, you're \"seen\" there by default: your display name and profile photo are shown to people who are also seen at that venue, and they can wave at you. The app tells you right after you drop the vibe. Go ghost at any time and you're off that list",
                 "Your vibes may appear in Google Search, other search engines, and AI systems like ChatGPT and Gemini",
                 "Third parties may incorporate your vibes into their own products and services",
                 "If you delete your account, we delete your vibes from VibeRater within 30 days. Copies already picked up by search engines, AI systems, or third parties may remain, and we can't control those",
@@ -83,12 +83,12 @@ export default function PrivacyPage() {
             />
           </Card>
 
-          <H3>3.2 visible only when you choose to be seen</H3>
-          <P>This information is shown only to people who are also seen at the same venue, while you&apos;re seen there:</P>
+          <H3>3.2 visible to people at the same venue while you&apos;re seen</H3>
+          <P>Dropping a vibe at a venue makes you seen there by default, and the app tells you so right away. While you&apos;re seen, this information is shown only to people who are also seen at the same venue. Go ghost at any time and it stops being shown. Being seen ends when you leave the venue or at its 5am reset, and each new vibe makes you seen again unless you go ghost:</P>
           <Card>
             <Group
               label="your profile"
-              items={["Display name (required)", "Profile photo (optional). It is stored at a public web address, so anyone who has the link can see it"]}
+              items={["Display name (required)", "Profile photo (optional). It is stored privately, and the app shows it only to people allowed to see it, through links that expire after an hour"]}
             />
           </Card>
 
@@ -135,7 +135,7 @@ export default function PrivacyPage() {
               ["Example: Your vibes (without your name)", "Example: Your email, password, location"],
             ]}
           />
-          <P>Your name and photo sit in between: they&apos;re only shown to people at the same venue when you choose to be seen (see 3.2).</P>
+          <P>Your name and photo sit in between: they&apos;re only shown to people at the same venue while you&apos;re seen there, which starts when you drop a vibe and ends when you go ghost, leave, or at the 5am reset (see 3.2).</P>
         </Section>
 
         <Section id="how-we-use" num="05" title="how we use your data">
@@ -182,6 +182,7 @@ export default function PrivacyPage() {
             head={["version", "date", "status"]}
             widths={[96, 170]}
             rows={[
+              [<Em key="v">1.3</Em>, "October 25, 2026", "Dropping a vibe now makes you seen at that venue by default, and you can go ghost at any time. Profile photos are stored privately and shown through links that expire"],
               [<Em key="v">1.2</Em>, "October 11, 2026", "Clarified that vibes are shown without your name, and that your display name and photo are only shown to people at the same venue when you choose to be seen"],
               [<Em key="v">1.1</Em>, "October 4, 2026", "Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)"],
               [<Em key="v">1.0</Em>, "April 24, 2026", "Initial release (first version)"],
