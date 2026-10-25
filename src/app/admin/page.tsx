@@ -156,6 +156,23 @@ const historyText: Record<string, (d: Record<string, string>) => string> = {
   venue_hidden: () => "place hidden",
   email: (d) => `${d.template === "ban" ? "ban notice" : d.template} email sent to the ${d.to === "reporter" ? "person who reported" : "reported person"}`,
   close: () => "ticket closed",
+  reopen: () => "ticket reopened",
+};
+
+// Everything a search can match on one ticket, lowercased: both people (name, email, id), the place, the note,
+// the reason and the ticket id.
+function searchText(r: Report) {
+  const person = (p: Person | null) => (p ? [p.display_name, p.email, p.id] : []);
+  return [
+    ...person(r.reporter), ...person(r.reported),
+    r.venue?.name, r.venue?.address, r.venue?.neighborhood, r.place,
+    r.notes, r.reason, reasonPill[r.reason], r.id,
+  ].filter(Boolean).join(" ").toLowerCase();
+}
+
+const searchField: React.CSSProperties = {
+  background: c.surface, color: c.text, border: `1px solid ${c.border}`, borderRadius: 12,
+  padding: "12px 16px", fontSize: 15, fontFamily: "var(--font-body)",
 };
 
 function EmailBox({ r, token, onSent }: { r: Report; token: string; onSent: () => void }) {
@@ -363,6 +380,13 @@ function ReportCard({ r, token, reload }: { r: Report; token: string; reload: ()
           </Pill>
         </div>
       ) : null}
+      {!open ? (
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Pill busy={busy === "reopen"} onClick={() => act("reopen", "reopen this ticket? it moves back to open so you can email or act on it again.", () => rpc("admin_reopen_report", { p_report: r.id }))}>
+            reopen ticket
+          </Pill>
+        </div>
+      ) : null}
       {msg ? <span style={{ fontSize: 13, color: c.coral }}>{msg}</span> : null}
     </article>
   );
@@ -397,9 +421,9 @@ function SignIn() {
 // Supabase settings come from Vercel; without them the page can only say so.
 const configured = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-type Loaded = { status: "open" | "closed"; reports: Report[]; openCount: number } | { error: string };
+type Loaded = { status: "open" | "closed" | "all"; reports: Report[]; openCount: number } | { error: string };
 
-async function fetchReports(status: "open" | "closed"): Promise<Loaded> {
+async function fetchReports(status: "open" | "closed" | "all"): Promise<Loaded> {
   const db = supabaseBrowser();
   const [{ data, error }, { data: openData }] = await Promise.all([
     db.rpc("admin_reports", { p_status: status }),
@@ -412,7 +436,9 @@ async function fetchReports(status: "open" | "closed"): Promise<Loaded> {
 export default function AdminPage() {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [admin, setAdmin] = useState<{ userId: string; value: boolean } | null>(null);
-  const [status, setStatus] = useState<"open" | "closed">("open");
+  const [status, setStatus] = useState<"open" | "closed" | "all">("open");
+  const [query, setQuery] = useState("");
+  const [reason, setReason] = useState("any");
   const [kind, setKind] = useState<"all" | "user" | "venue">("all");
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [refresh, setRefresh] = useState(0);
@@ -452,7 +478,17 @@ export default function AdminPage() {
   const error = !configured ? "the admin page isn't set up yet (missing Supabase settings on Vercel)" : loaded && "error" in loaded ? loaded.error : null;
   const current = loaded && "reports" in loaded && loaded.status === status ? loaded : null;
   const openCount = loaded && "openCount" in loaded ? loaded.openCount : null;
-  const shown = useMemo(() => (current?.reports ?? []).filter((r) => kind === "all" || r.target_type === kind), [current, kind]);
+  const shown = useMemo(() => {
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return (current?.reports ?? []).filter((r) => {
+      if (kind !== "all" && r.target_type !== kind) return false;
+      if (reason !== "any" && r.reason !== reason) return false;
+      if (!words.length) return true;
+      const hay = searchText(r);
+      return words.every((w) => hay.includes(w));
+    });
+  }, [current, kind, reason, query]);
+  const filtering = query.trim() !== "" || reason !== "any" || kind !== "all";
   const signOut = () => supabaseBrowser().auth.signOut();
 
   return (
@@ -464,9 +500,10 @@ export default function AdminPage() {
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: 40, lineHeight: "48px", fontWeight: 700, color: c.text, margin: 0 }}>reports</h1>
           </div>
           {session ? (
-            <span style={{ fontSize: 13, color: c.muted }}>
-              {session.user.email} · <button type="button" onClick={signOut} style={{ background: "none", border: 0, color: c.muted, textDecoration: "underline", cursor: "pointer", fontSize: 13 }}>sign out</button>
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 13, color: c.muted }}>signed in as {session.user.email}</span>
+              <Pill onClick={signOut}>sign out</Pill>
+            </div>
           ) : null}
         </header>
 
@@ -482,15 +519,37 @@ export default function AdminPage() {
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <Pill kind={status === "open" ? "lime" : "plain"} onClick={() => setStatus("open")}>open{openCount !== null ? ` · ${openCount}` : ""}</Pill>
               <Pill kind={status === "closed" ? "lime" : "plain"} onClick={() => setStatus("closed")}>handled</Pill>
+              <Pill kind={status === "all" ? "lime" : "plain"} onClick={() => setStatus("all")}>all tickets</Pill>
               <span style={{ width: 12 }} />
               <Pill kind={kind === "all" ? "selected" : "plain"} onClick={() => setKind("all")}>all</Pill>
               <Pill kind={kind === "user" ? "selected" : "plain"} onClick={() => setKind("user")}>people</Pill>
               <Pill kind={kind === "venue" ? "selected" : "plain"} onClick={() => setKind("venue")}>places</Pill>
             </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <input
+                type="search"
+                aria-label="search tickets"
+                placeholder="search name, email, note or place"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                style={{ ...searchField, flex: "1 1 320px" }}
+              />
+              <select aria-label="reason" value={reason} onChange={(e) => setReason(e.target.value)} style={{ ...searchField, flex: "0 0 auto", cursor: "pointer" }}>
+                <option value="any">any reason</option>
+                {Object.entries(reasonPill).map(([k, v]) => (
+                  <option key={k} value={k}>{v}</option>
+                ))}
+              </select>
+              {filtering ? (
+                <Pill onClick={() => { setQuery(""); setReason("any"); setKind("all"); }}>clear</Pill>
+              ) : null}
+            </div>
             {current === null ? (
               <p style={{ color: c.muted }}>loading…</p>
             ) : shown.length === 0 ? (
-              <p style={{ color: c.muted }}>{status === "open" ? "nothing to review. nice" : "nothing handled yet"}</p>
+              <p style={{ color: c.muted }}>
+                {current.reports.length && filtering ? "no tickets match" : status === "open" ? "nothing to review. nice" : status === "closed" ? "nothing handled yet" : "no tickets yet"}
+              </p>
             ) : (
               shown.map((r) => <ReportCard key={r.id} r={r} token={session.access_token} reload={reload} />)
             )}
