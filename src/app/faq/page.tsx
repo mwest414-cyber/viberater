@@ -69,7 +69,7 @@ const GROUPS: { id: string; title: string; items: Faq[] }[] = [
     items: [
       {
         q: "who can see that i'm here?",
-        a: "only people at the same place, and only if you choose to be seen. go ghost and you stay invisible.",
+        a: "only people who are seen at the same place. dropping a vibe makes you seen there, and the app tells you right away. go ghost any time and you're invisible.",
       },
       {
         q: "what's a wave?",
