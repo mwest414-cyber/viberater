@@ -30,7 +30,7 @@ export function bearer(req: Request): string | null {
 // Supabase/Postgres error message to a short code the page can show.
 export function errorCode(e: unknown): string {
   const m = e && typeof e === "object" && "message" in e ? String((e as { message: unknown }).message) : String(e);
-  for (const code of ["not_allowed", "report_not_found", "bad_recipient", "cant_ban_yourself", "bad_status"]) {
+  for (const code of ["not_allowed", "report_not_found", "bad_recipient", "cant_ban_yourself", "bad_status", "flag_not_found", "has_new_photo", "user_not_found", "bad_photo"]) {
     if (m.includes(code)) return code;
   }
   return "error";
