@@ -10,6 +10,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { supabaseBrowser } from "@/lib/supabase";
 import { fill, templateLabel, templatesFor, type Recipient, type Template } from "./templates";
+import { Moderation } from "./moderation";
+import { c, Fact, mono, Pill, when } from "./ui";
 
 type Person = {
   id: string;
@@ -41,48 +43,6 @@ type Report = {
   history: HistoryItem[];
 };
 
-const c = {
-  bg: "var(--bg)",
-  surface: "var(--bg-elev-1)",
-  raised: "var(--bg-elev-2)",
-  text: "var(--fg-0)",
-  muted: "var(--fg-2)",
-  faint: "var(--fg-4)",
-  border: "#2A2A2A",
-  lime: "var(--lime)",
-  coral: "var(--coral)",
-};
-const mono: React.CSSProperties = { fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.04em", color: c.muted, textTransform: "uppercase" };
-
-function when(iso: string) {
-  return new Date(iso)
-    .toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
-    .toLowerCase();
-}
-
-function Pill({
-  children, onClick, kind = "plain", disabled, busy,
-}: { children: React.ReactNode; onClick?: () => void; kind?: "plain" | "lime" | "coral" | "selected"; disabled?: boolean; busy?: boolean }) {
-  const styles: Record<string, React.CSSProperties> = {
-    plain: { background: c.raised, color: c.text, border: `1px solid ${c.raised}` },
-    lime: { background: c.lime, color: "#0A0A0A", border: `1px solid ${c.lime}` },
-    coral: { background: "transparent", color: c.coral, border: `1px solid ${c.coral}` },
-    selected: { background: c.text, color: "#0A0A0A", border: `1px solid ${c.text}` },
-  };
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled || busy}
-      style={{
-        ...styles[kind], borderRadius: 999, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: disabled || busy ? "default" : "pointer",
-        opacity: disabled ? 0.4 : busy ? 0.6 : 1, fontFamily: "var(--font-body)",
-      }}>
-      {busy ? "…" : children}
-    </button>
-  );
-}
-
 function Avatar({ path, name }: { path: string | null; name: string }) {
   const [src, setSrc] = useState<string | null>(null);
   useEffect(() => {
@@ -103,15 +63,6 @@ function Avatar({ path, name }: { path: string | null; name: string }) {
       ) : (
         <span style={{ fontFamily: "var(--font-display)", color: c.muted, fontSize: 16 }}>{initials}</span>
       )}
-    </div>
-  );
-}
-
-function Fact({ k, v, warn }: { k: string; v: React.ReactNode; warn?: boolean }) {
-  return (
-    <div style={{ display: "flex", gap: 8, fontSize: 13, lineHeight: "18px" }}>
-      <span style={{ color: c.faint }}>{k}</span>
-      <span style={{ color: warn ? c.coral : c.text }}>{v}</span>
     </div>
   );
 }
@@ -443,6 +394,9 @@ export default function AdminPage() {
   const [loaded, setLoaded] = useState<Loaded | null>(null);
   const [refresh, setRefresh] = useState(0);
   const reload = useCallback(() => setRefresh((n) => n + 1), []);
+  // Two sections (Oct 25): reports, and names & photos (Figma 1229:2). The badge counts photos waiting for review.
+  const [section, setSection] = useState<"reports" | "moderation">("reports");
+  const [flagCount, setFlagCount] = useState<number | null>(null);
 
   // Who is signed in (state only changes in the callbacks).
   useEffect(() => {
@@ -464,6 +418,16 @@ export default function AdminPage() {
     return () => { alive = false; };
   }, [userId]);
   const isAdmin = admin && admin.userId === userId ? admin.value : null;
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    let alive = true;
+    supabaseBrowser().rpc("admin_moderation").then(({ data }) => {
+      const flags = (data as { flags?: unknown[] } | null)?.flags;
+      if (alive && flags) setFlagCount(flags.length);
+    });
+    return () => { alive = false; };
+  }, [isAdmin]);
 
   // The reports for the chosen tab; refetched after every action.
   useEffect(() => {
@@ -497,7 +461,7 @@ export default function AdminPage() {
         <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12, flexWrap: "wrap" }}>
           <div>
             <span style={mono}>admin · only visible to admins</span>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: 40, lineHeight: "48px", fontWeight: 700, color: c.text, margin: 0 }}>reports</h1>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: 40, lineHeight: "48px", fontWeight: 700, color: c.text, margin: 0 }}>{section === "reports" ? "reports" : "names & photos"}</h1>
           </div>
           {session ? (
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -516,6 +480,16 @@ export default function AdminPage() {
           <p style={{ color: c.muted }}>this account isn&apos;t an admin.</p>
         ) : (
           <>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Pill kind={section === "reports" ? "lime" : "plain"} onClick={() => setSection("reports")}>reports</Pill>
+              <Pill kind={section === "moderation" ? "lime" : "plain"} onClick={() => setSection("moderation")}>
+                names &amp; photos{flagCount ? ` · ${flagCount}` : ""}
+              </Pill>
+            </div>
+            {section === "moderation" ? (
+              <Moderation token={session.access_token} onCount={setFlagCount} />
+            ) : (
+            <>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <Pill kind={status === "open" ? "lime" : "plain"} onClick={() => setStatus("open")}>open{openCount !== null ? ` · ${openCount}` : ""}</Pill>
               <Pill kind={status === "closed" ? "lime" : "plain"} onClick={() => setStatus("closed")}>handled</Pill>
@@ -552,6 +526,8 @@ export default function AdminPage() {
               </p>
             ) : (
               shown.map((r) => <ReportCard key={r.id} r={r} token={session.access_token} reload={reload} />)
+            )}
+            </>
             )}
           </>
         )}
