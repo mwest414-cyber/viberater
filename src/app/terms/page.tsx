@@ -45,7 +45,7 @@ export default function TermsPage() {
         </Notice>
 
         <Section id="introduction" num="01" title="introduction">
-          <P>Welcome to VibeRater. These Terms of Service are a binding contract between you and VibeRater. By using VibeRater, you agree to be bound by these Terms.</P>
+          <P>Welcome to VibeRater. These Terms of Service are a binding contract between you and West 4 Labs, LLC, which operates VibeRater. By using VibeRater, you agree to be bound by these Terms.</P>
           <H3>what is viberater?</H3>
           <P>VibeRater is a mobile app that allows you to share and discover the vibe (atmosphere, energy, feeling) of third spaces like cafes, bars, and coworking spaces. You drop a vibe at a venue using descriptive vibe tags and crowd level descriptions. Our platform is open to everyone, built on transparency, and designed to help people find spaces that match the vibe they&apos;re looking for.</P>
           <H3>related documents</H3>

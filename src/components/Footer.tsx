@@ -8,7 +8,7 @@ export default function Footer() {
         style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.04em", color: "var(--fg-3)" }}
       >
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2">
-          <p>© {new Date().getFullYear()} viberater</p>
+          <p>© {new Date().getFullYear()} West 4 Labs, LLC · viberater</p>
           <nav aria-label="legal" className="flex gap-6">
             <Link href="/privacy" className="footer-link">privacy</Link>
             <Link href="/terms" className="footer-link">terms</Link>

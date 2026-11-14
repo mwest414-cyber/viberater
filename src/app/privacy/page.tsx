@@ -48,6 +48,7 @@ export default function PrivacyPage() {
 
         <Section id="introduction" num="01" title="introduction">
           <P>Welcome to VibeRater. This Privacy Policy explains what information we collect, how we use it, who we share it with, and what choices you have. By using VibeRater, you agree to the terms of this policy.</P>
+          <P>VibeRater is operated by West 4 Labs, LLC.</P>
           <P>If you have questions, contact us at {email}.</P>
         </Section>
 

@@ -292,6 +292,9 @@ export default function AboutPage() {
               <Link href="/blog/why-we-built-viberater" style={{ color: "var(--fg-3)" }}>why we built viberater</Link>
               <Link href="/blog/what-is-a-vibe" style={{ color: "var(--fg-3)" }}>what is a vibe, anyway?</Link>
             </nav>
+            <p className="mt-6" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--fg-4)" }}>
+              viberater is made by West 4 Labs, LLC in new york.
+            </p>
           </div>
         </section>
       </main>

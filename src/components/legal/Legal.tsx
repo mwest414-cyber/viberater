@@ -180,6 +180,7 @@ export function ContactCard({ title }: { title: string }) {
   return (
     <div className="glass rounded-[20px] p-8 flex flex-col items-center gap-1.5 text-center">
       <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 22, color: "var(--fg-0)" }}>{title}</h3>
+      <p style={{ fontSize: 13, color: "var(--fg-3)" }}>Operated by West 4 Labs, LLC</p>
       <p>
         <span className="sr-only">Email: </span>
         <a href="mailto:hello@getviberater.co" style={{ ...link, fontWeight: 500 }}>hello@getviberater.co</a>
