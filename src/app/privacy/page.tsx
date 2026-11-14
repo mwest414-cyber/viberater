@@ -39,7 +39,7 @@ export default function PrivacyPage() {
       <LegalPage
         title="privacy policy"
         subtitle="know how we protect your vibe data."
-        chips={["version 1.3", "updated october 25, 2026", "first released april 24, 2026"]}
+        chips={["version 1.4", "updated november 14, 2026", "first released april 24, 2026"]}
         toc={TOC}
       >
         <Notice label="important notice">
@@ -122,7 +122,7 @@ export default function PrivacyPage() {
           </Card>
 
           <H3>3.4 data from third parties</H3>
-          <P>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from the Overture Maps Foundation and OpenStreetMap, and the map you see is provided by Mapbox.</P>
+          <P>We may receive data about you from Apple or Google (if you sign in with them) and from analytics providers (anonymized usage patterns). Venue information comes from Google and from places we add ourselves, and the map you see is provided by Google Maps.</P>
         </Section>
 
         <Section id="public-private" num="04" title="public vs. private data">
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section id="data-sharing" num="06" title="how we share your data">
-          <P>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We use Supabase to store accounts, profiles, vibes and profile photos and to handle sign-in, Resend to send account emails such as the message that confirms your email address, Mapbox to display maps, and Vercel to host our website. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</P>
+          <P>Your public vibes are shared with search engines, AI systems, analytics platforms, and venue partners (aggregated data only). We have Data Processing Agreements with all service providers. We use Supabase to store accounts, profiles, vibes and profile photos and to handle sign-in, Resend to send account emails such as the message that confirms your email address, Google Maps to display maps, and Vercel to host our website. We do NOT sell your personal data, share your email or password, or use your data for interest-based advertising.</P>
         </Section>
 
         <Section id="ai-systems" num="07" title="ai & search engine access">
@@ -183,6 +183,7 @@ export default function PrivacyPage() {
             head={["version", "date", "status"]}
             widths={[96, 170]}
             rows={[
+              [<Em key="v">1.4</Em>, "November 14, 2026", "Updated the services we use: the map and venue information now come from Google instead of Mapbox, Overture and OpenStreetMap. VibeRater is operated by West 4 Labs, LLC"],
               [<Em key="v">1.3</Em>, "October 25, 2026", "Dropping a vibe now makes you seen at that venue by default, and you can go ghost at any time. Profile photos are stored privately and shown through links that expire"],
               [<Em key="v">1.2</Em>, "October 11, 2026", "Clarified that vibes are shown without your name, and that your display name and photo are only shown to people at the same venue when you choose to be seen"],
               [<Em key="v">1.1</Em>, "October 4, 2026", "Updated for profile photos, deleting your account in the app, saved places, and the services we use (Overture and OpenStreetMap for venue data, Mapbox, Supabase, Resend, Vercel)"],
